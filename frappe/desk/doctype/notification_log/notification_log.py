@@ -26,6 +26,14 @@ def get_permission_query_conditions(for_user):
 	return '''(`tabNotification Log`.for_user = '{user}')'''.format(user=for_user)
 
 def enqueue_create_notification(users, doc):
+	'''
+	During setup of new site, enqueue_create_notification tries to connect to Redis in develop mode and it breaks.
+	We do not need any notifications in fresh installation
+	'''
+	
+	if frappe.flags.in_install:
+		return
+
 	doc = frappe._dict(doc)
 
 	if isinstance(users, frappe.string_types):

@@ -247,7 +247,7 @@ frappe.ui.toolbar.setup_session_defaults = function() {
 				fields[fields.length] = {
 					'fieldname': 'settings',
 					'fieldtype': 'Button',
-					'label': __('Settings'),
+					'label': __('Settings_in_uit_toolbar'),
 					'click': () => {
 						frappe.set_route('Form', 'Session Default Settings', 'Session Default Settings');
 					}
@@ -268,21 +268,21 @@ frappe.ui.toolbar.setup_session_defaults = function() {
 					callback: function(data) {
 						if (data.message == "success") {
 							frappe.show_alert({
-								'message': __('Session Defaults Saved'),
+								'message': __('Session Defaults Saved_in_uit_toolbar'),
 								'indicator': 'green'
 							});
 							frappe.ui.toolbar.clear_cache();
 						}	else {
 							frappe.show_alert({
-								'message': __('An error occurred while setting Session Defaults'),
+								'message': __('An error occurred while setting Session Defaults_in_uit_toolbar'),
 								'indicator': 'red'
 							});
 						}
 					}
 				});
 			},
-			__('Session Defaults'),
-			__('Save'),
+			__('Session Defaults_in_uit_toolbar'),
+			__('Save_in_uit_toolbar'),
 			);
 		}
 	});

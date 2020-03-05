@@ -265,28 +265,28 @@ frappe.utils.new_auto_repeat_prompt = function(frm) {
 		{
 			'fieldname': 'frequency',
 			'fieldtype': 'Select',
-			'label': __('Frequency'),
+			'label': __('Frequency_in_utils_common'),
 			'reqd': 1,
 			'options': [
-				{'label': __('Daily'), 'value': 'Daily'},
-				{'label': __('Weekly'), 'value': 'Weekly'},
-				{'label': __('Monthly'), 'value': 'Monthly'},
-				{'label': __('Quarterly'), 'value': 'Quarterly'},
-				{'label': __('Half-yearly'), 'value': 'Half-yearly'},
-				{'label': __('Yearly'), 'value': 'Yearly'}
+				{'label': __('Daily_in_utils_common'), 'value': 'Daily'},
+				{'label': __('Weekly_in_utils_common'), 'value': 'Weekly'},
+				{'label': __('Monthly_in_utils_common'), 'value': 'Monthly'},
+				{'label': __('Quarterly_in_utils_common'), 'value': 'Quarterly'},
+				{'label': __('Half-yearly_in_utils_common'), 'value': 'Half-yearly'},
+				{'label': __('Yearly_in_utils_common'), 'value': 'Yearly'}
 			]
 		},
 		{
 			'fieldname': 'start_date',
 			'fieldtype': 'Date',
-			'label': __('Start Date'),
+			'label': __('Start Date_in_utils_common'),
 			'reqd': 1,
 			'default': frappe.datetime.nowdate()
 		},
 		{
 			'fieldname': 'end_date',
 			'fieldtype': 'Date',
-			'label': __('End Date')
+			'label': __('End Date_in_utils_common')
 		}
 	];
 	frappe.prompt(fields, function(values) {
@@ -302,7 +302,7 @@ frappe.utils.new_auto_repeat_prompt = function(frm) {
 			callback: function (r) {
 				if (r.message) {
 					frappe.show_alert({
-						'message': __("Auto Repeat created for this document"),
+						'message': __("Auto Repeat created for this document_in_utils_common"),
 						'indicator': 'green'
 					});
 					frm.reload_doc();
@@ -310,7 +310,7 @@ frappe.utils.new_auto_repeat_prompt = function(frm) {
 			}
 		});
 	},
-	__('Auto Repeat'),
-	__('Save')
+	__('Auto Repeat_in_utils_common'),
+	__('Save_in_utils_common')
 	);
 }

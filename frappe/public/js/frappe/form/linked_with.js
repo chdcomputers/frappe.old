@@ -14,7 +14,7 @@ frappe.ui.form.LinkedWith = class LinkedWith {
 
 		$(this.dialog.body).html(
 			`<div class="text-muted text-center" style="padding: 30px 0px">
-				${__("Loading")}...
+				${__("Loading_in_f_linked_with")}...
 			</div>`);
 
 		this.dialog.show();
@@ -24,7 +24,7 @@ frappe.ui.form.LinkedWith = class LinkedWith {
 
 		this.dialog = new frappe.ui.Dialog({
 			hide_on_page_refresh: true,
-			title: __("Linked With")
+			title: __("Linked With_in_f_linked_with")
 		});
 
 		this.dialog.on_page_show = () => {
@@ -48,7 +48,7 @@ frappe.ui.form.LinkedWith = class LinkedWith {
 		const linked_doctypes = Object.keys(linked_docs);
 
 		if (linked_doctypes.length === 0) {
-			html = __("Not Linked to any record");
+			html = __("Not Linked to any record_in_f_linked_with");
 		} else {
 			html = linked_doctypes.map(doctype => {
 				const docs = linked_docs[doctype];
@@ -100,8 +100,8 @@ frappe.ui.form.LinkedWith = class LinkedWith {
 		let flag;
 		if(!links) {
 			$(this.dialog.body).html(`${this.frm.__linked_doctypes
-				? __("Not enough permission to see links")
-				: __("Not Linked to any record")}`);
+				? __("Not enough permission to see links_in_f_linked_with")
+				: __("Not Linked to any record_in_f_linked_with")}`);
 			flag = true;
 		}
 		flag = false;

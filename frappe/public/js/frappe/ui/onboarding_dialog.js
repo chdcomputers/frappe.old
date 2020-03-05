@@ -34,7 +34,7 @@ frappe.setup.OnboardingSlide = class OnboardingSlide extends frappe.ui.Slide {
 
 	before_show() {
 		(this.id === 0) ?
-			this.$next_btn.text(__('Let\'s Start')) : this.$next_btn.text(__('Next'));
+			this.$next_btn.text(__('Let\'s Start_in_ui_onboarding_dialog')) : this.$next_btn.text(__('Next_in_ui_onboarding_dialog'));
 		//last slide
 		if (this.is_last_slide()) {
 			this.$complete_btn.removeClass('hide').addClass('action primary');
@@ -61,9 +61,9 @@ frappe.setup.OnboardingSlide = class OnboardingSlide extends frappe.ui.Slide {
 					this.reset_is_first_startup();
 					$('.onboarding-dialog').modal('toggle');
 					frappe.msgprint({
-						message: __('You are all set up!'),
+						message: __('You are all set up!_in_ui_onboarding_dialog'),
 						indicator: 'green',
-						title: __('Success')
+						title: __('Success_in_ui_onboarding_dialog')
 					});
 				}
 			});
@@ -78,7 +78,7 @@ frappe.setup.OnboardingSlide = class OnboardingSlide extends frappe.ui.Slide {
 	setup_help_links() {
 		this.help_links.map(link => {
 			let $link = $(
-				`<a target="_blank" class="small text-muted">${link.label || __("Need Help?")}</a>`
+				`<a target="_blank" class="small text-muted">${link.label || __("Need Help?_in_ui_onboarding_dialog")}</a>`
 			);
 			if (link.video_id) {
 				$link.on('click', () => {
@@ -145,7 +145,7 @@ frappe.setup.OnboardingDialog  = class OnboardingDialog {
 				$footer.find('.next-btn').removeClass('btn-default').addClass('btn-primary action');
 				$footer.find('.text-right').prepend(
 					$(`<a class="complete-btn btn btn-primary btn-sm hide">
-				${__("Complete")}</a>`));
+				${__("Complete_in_ui_onboarding_dialog")}</a>`));
 			}
 		});
 

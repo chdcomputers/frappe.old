@@ -20,12 +20,12 @@ frappe.social.Home = class SocialHome {
 		});
 	}
 	setup_header() {
-		this.page.set_title(__('Social'));
+		this.page.set_title(__('Social_in_s_social_home'));
 	}
 };
 
 frappe.social.post_dialog = new frappe.ui.Dialog({
-	title: __('Create Post'),
+	title: __('Create Post_in_s_social_home'),
 	fields: [
 		{
 			fieldtype: "Text Editor",
@@ -34,7 +34,7 @@ frappe.social.post_dialog = new frappe.ui.Dialog({
 			reqd: 1
 		}
 	],
-	primary_action_label: __('Post'),
+	primary_action_label: __('Post_in_s_social_home'),
 	primary_action: (values) => {
 		frappe.social.post_dialog.disable_primary_action();
 		const post = frappe.model.get_new_doc('Post');

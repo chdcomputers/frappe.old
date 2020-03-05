@@ -76,19 +76,19 @@ export default {
 			if (this.can_pin) {
 				if (this.is_pinned) {
 					options.push({
-						'label': __('Unpin'),
+						'label': __('Unpin_in_sc_Postvue'),
 						'action': this.toggle_pin
 					})
 				} else {
 					options.push({
-						'label': __('Pin Globally'),
+						'label': __('Pin Globally_in_sc_Postvue'),
 						'action': this.toggle_pin
 					})
 				}
 			}
 			if (this.is_user_post_owner) {
 				options.push({
-					'label': __('Delete'),
+					'label': __('Delete_in_sc_Postvue'),
 					'action': this.delete_post
 				})
 			}
@@ -169,7 +169,7 @@ export default {
 			frappe.db.insert(comment);
 		},
 		delete_post() {
-			frappe.confirm(__("Are you sure you want to delete this post?"), () => {
+			frappe.confirm(__("Are you sure you want to delete this post?_in_sc_Postvue"), () => {
 				frappe.dom.freeze();
 				frappe.xcall('frappe.social.doctype.post.post.delete_post', {
 					'post_name': this.post.name

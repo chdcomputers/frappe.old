@@ -1,16 +1,16 @@
 <template>
 	<div>
 		<div class="comment-box flex-column">
-			<div class="text-muted comment-label">{{ __('Add a comment') }}</div>
+			<div class="text-muted comment-label">{{ __('Add a comment_in_sc_PostCommentvue') }}</div>
 			<div ref="comment-section"></div>
 			<div class="flex justify-between">
 				<div class="text-muted small">
-					{{ __("Ctrl+Enter to add comment") }}
+					{{ __("Ctrl+Enter to add comment_in_sc_PostCommentvue") }}
 				</div>
 				<button
 					class="btn btn-primary btn-sm"
 					@click="create_comment">
-					{{ __('Comment') }}
+					{{ __('Comment_in_sc_PostCommentvue') }}
 				</button>
 			</div>
 		</div>

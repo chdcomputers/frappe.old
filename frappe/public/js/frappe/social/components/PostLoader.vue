@@ -12,17 +12,17 @@
 			/>
 		</transition-group>
 		<div v-if="!loading_posts && !posts.length" class="no-post-message text-muted">
-			{{ __('No posts yet') }}
+			{{ __('No posts yet_in_sc_PostLoadervue') }}
 		</div>
 		<div
 			v-show="loading_posts && posts.length"
 			class="text-center text-muted padding">
-			{{ __('Fetching posts...') }}
+			{{ __('Fetching posts..._in_sc_PostLoadervue') }}
 		</div>
 		<div
 			v-show="posts.length && !loading_posts && !more_posts_available"
 			class="text-center text-muted padding">
-			{{ __("No more posts") }}
+			{{ __("No more posts_in_sc_PostLoadervue") }}
 		</div>
 	</div>
 </template>

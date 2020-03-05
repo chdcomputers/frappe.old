@@ -32,7 +32,7 @@ frappe.ui.form.Viewers = Class.extend({
 				fullname: user_info.fullname,
 				abbr: user_info.abbr,
 				color: user_info.color,
-				title: __("{0} is currently viewing this document", [user_info.fullname])
+				title: __("{0} is currently viewing this document_in_fs_form_viewer", [user_info.fullname])
 			});
 
 			if (viewers.new.indexOf(username)!==-1) {
@@ -50,9 +50,9 @@ frappe.ui.form.Viewers = Class.extend({
 		if (data_updated && new_users.length) {
 			// new user viewing this document, who wasn't viewing in the past
 			if (new_users.length===1) {
-				frappe.show_alert(__("{0} is currently viewing this document", [new_users[0]]));
+				frappe.show_alert(__("{0} is currently viewing this document_form_viewer", [new_users[0]]));
 			} else {
-				frappe.show_alert(__("{0} are currently viewing this document", [frappe.utils.comma_and(new_users)]));
+				frappe.show_alert(__("{0} are currently viewing this document_form_viewer", [frappe.utils.comma_and(new_users)]));
 			}
 
 		}

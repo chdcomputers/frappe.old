@@ -34,8 +34,8 @@ frappe.views.BaseList = class BaseList {
 
 	setup_defaults() {
 		this.page_name = frappe.get_route_str();
-		this.page_title = this.page_title || __(this.doctype);
 		this.meta = frappe.get_meta(this.doctype);
+		this.page_title = __(this.meta.plural_nominal) || this.page_title || __(this.doctype);
 		this.settings = frappe.listview_settings[this.doctype] || {};
 		this.user_settings = frappe.get_user_settings(this.doctype);
 
@@ -55,12 +55,12 @@ frappe.views.BaseList = class BaseList {
 		// Setup buttons
 		this.primary_action = null;
 		this.secondary_action = {
-			label: __('Refresh'),
+			label: __('Refresh_in_base_list_view'),
 			action: () => this.refresh()
 		};
 
 		this.menu_items = [{
-			label: __('Refresh'),
+			label: __('Refresh_in_base_list_view'),
 			action: () => this.refresh(),
 			class: 'visible-xs'
 		}];
@@ -271,7 +271,7 @@ frappe.views.BaseList = class BaseList {
 	}
 
 	get_no_result_message() {
-		return __('Nothing to show');
+		return __('Nothing to show_in_base_list_view');
 	}
 
 	setup_paging_area() {
@@ -290,7 +290,7 @@ frappe.views.BaseList = class BaseList {
 				</div>
 				<div class="level-right">
 					<button class="btn btn-default btn-more btn-sm">
-						${__("More")}...
+						${__("More_in_base_list_view")}...
 					</button>
 				</div>
 			</div>`
@@ -354,7 +354,7 @@ frappe.views.BaseList = class BaseList {
 			method: this.method,
 			args: args,
 			freeze: this.freeze_on_refresh || false,
-			freeze_message: this.freeze_message || (__('Loading') + '...')
+			freeze_message: this.freeze_message || (__('Loading_in_base_list_view') + '...')
 		};
 	}
 

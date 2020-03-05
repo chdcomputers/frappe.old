@@ -333,10 +333,10 @@ frappe.ui.Slides = class Slides {
 	make_prev_next_buttons() {
 		$(`<div class="row">
 			<div class="col-sm-4">
-				<a class="prev-btn btn btn-default btn-sm" tabindex="0">${__("Previous")}</a>
+				<a class="prev-btn btn btn-default btn-sm" tabindex="0">${__("Previous_in_ui_slides")}</a>
 			</div>
 			<div class="col-sm-8 text-right">
-				<a class="next-btn btn btn-default btn-sm" tabindex="0">${__("Next")}</a>
+				<a class="next-btn btn btn-default btn-sm" tabindex="0">${__("Next_in_ui_slides")}</a>
 			</div>
 		</div>`).appendTo(this.$footer);
 

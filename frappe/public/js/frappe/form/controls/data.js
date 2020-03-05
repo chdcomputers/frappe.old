@@ -43,7 +43,7 @@ frappe.ui.form.ControlData = frappe.ui.form.ControlInput.extend({
 						frappe.db.get_value(this.doctype, this.$input.val(),
 							'name', (val) => {
 								if (val) {
-									this.set_description(__('{0} already exists. Select another name', [val.name]));
+									this.set_description(__('{0} already exists. Select another name_in_fc_data', [val.name]));
 								}
 							},
 							this.doc.parenttype
@@ -123,7 +123,7 @@ frappe.ui.form.ControlData = frappe.ui.form.ControlInput.extend({
 				var invalid_email = false;
 				email_list.forEach(function(email) {
 					if (!validate_email(email)) {
-						frappe.msgprint(__("Invalid Email: {0}", [email]));
+						frappe.msgprint(__("Invalid Email: {0}_in_fc_data", [email]));
 						invalid_email = true;
 					}
 				});

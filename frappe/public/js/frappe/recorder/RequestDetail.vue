@@ -302,7 +302,7 @@ export default {
 	mounted() {
 		frappe.breadcrumbs.add({
 			type: 'Custom',
-			label: __('Recorder'),
+			label: __('Recorder_in_r_RequestDetailvue'),
 			route: '#recorder'
 		});
 		frappe.call({

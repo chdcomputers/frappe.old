@@ -31,7 +31,7 @@ frappe.ui.form.ControlTime = frappe.ui.form.ControlDate.extend({
 				}
 			},
 			onShow: () => {
-				$('.datepicker--button:visible').text(__('Now'));
+				$('.datepicker--button:visible').text(__('Now_in_fc_time'));
 
 				this.update_datepicker_position();
 			},
@@ -96,7 +96,7 @@ frappe.ui.form.ControlTime = frappe.ui.form.ControlDate.extend({
 			let sysdefaults = frappe.sys_defaults;
 			let time_format = sysdefaults && sysdefaults.time_format
 				? sysdefaults.time_format : 'HH:mm:ss';
-			frappe.msgprint(__("Time {0} must be in format: {1}", [value, time_format]));
+			frappe.msgprint(__("Time {0} must be in format: {1}_in_fc_time", [value, time_format]));
 			return '';
 		}
 		return value;

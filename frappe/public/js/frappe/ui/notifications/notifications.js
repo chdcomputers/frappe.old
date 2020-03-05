@@ -34,7 +34,7 @@ frappe.ui.Notifications = class Notifications {
 		let me = this;
 		frappe.search.utils.make_function_searchable(
 			me.route_to_settings,
-			__('Notification Settings'),
+			__('Notification Settings_in_uin_notifications'),
 		);
 
 		this.setup_notifications();
@@ -81,7 +81,7 @@ frappe.ui.Notifications = class Notifications {
 			html = event_list.map(get_event_html).join('');
 		} else {
 			html = `<li class="recent-item text-center">
-					<span class="text-muted">${__('No Events Today')}</span>
+					<span class="text-muted">${__('No Events Today_in_uin_notifications')}</span>
 				</li>`;
 		}
 
@@ -90,8 +90,8 @@ frappe.ui.Notifications = class Notifications {
 
 	get_open_document_config(e) {
 		this.open_docs_config = {
-			ToDo: { label: __('To Do') },
-			Event: { label: __('Calendar'), route: 'List/Event/Calendar' }
+			ToDo: { label: __('To Do_in_uin_notifications') },
+			Event: { label: __('Calendar_in_uin_notifications'), route: 'List/Event/Calendar' }
 		};
 
 		let hide = $(e.currentTarget)
@@ -150,7 +150,7 @@ frappe.ui.Notifications = class Notifications {
 		let label = this.open_docs_config[name]
 			? this.open_docs_config[name].label
 			: name;
-		let title = target ? `title="${__('Your Target')}"` : '';
+		let title = target ? `title="${__('Your Target_in_uin_notifications')}"` : '';
 		let $list_item = !target
 			? $(`<li><a class="badge-hover" data-action="route_to_document_type" data-doctype="${name}" ${title}>
 				${label}
@@ -217,7 +217,7 @@ frappe.ui.Notifications = class Notifications {
 			this.$dropdown_list.find('.activity-status').replaceWith(
 				`<a class="recent-item text-center text-muted"
 					href="#List/Notification Log">
-					<div class="full-log-btn">${__('View Full Log')}</div>
+					<div class="full-log-btn">${__('View Full Log_in_uin_notifications')}</div>
 				</a>`
 			);
 		}
@@ -279,7 +279,7 @@ frappe.ui.Notifications = class Notifications {
 		if (this.notifications_settings && !this.notifications_settings.enabled) {
 			dropdown_html = `<li class="recent-item text-center">
 				<span class="text-muted">
-					${__('Notifications Disabled')}
+					${__('Notifications Disabled_in_uin_notifications')}
 				</span></li>`;
 		} else {
 			if (this.dropdown_items.length) {
@@ -289,12 +289,12 @@ frappe.ui.Notifications = class Notifications {
 				});
 				view_full_log_html = `<a class="recent-item text-center text-muted"
 					href="#List/Notification Log">
-						<div class="full-log-btn">${__('View Full Log')}</div>
+						<div class="full-log-btn">${__('View Full Log_in_uin_notifications')}</div>
 					</a>`;
 			} else {
 				body_html += `<li class="recent-item text-center activity-status">
 					<span class="text-muted">
-						${__('No activity')}
+						${__('No activity_in_uin_notifications')}
 					</span></li>`;
 			}
 			dropdown_html = body_html + view_full_log_html;
@@ -329,7 +329,7 @@ frappe.ui.Notifications = class Notifications {
 					${timestamp}
 				</div>
 				<span class="mark-read text-muted hidden-xs" data-action="explicitly_mark_as_read">
-					${__('Mark as Read')}
+					${__('Mark as Read_in_uin_notifications')}
 				</span>
 			</a>`;
 
@@ -339,11 +339,11 @@ frappe.ui.Notifications = class Notifications {
 	render_dropdown_headers() {
 		this.categories = [
 			{
-				label: __("Notifications"),
+				label: __("Notifications_in_uin_notifications"),
 				value: "Notifications"
 			},
 			{
-				label: __("Today's Events"),
+				label: __("Today's Events_in_uin_notifications"),
 				value: "Todays Events",
 				action: "render_todays_events"
 			},
@@ -359,13 +359,13 @@ frappe.ui.Notifications = class Notifications {
 			let settings_html =
 				category.value === 'Notifications'
 					? `<span class="notification-settings pull-right" data-action="go_to_settings">
-						${__('Settings')}
+						${__('Settings_in_uin_notifications')}
 					</span>`
 					: '';
 			let mark_all_read_html =
 				category.value === 'Notifications'
 					? `<span class="mark-all-read pull-right" data-action="mark_all_as_read">
-						${__('Mark all as Read')}
+						${__('Mark all as Read_in_uin_notifications')}
 					</span>`
 					: '';
 			let html = `<li class="notifications-category">
@@ -380,7 +380,7 @@ frappe.ui.Notifications = class Notifications {
 					</li>
 					<div id="${category_id}" class="collapse category-list" data-category="${category.value}">
 						<div class="text-center text-muted notifications-loading">
-							${__('Loading...')}
+							${__('Loading..._in_uin_notifications')}
 						</div>
 					</div>
 				</li>`;

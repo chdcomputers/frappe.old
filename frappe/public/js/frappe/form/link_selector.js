@@ -20,11 +20,11 @@ frappe.ui.form.LinkSelector = Class.extend({
 
 		this.start = 0;
 		this.dialog = new frappe.ui.Dialog({
-			title: __("Select {0}", [(this.doctype == '[Select]') ? __("value") : __(this.doctype)]),
+			title: __("Select {0}_in_f_link_selector", [(this.doctype == '[Select]') ? __("value_in_f_link_selector") : __(this.doctype)]),
 			fields: [
 				{
-					fieldtype: "Data", fieldname: "txt", label: __("Beginning with"),
-					description: __("You can use wildcard %"),
+					fieldtype: "Data", fieldname: "txt", label: __("Beginning with_in_f_link_selector"),
+					description: __("You can use wildcard %_in_f_link_selector"),
 				},
 				{
 					fieldtype: "HTML", fieldname: "results"
@@ -36,7 +36,7 @@ frappe.ui.form.LinkSelector = Class.extend({
 					}
 				}
 			],
-			primary_action_label: __("Search"),
+			primary_action_label: __("Search_in_f_link_selector"),
 			primary_action: function () {
 				me.start = 0;
 				me.search();
@@ -113,10 +113,10 @@ frappe.ui.form.LinkSelector = Class.extend({
 						})
 				})
 			} else {
-				$('<p><br><span class="text-muted">' + __("No Results") + '</span>'
+				$('<p><br><span class="text-muted">' + __("No Results_in_f_link_selector") + '</span>'
 					+ (frappe.model.can_create(me.doctype) ?
 						('<br><br><a class="new-doc btn btn-default btn-sm">'
-							+ __('Create a new {0}', [__(me.doctype)]) + "</a>") : '')
+							+ __('Create a new {0}_in_f_link_selector', [__(me.doctype)]) + "</a>") : '')
 					+ '</p>').appendTo(parent).find(".new-doc").click(function () {
 						frappe.new_doc(me.doctype);
 					});
@@ -141,7 +141,7 @@ frappe.ui.form.LinkSelector = Class.extend({
 				$.each(me.target.frm.doc[me.target.df.fieldname] || [], function (i, d) {
 					if (d[me.fieldname] === value) {
 						frappe.model.set_value(d.doctype, d.name, me.qty_fieldname, data.qty);
-						frappe.show_alert(__("Added {0} ({1})", [value, d[me.qty_fieldname]]));
+						frappe.show_alert(__("Added {0} ({1})_in_f_link_selector", [value, d[me.qty_fieldname]]));
 						updated = true;
 						return false;
 					}
@@ -155,19 +155,19 @@ frappe.ui.form.LinkSelector = Class.extend({
 						() => frappe.model.set_value(d.doctype, d.name, me.fieldname, value),
 						() => frappe.timeout(0.5),
 						() => frappe.model.set_value(d.doctype, d.name, me.qty_fieldname, data.qty),
-						() => frappe.show_alert(__("Added {0} ({1})", [value, data.qty]))
+						() => frappe.show_alert(__("Added {0} ({1})_in_f_link_selector", [value, data.qty]))
 					]);
 				}
-			}, __("Set Quantity"), __("Set"));
+			}, __("Set Quantity_in_f_link_selector"), __("Set_in_f_link_selector"));
 		} else if (me.dynamic_link_field) {
 			var d = me.target.add_new_row();
 			frappe.model.set_value(d.doctype, d.name, me.dynamic_link_field, me.dynamic_link_reference);
 			frappe.model.set_value(d.doctype, d.name, me.fieldname, value);
-			frappe.show_alert(__("{0} {1} added", [me.dynamic_link_reference, value]));
+			frappe.show_alert(__("{0} {1} added_in_f_link_selector", [me.dynamic_link_reference, value]));
 		} else {
 			var d = me.target.add_new_row();
 			frappe.model.set_value(d.doctype, d.name, me.fieldname, value);
-			frappe.show_alert(__("{0} added", [value]));
+			frappe.show_alert(__("{0} added_in_f_link_selector", [value]));
 		}
 	}
 });

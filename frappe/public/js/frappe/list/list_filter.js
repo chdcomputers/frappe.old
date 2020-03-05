@@ -19,8 +19,8 @@ export default class ListFilter {
 		this.filter_input = frappe.ui.form.make_control({
 			df: {
 				fieldtype: 'Data',
-				label: __('Save Filter').toUpperCase(),
-				placeholder: __('Filter Name'),
+				label: __('Save Filter_in_list_filter').toUpperCase(),
+				placeholder: __('Filter Name_in_list_filter'),
 				input_class: 'input-xs'
 			},
 			parent: this.$input_area,
@@ -32,7 +32,7 @@ export default class ListFilter {
 		this.is_global_input = frappe.ui.form.make_control({
 			df: {
 				fieldtype: 'Check',
-				label: __('Is Global')
+				label: __('Is Global_in_list_filter')
 			},
 			parent: this.$input_area,
 			render_input: 1
@@ -96,10 +96,10 @@ export default class ListFilter {
 				this.save_filter(value)
 					.then(() => this.refresh());
 			} else {
-				let help_text = __('Press Enter to save');
+				let help_text = __('Press Enter to save_in_list_filter');
 
 				if (this.filter_name_exists(value)) {
-					help_text = __('Duplicate Filter Name');
+					help_text = __('Duplicate Filter Name_in_list_filter');
 				}
 
 				this.filter_input.set_description(has_value ? help_text : '');

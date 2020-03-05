@@ -105,7 +105,7 @@ frappe.ui.form.Timeline = class Timeline {
 						txt: "",
 						last_email: me.frm.doc,
 						recipients: me.frm.doc.sender,
-						subject: __("Re: {0}", [me.frm.doc.subject]),
+						subject: __("Re: {0}_in_ff_timeline", [me.frm.doc.subject]),
 					});
 				} else {
 					const comment_value = frappe.markdown(me.comment_area.get_value());
@@ -121,7 +121,7 @@ frappe.ui.form.Timeline = class Timeline {
 		let docinfo = this.frm.get_docinfo();
 
 		if (docinfo.document_email){
-			let link = __("Send an email to {0} to link it here", [`<b><a class="timeline-email-import-link copy-to-clipboard">${docinfo.document_email}</a></b>`]);
+			let link = __("Send an email to {0} to link it here_in_ff_timeline", [`<b><a class="timeline-email-import-link copy-to-clipboard">${docinfo.document_email}</a></b>`]);
 			$('.timeline-email-import').html(link);
 		}
 	}
@@ -207,7 +207,7 @@ frappe.ui.form.Timeline = class Timeline {
 
 		// created
 		me.render_timeline_item({
-			content: __("created"),
+			content: __("created_in_ff_timeline"),
 			comment_type: "Created",
 			communication_type: "Comment",
 			sender: this.frm.doc.owner,
@@ -273,7 +273,7 @@ frappe.ui.form.Timeline = class Timeline {
 
 					// update state
 					$edit_btn
-						.text(__("Save"))
+						.text(__("Save_in_ff_timeline"))
 						.find('i')
 						.removeClass('octicon-pencil')
 						.addClass('octicon-check');
@@ -327,7 +327,7 @@ frappe.ui.form.Timeline = class Timeline {
 			const opts = {
 				doc: this.frm.doc,
 				txt: "",
-				title: __('Reply'),
+				title: __('Reply_in_ff_timeline'),
 				frm: this.frm,
 				last_email,
 				is_a_reply: true
@@ -362,11 +362,11 @@ frappe.ui.form.Timeline = class Timeline {
 		c["edit"] = "";
 		if(c.communication_type=="Comment" && (c.comment_type || "Comment") === "Comment") {
 			if(frappe.model.can_delete("Comment")) {
-				c["delete"] = `<a class="close delete-comment" title="${__('Delete')}"  href="#"><i class="octicon octicon-x"></i></a>`;
+				c["delete"] = `<a class="close delete-comment" title="${__('Delete_in_ff_timeline')}"  href="#"><i class="octicon octicon-x"></i></a>`;
 			}
 
 			if(frappe.user.name == c.sender || (frappe.user.name == 'Administrator')) {
-				c["edit"] = `<a class="edit-comment text-muted" title="${__('Edit')}" href="#">${__('Edit')}</a>`;
+				c["edit"] = `<a class="edit-comment text-muted" title="${__('Edit_in_ff_timeline')}" href="#">${__('Edit_in_ff_timeline')}</a>`;
 			}
 		}
 		let communication_date = c.communication_date || c.creation;
@@ -500,7 +500,7 @@ frappe.ui.form.Timeline = class Timeline {
 			me = this,
 			out = [];
 		for (let c of docinfo.views){
-			c.content = `<a href="#Form/View Log/${c.name}"> ${__("viewed")}</a>`;
+			c.content = `<a href="#Form/View Log/${c.name}"> ${__("viewed_in_ff_timeline")}</a>`;
 			c.comment_type = "Info";
 			out.push(c);
 		};
@@ -533,7 +533,7 @@ frappe.ui.form.Timeline = class Timeline {
 			log.color = 'dark';
 			log.sender = log.owner;
 			log.comment_type = 'Milestone';
-			log.content = __('{0} changed {1} to {2}', [
+			log.content = __('{0} changed {1} to {2}_in_ff_timeline', [
 				frappe.user.full_name(log.owner).bold(),
 				frappe.meta.get_label(this.frm.doctype, log.track_field),
 				log.value.bold()]);
@@ -564,7 +564,7 @@ frappe.ui.form.Timeline = class Timeline {
 				'Data Import Beta',
 				data.data_import,
 				true,
-				__('via Data Import')
+				__('via Data Import_in_ff_timeline')
 			);
 
 			// value changed in parent
@@ -574,13 +574,13 @@ frappe.ui.form.Timeline = class Timeline {
 					if (p[0]==='docstatus') {
 						if (p[2]==1) {
 							let message = data.data_import
-								? __('submitted this document {0}', [data_import_link])
-								: __('submitted this document');
+								? __('submitted this document {0}_in_ff_timeline', [data_import_link])
+								: __('submitted this document_in_ff_timeline');
 							out.push(me.get_version_comment(version, message));
 						} else if (p[2]==2) {
 							let message = data.data_import
-								? __('cancelled this document {0}', [data_import_link])
-								: __('cancelled this document');
+								? __('cancelled this document {0}_in_ff_timeline', [data_import_link])
+								: __('cancelled this document_in_ff_timeline');
 							out.push(me.get_version_comment(version, message));
 						}
 					} else {
@@ -590,7 +590,7 @@ frappe.ui.form.Timeline = class Timeline {
 							const field_display_status = frappe.perm.get_field_display_status(df, null,
 								me.frm.perm);
 							if (field_display_status === 'Read' || field_display_status === 'Write') {
-								parts.push(__('{0} from {1} to {2}', [
+								parts.push(__('{0} from {1} to {2}_in_ff_timeline', [
 									__(df.label),
 									(frappe.ellipsis(frappe.utils.html2text(p[1]), 40) || '""').bold(),
 									(frappe.ellipsis(frappe.utils.html2text(p[2]), 40) || '""').bold()
@@ -603,9 +603,9 @@ frappe.ui.form.Timeline = class Timeline {
 				if(parts.length) {
 					let message;
 					if (data.data_import) {
-						message = __("changed value of {0} {1}", [parts.join(', ').bold(), data_import_link]);
+						message = __("changed value of {0} {1}_in_ff_timeline", [parts.join(', ').bold(), data_import_link]);
 					} else {
-						message = __("changed value of {0}", [parts.join(', ').bold()]);
+						message = __("changed value of {0}_in_ff_timeline", [parts.join(', ').bold()]);
 					}
 					out.push(me.get_version_comment(version, message));
 				}
@@ -625,7 +625,7 @@ frappe.ui.form.Timeline = class Timeline {
 								null, me.frm.perm);
 
 							if(field_display_status === 'Read' || field_display_status === 'Write') {
-								parts.push(__('{0} from {1} to {2} in row #{3}', [
+								parts.push(__('{0} from {1} to {2} in row #{3}_in_ff_timeline', [
 									frappe.meta.get_label(me.frm.fields_dict[row[0]].grid.doctype,
 										p[0]),
 									(frappe.ellipsis(p[1], 40) || '""').bold(),
@@ -641,16 +641,16 @@ frappe.ui.form.Timeline = class Timeline {
 				if(parts.length) {
 					let message;
 					if (data.data_import) {
-						message = __("changed values for {0} {1}", [parts.join(', '), data_import_link]);
+						message = __("changed values for {0} {1}_in_ff_timeline", [parts.join(', '), data_import_link]);
 					} else {
-						message = __("changed values for {0}", [parts.join(', ')]);
+						message = __("changed values for {0}_in_ff_timeline", [parts.join(', ')]);
 					}
 					out.push(me.get_version_comment(version, message));
 				}
 			}
 
 			// rows added / removed
-			// __('added'), __('removed') # for translation, don't remove
+			// __('added_in_ff_timeline'), __('removed_in_ff_timeline') # for translation, don't remove
 			['added', 'removed'].forEach(function(key) {
 				if(data[key] && data[key].length) {
 					parts = (data[key] || []).map(function(p) {
@@ -666,7 +666,7 @@ frappe.ui.form.Timeline = class Timeline {
 					});
 					parts = parts.filter(function(p) { return p; });
 					if(parts.length) {
-						out.push(me.get_version_comment(version, __("{0} rows for {1}",
+						out.push(me.get_version_comment(version, __("{0} rows for {1}_in_ff_timeline",
 							[__(key), parts.join(', ')])));
 					}
 				}
@@ -714,7 +714,7 @@ frappe.ui.form.Timeline = class Timeline {
 	delete_comment(name) {
 		var me = this;
 
-		frappe.confirm(__('Delete comment?'), function() {
+		frappe.confirm(__('Delete comment?_in_ff_timeline'), function() {
 			return frappe.call({
 				method: "frappe.client.delete",
 				args: {

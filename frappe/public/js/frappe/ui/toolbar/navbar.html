@@ -21,35 +21,35 @@
 					onclick="return false;">
 				{{ avatar }}
 				<span class="ellipsis toolbar-user-fullname hidden-xs hidden-sm">
-					{%= __("Settings") %}</span>
+					{%= __("Settings_in_uit_navbar") %}</span>
 				<b class="caret hidden-xs hidden-sm"></b></a>
 				<ul class="dropdown-menu" id="toolbar-user" role="menu">
 					<li><a href="#user-profile">
-						{%= __("My Profile") %}</a></li>
+						{%= __("My Profile_in_uit_navbar") %}</a></li>
 					<li><a href="#Form/User/{%= encodeURIComponent(frappe.session.user) %}">
-						{%= __("My Settings") %}</a></li>
+						{%= __("My Settings_in_uit_navbar") %}</a></li>
 					<li><a href="#" onclick="return frappe.ui.toolbar.setup_session_defaults();">
-							{%= __("Session Defaults") %}</a></li>
+							{%= __("Session Defaults_in_uit_navbar") %}</a></li>
 					<li class="navbar-reload">
 						<a href="" onclick="return frappe.ui.toolbar.clear_cache();">
-						{%= __("Reload") %}</a></li>
+						{%= __("Reload_in_uit_navbar") %}</a></li>
 					<li><a href="/index" target="_blank" rel="noopener noreferrer">
-						{%= __("View Website") %}</a></li>
+						{%= __("View Website_in_uit_navbar") %}</a></li>
 					<li class="navbar-toggle-full-width">
-						<a href="#" onclick="return false">{%= __("Toggle Full Width") %}</a>
+						<a href="#" onclick="return false">{%= __("Toggle Full Width_in_uit_navbar") %}</a>
 					</li>
 					<li><a href="#background_jobs">
-						{%= __("Background Jobs") %}</a></li>
+						{%= __("Background Jobs_in_uit_navbar") %}</a></li>
 					<li class="divider"></li>
 					<li><a href="#" onclick="return frappe.app.logout();">
-						{%= __("Logout") %}</a></li>
+						{%= __("Logout_in_uit_navbar") %}</a></li>
 				</ul>
 			</li>
 
 			<li class="dropdown dropdown-help dropdown-mobile">
 				<a class="dropdown-toggle" data-toggle="dropdown" href="#"
 					onclick="return false;"  style="height: 40px;">
-					<span class="hidden-xs hidden-sm" style="line-height: 24px;">{{ __("Help") }} <b class="caret"></b></span>
+					<span class="hidden-xs hidden-sm" style="line-height: 24px;">{{ __("Help_in_uit_navbar") }} <b class="caret"></b></span>
 					<span class="visible-xs visible-sm standard-image help-icon">?</span>
 				</a>
 				<ul class="dropdown-menu" id="toolbar-help" role="menu">
@@ -57,9 +57,9 @@
 					<li class="divider"></li>
 					<li class="divider documentation-links"></li>
 					<li><a href="#" onclick="return frappe.ui.toolbar.show_about();">
-						{%= __("About") %}</a></li>
+						{%= __("About_in_uit_navbar") %}</a></li>
 					<li><a href="#" onclick="return frappe.ui.toolbar.show_shortcuts(event);">
-						{%= __("Keyboard Shortcuts") %}</a></li>
+						{%= __("Keyboard Shortcuts_in_uit_navbar") %}</a></li>
 				</ul>
 			</li>
 
@@ -93,7 +93,7 @@
 						<form role="search" onsubmit="return false;">
 							<div class="input-group" style="width: 100%">
 								<input id="modal-search" type="text" class="form-control"
-								placeholder="{%= __("Search or type a command") %}" aria-haspopup="true">
+								placeholder="{%= __("Search or type a command_in_uit_navbar") %}" aria-haspopup="true">
 								<button type="reset" class="close" data-dismiss="modal"><i class="octicon octicon-x"></i></button>
 							</div>
 						</form>
@@ -106,7 +106,7 @@
 			<form class="navbar-form navbar-right" role="search" onsubmit="return false;">
 			  <div class="form-group form-group-sm ui-front">
 				<input id="navbar-search" type="text" class="form-control"
-					placeholder="{%= __("Search or type a command") %} {%= __("(Ctrl + G)") %}" aria-haspopup="true">
+					placeholder="{%= __("Search or type a command_in_uit_navbar") %} {%= __("(Ctrl + G)_in_uit_navbar") %}" aria-haspopup="true">
 				<span class="octicon octicon-search navbar-search-icon"></span>
 			  </div>
 			</form>

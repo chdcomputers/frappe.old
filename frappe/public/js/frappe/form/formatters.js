@@ -142,7 +142,7 @@ frappe.form.formatters = {
 	},
 	DateRange: function(value) {
 		if($.isArray(value)) {
-			return __("{0} to {1}", [
+			return __("{0} to {1}_in_f_formatters", [
 				frappe.datetime.str_to_user(value[0]),
 				frappe.datetime.str_to_user(value[1])
 			]);

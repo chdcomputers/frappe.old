@@ -14,8 +14,8 @@ frappe.tags.utils = {
 			if (level) {
 				out.push({
 					type: "Tag",
-					label: __("#{0}", [frappe.search.utils.bolden_match_part(__(tag), txt)]),
-					value: __("#{0}", [__(tag)]),
+					label: __("#{0}_in_uit_tag_utils", [frappe.search.utils.bolden_match_part(__(tag), txt)]),
+					value: __("#{0}_in_uit_tag_utils", [__(tag)]),
 					index: 1 + level,
 					match: tag,
 					onclick() {

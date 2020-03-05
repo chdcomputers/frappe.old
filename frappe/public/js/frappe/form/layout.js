@@ -24,7 +24,7 @@ frappe.ui.form.Layout = Class.extend({
 	},
 	show_empty_form_message: function() {
 		if(!(this.wrapper.find(".frappe-control:visible").length || this.wrapper.find(".section-head.collapsed").length)) {
-			this.show_message(__("This form does not have any input"));
+			this.show_message(__("This form does not have any input_in_f_layout"));
 		}
 	},
 	get_doctype_fields: function() {
@@ -35,7 +35,7 @@ frappe.ui.form.Layout = Class.extend({
 				fieldname: '__newname',
 				reqd: 1,
 				hidden: 1,
-				label: __('Name'),
+				label: __('Name_in_f_layout'),
 				get_status: function(field) {
 					if (field.frm && field.frm.is_new()
 						&& field.frm.meta.autoname
@@ -110,7 +110,7 @@ frappe.ui.form.Layout = Class.extend({
 		this.fields.unshift({
 			fieldtype: 'Section Break',
 			fieldname: '_form_dashboard',
-			label: __('Dashboard'),
+			label: __('Dashboard_in_f_layout'),
 			cssClass: 'form-dashboard',
 			collapsible: 1,
 			//hidden: 1
@@ -165,7 +165,7 @@ frappe.ui.form.Layout = Class.extend({
 	make_page: function(df) {
 		var me = this,
 			head = $('<div class="form-clickable-section text-center">\
-				<a class="btn-fold h6 text-muted">'+__("Show more details")+'</a>\
+				<a class="btn-fold h6 text-muted">'+__("Show more details_in_f_layout")+'</a>\
 			</div>').appendTo(this.wrapper);
 
 		this.page = $('<div class="form-page second-page hide"></div>').appendTo(this.wrapper);
@@ -173,12 +173,12 @@ frappe.ui.form.Layout = Class.extend({
 		this.fold_btn = head.find(".btn-fold").on("click", function() {
 			var page = $(this).parent().next();
 			if(page.hasClass("hide")) {
-				$(this).removeClass("btn-fold").html(__("Hide details"));
+				$(this).removeClass("btn-fold").html(__("Hide details_in_f_layout"));
 				page.removeClass("hide");
 				frappe.utils.scroll_to($(this), true, 30);
 				me.folded = false;
 			} else {
-				$(this).addClass("btn-fold").html(__("Show more details"));
+				$(this).addClass("btn-fold").html(__("Show more details_in_f_layout"));
 				page.addClass("hide");
 				me.folded = true;
 			}
@@ -532,7 +532,7 @@ frappe.ui.form.Layout = Class.extend({
 					out = true;
 				}
 			} catch(e) {
-				frappe.throw(__('Invalid "depends_on" expression'));
+				frappe.throw(__('Invalid "depends_on" expression_in_f_layout'));
 			}
 
 		} else if(expression.substr(0,3)=='fn:' && this.frm) {

@@ -1,16 +1,16 @@
 <template>
 	<div>
-		<div class="muted-title">{{ __('Upcoming Events') }}</div>
+		<div class="muted-title">{{ __('Upcoming Events_in_sc_ActivitySidebarvue') }}</div>
 		<div class="event" v-for="event in events" :key="event.name">
 			<span class="bold">{{ get_time(event.starts_on) }}</span>
 			<a @click="open_event(event)"> {{ event.subject }}</a>
 		</div>
 		<div class="event" v-if="!events.length">
-			{{ __('No Upcoming Events') }}
+			{{ __('No Upcoming Events_in_sc_ActivitySidebarvue') }}
 		</div>
-		<div class="muted-title">{{ __('Chat') }}</div>
+		<div class="muted-title">{{ __('Chat_in_sc_ActivitySidebarvue') }}</div>
 		<a @click="open_chat">
-			{{ __('Open Chat') }}
+			{{ __('Open Chat_in_sc_ActivitySidebarvue') }}
 		</a>
 	</div>
 </template>

@@ -13,7 +13,7 @@ function prettyDate(time, mini) {
 		}
 		if (mini) {
 			if (ret === moment().locale(frappe.boot.lang).fromNow(mini)) {
-				ret = __("now");
+				ret = __("now_in_utils_pretty_date");
 			} else {
 				var parts = ret.split(" ");
 				if (parts.length > 1) {
@@ -43,16 +43,16 @@ function prettyDate(time, mini) {
 			return '';
 
 		var when = day_diff == 0 && (
-			diff < 60 && __("just now") ||
-			diff < 120 && __("1 minute ago") ||
-			diff < 3600 && __("{0} minutes ago", [Math.floor(diff / 60)]) ||
-			diff < 7200 && __("1 hour ago") ||
-			diff < 86400 && ("{0} hours ago", [Math.floor(diff / 3600)])) ||
-			day_diff == 1 && __("Yesterday") ||
-			day_diff < 7 && __("{0} days ago", day_diff) ||
-			day_diff < 31 && __("{0} weeks ago", [Math.ceil(day_diff / 7)]) ||
-			day_diff < 365 && __("{0} months ago", [Math.ceil(day_diff / 30)]) ||
-			__("> {0} year(s) ago", [Math.floor(day_diff / 365)]);
+			diff < 60 && __("just now_in_utils_pretty_date") ||
+			diff < 120 && __("1 minute ago_in_utils_pretty_date") ||
+			diff < 3600 && __("{0} minutes ago_in_utils_pretty_date", [Math.floor(diff / 60)]) ||
+			diff < 7200 && __("1 hour ago_in_utils_pretty_date") ||
+			diff < 86400 && ("{0} hours ago_in_utils_pretty_date", [Math.floor(diff / 3600)])) ||
+			day_diff == 1 && __("Yesterday_in_utils_pretty_date") ||
+			day_diff < 7 && __("{0} days ago_in_utils_pretty_date", day_diff) ||
+			day_diff < 31 && __("{0} weeks ago_in_utils_pretty_date", [Math.ceil(day_diff / 7)]) ||
+			day_diff < 365 && __("{0} months ago_in_utils_pretty_date", [Math.ceil(day_diff / 30)]) ||
+			__("> {0} year(s) ago_in_utils_pretty_date", [Math.floor(day_diff / 365)]);
 
 		return when;
 	}

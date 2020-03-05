@@ -1,6 +1,6 @@
 <div>
 {% if label && data.show_label %}
-	{{ __("{0}: ", label) }}
+	{{ __("{0}: _in_utils_ratings", label) }}
 {% endif %}
 {% for(var i=1, l=6; i<l; i++) { %}
 	<i class="fa fa-fw {{ i<=rating? "fa-star": "fa-star-o" }} star-icon" data-idx=1></i>

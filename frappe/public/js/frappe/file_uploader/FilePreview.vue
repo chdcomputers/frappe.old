@@ -20,15 +20,15 @@
 						{{ file.name | file_name }}
 					</a>
 					<span v-else>
-						<span class="cursor-pointer" @click="$emit('toggle_private')" :title="__('Toggle Public/Private')">
+						<span class="cursor-pointer" @click="$emit('toggle_private')" :title="__('Toggle Public/Private_inFilePreviewvue')">
 							<i v-if="file.private" class="fa fa-lock fa-fw text-warning"></i>
 							<i v-else class="fa fa-unlock-alt fa-fw text-warning"></i>
 						</span>
 						{{ file.name | file_name }}
 					</span>
 				</span>
-				<i v-if="uploaded" class="octicon octicon-check text-success" :title="__('Uploaded successfully')"></i>
-				<i v-if="file.failed" class="octicon octicon-x text-danger" :title="__('Upload failed')"></i>
+				<i v-if="uploaded" class="octicon octicon-check text-success" :title="__('Uploaded successfully_inFilePreviewvue')"></i>
+				<i v-if="file.failed" class="octicon octicon-x text-danger" :title="__('Upload failed_inFilePreviewvue')"></i>
 			</div>
 			<div>
 				<span class="text-small text-muted">

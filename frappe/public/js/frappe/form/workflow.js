@@ -20,7 +20,7 @@ frappe.ui.form.States = Class.extend({
 
 	setup_help: function() {
 		var me = this;
-		this.frm.page.add_action_item(__("Help"), function() {
+		this.frm.page.add_action_item(__("Help_in_f_workflow"), function() {
 			frappe.workflow.setup(me.frm.doctype);
 			var state = me.get_state();
 			var d = new frappe.ui.Dialog({
@@ -31,17 +31,17 @@ frappe.ui.form.States = Class.extend({
 			frappe.workflow.get_transitions(me.frm.doc).then((transitions) => {
 				var next_html = $.map(transitions,
 					function(d) {
-						return d.action.bold() + __(" by Role ") + d.allowed;
-					}).join(", ") || __("None: End of Workflow").bold();
+						return d.action.bold() + __(" by Role _in_f_workflow") + d.allowed;
+					}).join(", ") || __("None: End of Workflow_in_f_workflow").bold();
 
-				$(d.body).html("<p>"+__("Current status")+": " + state.bold() + "</p>"
-					+ "<p>"+__("Document is only editable by users of role")+": "
+				$(d.body).html("<p>"+__("Current status_in_f_workflow")+": " + state.bold() + "</p>"
+					+ "<p>"+__("Document is only editable by users of role_in_f_workflow")+": "
 						+ frappe.workflow.get_document_state(me.frm.doctype,
 							state).allow_edit.bold() + "</p>"
-					+ "<p>"+__("Next actions")+": "+ next_html +"</p>"
+					+ "<p>"+__("Next actions_in_f_workflow")+": "+ next_html +"</p>"
 					+ (me.frm.doc.__islocal ? ("<div class='alert alert-info'>"
-						+__("Workflow will start after saving.")+"</div>") : "")
-					+ "<p class='help'>"+__("Note: Other permission rules may also apply")+"</p>"
+						+__("Workflow will start after saving._in_f_workflow")+"</div>") : "")
+					+ "<p class='help'>"+__("Note: Other permission rules may also apply_in_f_workflow")+"</p>"
 				).css({padding: '15px'});
 				d.show();
 			});

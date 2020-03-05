@@ -80,7 +80,7 @@ $.extend(frappe.model, {
 		if(!cnt[doctype])
 			cnt[doctype] = 0;
 		cnt[doctype]++;
-		return __('New') + ' '+ __(doctype) + ' ' + cnt[doctype];
+		return __('New_in_m_create_new') + ' '+ __(doctype) + ' ' + cnt[doctype];
 	},
 
 	set_default_values: function(doc, parent_doc) {
@@ -288,7 +288,7 @@ $.extend(frappe.model, {
 
 	open_mapped_doc: function(opts) {
 		if (opts.frm && opts.frm.doc.__unsaved) {
-			frappe.throw(__("You have unsaved changes in this form. Please save before you continue."));
+			frappe.throw(__("You have unsaved changes in this form. Please save before you continue._in_m_create_new"));
 
 		} else if (!opts.source_name && opts.frm) {
 			opts.source_name = opts.frm.doc.name;

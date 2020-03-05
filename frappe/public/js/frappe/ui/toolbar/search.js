@@ -178,7 +178,7 @@ frappe.search.SearchDialog = Class.extend({
 	get_results: function(keywords) {
 		this.current_keyword = keywords;
 		if(this.$modal_body.find('.empty-state').length > 0) {
-			this.put_placeholder(__("Searching ..."));
+			this.put_placeholder(__("Searching ..._in_uit_search"));
 			this.$modal_body.find('.cover').removeClass('hide')
 		} else {
 			this.$search_modal.find('.loading-state').removeClass('hide');
@@ -249,7 +249,7 @@ frappe.search.SearchDialog = Class.extend({
 			if(fetch_type === "Nav") this.nav_lists[type] = results;
 			$results_col.append('<a class="list-more small" data-search="'+ fetch_type +
 				'" data-category="'+ type + '" data-count="' + max_length +
-				'" style="margin-top:10px">'+__("More...")+'</a>');
+				'" style="margin-top:10px">'+__("More..._in_uit_search")+'</a>');
 		}
 		return $results_list;
 	},
@@ -281,7 +281,7 @@ frappe.search.SearchDialog = Class.extend({
 		});
 		if(results.length > section_length) {
 			$results_col.append(`<div style="margin-top:${margin_more}"><a class="section-more small"
-				data-category="${type}">${__("More...")}</a></div>`);
+				data-category="${type}">${__("More..._in_uit_search")}</a></div>`);
 		}
 
 		this.full_lists['All Results'].find('.module-section').last().append($results_col);
@@ -390,9 +390,9 @@ frappe.search.SearchDialog = Class.extend({
 	// Search objects
 	searches: {
 		global_search: {
-			input_placeholder: __("Search"),
-			empty_state_text: __("Search for anything"),
-			no_results_status: (keyword) => "<p>" + __("No results found for {0} in Global Search", [keyword]) + "</p>",
+			input_placeholder: __("Search_in_uit_search"),
+			empty_state_text: __("Search for anything_in_uit_search"),
+			no_results_status: (keyword) => "<p>" + __("No results found for {0} in Global Search_in_uit_search", [keyword]) + "</p>",
 
 			get_results: function(keywords, callback) {
 				var start = 0, limit = 1000;
@@ -407,9 +407,9 @@ frappe.search.SearchDialog = Class.extend({
 			}
 		},
 		tags: {
-			input_placeholder: __("Search"),
-			empty_state_text: __("Search for anything"),
-			no_results_status: (keyword) => "<p>" + __("No documents found tagged with {0}", [keyword]) + "</p>",
+			input_placeholder: __("Search_in_uit_search"),
+			empty_state_text: __("Search for anything_in_uit_search"),
+			no_results_status: (keyword) => "<p>" + __("No documents found tagged with {0}_in_uit_search", [keyword]) + "</p>",
 
 			get_results: function(keywords, callback) {
 				var results = frappe.search.utils.get_nav_results(keywords);

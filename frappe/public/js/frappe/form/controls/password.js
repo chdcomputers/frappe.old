@@ -43,7 +43,7 @@ frappe.ui.form.ControlPassword = frappe.ui.form.ControlData.extend({
 		});
 	},
 	set_strength_indicator: function(color) {
-		var message = __("Include symbols, numbers and capital letters in the password");
+		var message = __("Include symbols, numbers and capital letters in the password_in_fc_password");
 		this.indicator.removeClass().addClass('password-strength-indicator indicator ' + color);
 		this.message.html(message).removeClass('hidden');
 	}

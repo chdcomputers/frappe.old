@@ -6,7 +6,7 @@ frappe.ui.form.ControlMultiCheck = frappe.ui.form.Control.extend({
 	make() {
 		this._super();
 		this.$label = $(`<label class="control-label">${this.df.label || ''}</label>`).appendTo(this.wrapper);
-		this.$load_state = $('<div class="load-state text-muted small">' + __("Loading") + '...</div>');
+		this.$load_state = $('<div class="load-state text-muted small">' + __("Loading_in_fc_multicheck") + '...</div>');
 		this.$select_buttons = this.get_select_buttons().appendTo(this.wrapper);
 		this.$load_state.appendTo(this.wrapper);
 
@@ -151,10 +151,10 @@ frappe.ui.form.ControlMultiCheck = frappe.ui.form.Control.extend({
 		return $(`
 		<div class="bulk-select-options">
 			<button class="btn btn-xs btn-default select-all">
-				${__("Select All")}
+				${__("Select All_in_fc_multicheck")}
 			</button>
 			<button class="btn btn-xs btn-default deselect-all">
-			${__("Unselect All")}
+			${__("Unselect All_in_fc_multicheck")}
 			</button>
 		</div>
 		`);

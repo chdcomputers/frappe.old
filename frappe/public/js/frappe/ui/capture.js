@@ -145,11 +145,11 @@ frappe.ui.Capture = class
 }
 frappe.ui.Capture.OPTIONS =
 {
-	  title: __(`Camera`),
+	  title: __(`Camera_in_ui_capture`),
 	animate: false,
 	  error: false,
 }
-frappe.ui.Capture.ERR_MESSAGE = __("Unable to load camera.")
+frappe.ui.Capture.ERR_MESSAGE = __("Unable to load camera._in_ui_capture")
 frappe.ui.Capture.TEMPLATE 	  =
 `
 <div class="frappe-capture">
@@ -165,14 +165,14 @@ frappe.ui.Capture.TEMPLATE 	  =
 				<div class="col-md-6">
 					<div class="pull-left">
 						<button class="btn btn-default fc-br">
-							<small>${__('Retake')}</small>
+							<small>${__('Retake_in_ui_capture')}</small>
 						</button>
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="pull-right">
 						<button class="btn btn-primary fc-bs">
-							<small>${__('Submit')}</small>
+							<small>${__('Submit_in_ui_capture')}</small>
 						</button>
 					</div>
 				</div>
@@ -185,7 +185,7 @@ frappe.ui.Capture.TEMPLATE 	  =
 						''
 						// <div class="pull-left">
 						// 	<button class="btn btn-default">
-						// 		<small>${__('Take Video')}</small>
+						// 		<small>${__('Take Video_in_ui_capture')}</small>
 						// 	</button>
 						// </div>
 					}
@@ -193,7 +193,7 @@ frappe.ui.Capture.TEMPLATE 	  =
 				<div class="col-md-6">
 					<div class="pull-right">
 						<button class="btn btn-default fc-bcp">
-							<small>${__('Take Photo')}</small>
+							<small>${__('Take Photo_in_ui_capture')}</small>
 						</button>
 					</div>
 				</div>

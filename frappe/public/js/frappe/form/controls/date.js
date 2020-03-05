@@ -53,7 +53,7 @@ frappe.ui.form.ControlDate = frappe.ui.form.ControlData.extend({
 
 		let now_date = new Date();
 
-		this.today_text = __("Today");
+		this.today_text = __("Today_in_fc_date");
 		this.date_format = frappe.defaultDateFormat;
 		this.datepicker_options = {
 			language: lang,
@@ -143,7 +143,7 @@ frappe.ui.form.ControlDate = frappe.ui.form.ControlData.extend({
 			let sysdefaults = frappe.sys_defaults;
 			let date_format = sysdefaults && sysdefaults.date_format
 				? sysdefaults.date_format : 'yyyy-mm-dd';
-			frappe.msgprint(__("Date {0} must be in format: {1}", [value, date_format]));
+			frappe.msgprint(__("Date {0} must be in format: {1}_in_fc_date", [value, date_format]));
 			return '';
 		}
 		return value;

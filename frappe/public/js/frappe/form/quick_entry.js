@@ -93,7 +93,7 @@ frappe.ui.form.QuickEntryForm = Class.extend({
 
 	validate_for_prompt_autoname: function(){
 		if(this.meta.autoname && this.meta.autoname.toLowerCase()==='prompt') {
-			this.mandatory = [{fieldname:'__newname', label:__('{0} Name', [this.meta.name]),
+			this.mandatory = [{fieldname:'__newname', label:__('{0} Name_in_f_quick_entry', [this.meta.name]),
 				reqd: 1, fieldtype:'Data'}].concat(this.mandatory);
 		}
 	},
@@ -101,7 +101,7 @@ frappe.ui.form.QuickEntryForm = Class.extend({
 	render_dialog: function(){
 		var me = this;
 		this.dialog = new frappe.ui.Dialog({
-			title: __("New {0}", [__(this.doctype)]),
+			title: __("New {0}_in_f_quick_entry", [__(this.doctype)]),
 			fields: this.mandatory,
 		});
 		this.dialog.doc = this.doc;
@@ -141,7 +141,7 @@ frappe.ui.form.QuickEntryForm = Class.extend({
 
 			if(data) {
 				me.dialog.working = true;
-				me.dialog.set_message(__('Saving...'));
+				me.dialog.set_message(__('Saving..._in_f_quick_entry'));
 				me.insert().then(() => {
 					me.dialog.clear_message();
 				});
@@ -164,7 +164,7 @@ frappe.ui.form.QuickEntryForm = Class.extend({
 						frappe.run_serially([
 							() => me.dialog.working = true,
 							() => {
-								me.dialog.set_primary_action(__('Submit'), function() {
+								me.dialog.set_primary_action(__('Submit_in_f_quick_entry'), function() {
 									me.submit(r.message);
 								});
 							}
@@ -254,7 +254,7 @@ frappe.ui.form.QuickEntryForm = Class.extend({
 	render_edit_in_full_page_link: function(){
 		var me = this;
 		var $link = $('<div style="padding-left: 7px; padding-top: 30px; padding-bottom: 10px;">' +
-			'<button class="edit-full btn-default btn-sm">' + __("Edit in full page") + '</button></div>').appendTo(this.dialog.body);
+			'<button class="edit-full btn-default btn-sm">' + __("Edit in full page_in_f_quick_entry") + '</button></div>').appendTo(this.dialog.body);
 
 		$link.find('.edit-full').on('click', function() {
 			// edit in form

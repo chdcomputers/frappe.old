@@ -18,23 +18,23 @@ $.extend(frappe.model, {
 		'Customize Form Field', 'Property Setter', 'Custom Field', 'Custom Script'],
 
 	std_fields: [
-		{fieldname:'name', fieldtype:'Link', label:__('ID')},
-		{fieldname:'owner', fieldtype:'Link', label:__('Created By'), options: 'User'},
-		{fieldname:'idx', fieldtype:'Int', label:__('Index')},
-		{fieldname:'creation', fieldtype:'Date', label:__('Created On')},
-		{fieldname:'modified', fieldtype:'Date', label:__('Last Updated On')},
-		{fieldname:'modified_by', fieldtype:'Data', label:__('Last Updated By')},
-		{fieldname:'_user_tags', fieldtype:'Data', label:__('Tags')},
-		{fieldname:'_liked_by', fieldtype:'Data', label:__('Liked By')},
-		{fieldname:'_comments', fieldtype:'Text', label:__('Comments')},
-		{fieldname:'_assign', fieldtype:'Text', label:__('Assigned To')},
-		{fieldname:'docstatus', fieldtype:'Int', label:__('Document Status')},
+		{fieldname:'name', fieldtype:'Link', label:__('ID_in_m_model')},
+		{fieldname:'owner', fieldtype:'Link', label:__('Created By_in_m_model'), options: 'User'},
+		{fieldname:'idx', fieldtype:'Int', label:__('Index_in_m_model')},
+		{fieldname:'creation', fieldtype:'Date', label:__('Created On_in_m_model')},
+		{fieldname:'modified', fieldtype:'Date', label:__('Last Updated On_in_m_model')},
+		{fieldname:'modified_by', fieldtype:'Data', label:__('Last Updated By_in_m_model')},
+		{fieldname:'_user_tags', fieldtype:'Data', label:__('Tags_in_m_model')},
+		{fieldname:'_liked_by', fieldtype:'Data', label:__('Liked By_in_m_model')},
+		{fieldname:'_comments', fieldtype:'Text', label:__('Comments_in_m_model')},
+		{fieldname:'_assign', fieldtype:'Text', label:__('Assigned To_in_m_model')},
+		{fieldname:'docstatus', fieldtype:'Int', label:__('Document Status_in_m_model')},
 	],
 
 	numeric_fieldtypes: ["Int", "Float", "Currency", "Percent"],
 
 	std_fields_table: [
-		{fieldname:'parent', fieldtype:'Data', label:__('Parent')},
+		{fieldname:'parent', fieldtype:'Data', label:__('Parent_in_m_model')},
 	],
 
 	table_fields: ['Table', 'Table MultiSelect'],
@@ -97,7 +97,7 @@ $.extend(frappe.model, {
 			if (ignore) {
 				return {fieldname: fieldname};
 			} else {
-				frappe.msgprint(__("Unknown Column: {0}", [fieldname]));
+				frappe.msgprint(__("Unknown Column: {0}_in_m_model", [fieldname]));
 			}
 		}
 		return docfield[0];
@@ -128,7 +128,7 @@ $.extend(frappe.model, {
 				async: async,
 				callback: function(r) {
 					if(r.exc) {
-						frappe.msgprint(__("Unable to load: {0}", [__(doctype)]));
+						frappe.msgprint(__("Unable to load: {0}_in_m_model", [__(doctype)]));
 						throw "No doctype";
 					}
 					if(r.message=="use_cache") {
@@ -531,7 +531,7 @@ $.extend(frappe.model, {
 			var title = frappe.model.get_value(doctype, docname, title_field);
 			title += " (" + docname + ")";
 		}
-		frappe.confirm(__("Permanently delete {0}?", [title]), function() {
+		frappe.confirm(__("Permanently delete {0}?_in_m_model", [title]), function() {
 			return frappe.call({
 				method: 'frappe.client.delete',
 				args: {
@@ -550,19 +550,19 @@ $.extend(frappe.model, {
 	},
 
 	rename_doc: function(doctype, docname, callback) {
-			let message = __("Merge with existing");
-			let warning = __("This cannot be undone");
+			let message = __("Merge with existing_in_m_model");
+			let warning = __("This cannot be undone_in_m_model");
 			let merge_label = message + " <b>(" + warning + ")</b>";
 
 		var d = new frappe.ui.Dialog({
-			title: __("Rename {0}", [__(docname)]),
+			title: __("Rename {0}_in_m_model", [__(docname)]),
 			fields: [
-				{label: __("New Name"), fieldname: "new_name", fieldtype: "Data", reqd: 1, "default": docname},
+				{label: __("New Name_in_m_model"), fieldname: "new_name", fieldtype: "Data", reqd: 1, "default": docname},
 				{label: merge_label, fieldtype: "Check", fieldname: "merge"},
 			]
 		});
 
-		d.set_primary_action(__("Rename"), function() {
+		d.set_primary_action(__("Rename_in_m_model"), function() {
 			var args = d.get_values();
 			if(!args) return;
 			return frappe.call({
@@ -603,7 +603,7 @@ $.extend(frappe.model, {
 
 	validate_missing: function(doc, fieldname) {
 		if(!doc[fieldname]) {
-			frappe.throw(__("Please specify") + ": " +
+			frappe.throw(__("Please specify_in_m_model") + ": " +
 				__(frappe.meta.get_label(doc.doctype, fieldname, doc.parent || doc.name)));
 		}
 	},

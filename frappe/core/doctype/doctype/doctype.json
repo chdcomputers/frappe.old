@@ -7,6 +7,7 @@
  "doctype": "DocType",
  "document_type": "Document",
  "engine": "InnoDB",
+ "entity_ns_gender": "Male",
  "field_order": [
   "sb0",
   "module",
@@ -69,7 +70,19 @@
   "route",
   "is_published_field",
   "advanced",
-  "engine"
+  "engine",
+  "naming_system",
+  "single_nominal",
+  "single_general",
+  "single_causal",
+  "single_clerical",
+  "has_final_n",
+  "naming_system_cb01",
+  "plural_nominal",
+  "plural_general",
+  "plural_causal",
+  "plural_clerical",
+  "entity_ns_gender"
  ],
  "fields": [
   {
@@ -488,11 +501,99 @@
    "fieldtype": "Table",
    "label": "Links",
    "options": "DocType Link"
+  },
+  {
+   "fieldname": "naming_system",
+   "fieldtype": "Section Break",
+   "label": "Naming System"
+  },
+  {
+   "description": "The name of the entity in single nominal form",
+   "fieldname": "single_nominal",
+   "fieldtype": "Data",
+   "label": "Single Nominal",
+   "length": 150,
+   "translatable": 1
+  },
+  {
+   "description": "The name of the entity in single general form",
+   "fieldname": "single_general",
+   "fieldtype": "Data",
+   "label": "Single General",
+   "length": 150,
+   "translatable": 1
+  },
+  {
+   "description": "The name of the entity in single causal form",
+   "fieldname": "single_causal",
+   "fieldtype": "Data",
+   "label": "Single Causal",
+   "translatable": 1
+  },
+  {
+   "description": "The name of the entity in single clerical form",
+   "fieldname": "single_clerical",
+   "fieldtype": "Data",
+   "label": "Single Clerical",
+   "length": 150,
+   "translatable": 1
+  },
+  {
+   "default": "0",
+   "description": "If the entity name has a final N in its article in the causal form",
+   "fieldname": "has_final_n",
+   "fieldtype": "Check",
+   "label": "Has Final N in the causal article"
+  },
+  {
+   "fieldname": "naming_system_cb01",
+   "fieldtype": "Column Break"
+  },
+  {
+   "description": "The name of the entity in plural nominal form",
+   "fieldname": "plural_nominal",
+   "fieldtype": "Data",
+   "label": "Plural Nominal",
+   "length": 150,
+   "translatable": 1
+  },
+  {
+   "description": "The name of the entity in plural general form",
+   "fieldname": "plural_general",
+   "fieldtype": "Data",
+   "label": "Plural General",
+   "length": 150,
+   "translatable": 1
+  },
+  {
+   "description": "The name of the entity in plural causal form",
+   "fieldname": "plural_causal",
+   "fieldtype": "Data",
+   "label": "Plural Causal",
+   "length": 150,
+   "translatable": 1
+  },
+  {
+   "description": "The name of the entity in plural clerical form",
+   "fieldname": "plural_clerical",
+   "fieldtype": "Data",
+   "label": "Plural Clerical",
+   "length": 150,
+   "translatable": 1
+  },
+  {
+   "default": "Male",
+   "description": "The gender of the entity in the naming system",
+   "fieldname": "entity_ns_gender",
+   "fieldtype": "Select",
+   "label": "Entity Gender",
+   "options": "Male\nFemale\nNeutral"
   }
  ],
  "icon": "fa fa-bolt",
  "idx": 6,
- "modified": "2019-11-25 17:24:03.690192",
+ "links": [],
+ "modified": "2020-03-04 19:32:26.940492",
  "modified_by": "Administrator",
  "module": "Core",
  "name": "DocType",

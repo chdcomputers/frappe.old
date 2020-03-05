@@ -6,7 +6,7 @@ frappe.user_info = function(uid) {
 
 	if(uid.toLowerCase()==="bot") {
 		return {
-			fullname: __("Bot"),
+			fullname: __("Bot_in_utils_user"),
 			image: "/assets/frappe/images/ui/bot.png",
 			abbr: "B"
 		};
@@ -55,7 +55,7 @@ $.extend(frappe.user, {
 	name: 'Guest',
 	full_name: function(uid) {
 		return uid === frappe.session.user ?
-			__("You") :
+			__("You_in_utils_user") :
 			frappe.user_info(uid).fullname;
 	},
 	image: function(uid) {

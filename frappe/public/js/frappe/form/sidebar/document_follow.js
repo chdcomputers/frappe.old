@@ -121,7 +121,7 @@ frappe.ui.form.DocumentFollow = class DocumentFollow {
 
 	follow_action() {
 		frappe.show_alert({
-			message: __('You are now following this document. You will receive daily updates via email. You can change this in User Settings.'),
+			message: __('You are now following this document. You will receive daily updates via email. You can change this in User Settings._in_fs_document_follow'),
 			indicator: 'orange'
 		});
 		this.follow_document_link.removeClass('text-muted disable-click');
@@ -132,7 +132,7 @@ frappe.ui.form.DocumentFollow = class DocumentFollow {
 
 	unfollow_action() {
 		frappe.show_alert({
-			message: __('You unfollowed this document'),
+			message: __('You unfollowed this document_in_fs_document_follow'),
 			indicator: 'red'
 		});
 		this.unfollow_document_link.removeClass('text-muted disable-click');

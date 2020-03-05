@@ -68,7 +68,7 @@ frappe.ui.FilterGroup = class {
 			&& !frappe.meta.has_field(doctype, fieldname)
 			&& !frappe.model.std_fields_list.includes(fieldname)) {
 
-			frappe.throw(__(`Invalid filter: "${[fieldname.bold()]}"`));
+			frappe.throw(__(`Invalid filter: "${[fieldname.bold()]}"_in_uif_filter_list`));
 			return false;
 		}
 		return true;
@@ -159,9 +159,9 @@ frappe.ui.FilterGroup = class {
 		return $(`<div class="tag-filters-area">
 			<div class="active-tag-filters">
 				<button class="btn btn-default btn-xs filter-button text-muted add-filter">
-					${__("Add Filter")}
+					${__("Add Filter_in_uif_filter_list")}
 				</button><button class="btn btn-default btn-xs filter-button text-muted clear-filters" style="display: none;">
-					${__("Clear Filters")}
+					${__("Clear Filters_in_uif_filter_list")}
 				</button>
 			</div>
 		</div>

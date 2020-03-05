@@ -94,8 +94,8 @@ frappe.ui.FieldGroup = frappe.ui.form.Layout.extend({
 		}
 		if(errors.length && !ignore_errors) {
 			frappe.msgprint({
-				title: __('Missing Values Required'),
-				message: __('Following fields have missing values:') +
+				title: __('Missing Values Required_in_ui_field_group'),
+				message: __('Following fields have missing values:_in_ui_field_group') +
 					'<br><br><ul><li>' + errors.join('<li>') + '</ul>',
 				indicator: 'orange'
 			});

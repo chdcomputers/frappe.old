@@ -24,7 +24,7 @@ frappe.ui.form.Share = Class.extend({
 				users.push({
 					icon: "octicon octicon-megaphone text-muted",
 					avatar_class: "avatar-empty share-doc-btn shared-with-everyone",
-					title: __("Shared with everyone")
+					title: __("Shared with everyone_in_fs_share")
 				});
 			} else {
 				var user_info = frappe.user_info(s.user);
@@ -33,7 +33,7 @@ frappe.ui.form.Share = Class.extend({
 					fullname: user_info.fullname,
 					abbr: user_info.abbr,
 					color: user_info.color,
-					title: __("Shared with {0}", [user_info.fullname])
+					title: __("Shared with {0}_in_fs_share", [user_info.fullname])
 				});
 			}
 		}
@@ -42,7 +42,7 @@ frappe.ui.form.Share = Class.extend({
 			users.push({
 				icon: "octicon octicon-plus text-muted",
 				avatar_class: "avatar-empty share-doc-btn",
-				title: __("Share")
+				title: __("Share_in_fs_share")
 			});
 		}
 
@@ -54,7 +54,7 @@ frappe.ui.form.Share = Class.extend({
 	show: function() {
 		var me = this;
 		var d = new frappe.ui.Dialog({
-			title: __("Share {0} with", [this.frm.doc.name]),
+			title: __("Share {0} with_in_fs_share", [this.frm.doc.name]),
 		});
 
 		this.dialog = d;
@@ -71,7 +71,7 @@ frappe.ui.form.Share = Class.extend({
 			}
 		});
 
-		$(d.body).html('<p class="text-muted">' + __("Loading...") + '</p>');
+		$(d.body).html('<p class="text-muted">' + __("Loading..._in_fs_share") + '</p>');
 
 		d.onhide = function() {
 			// reload comments
@@ -112,7 +112,7 @@ frappe.ui.form.Share = Class.extend({
 			parent: $(this.dialog.body).find(".input-wrapper-add-share"),
 			df: {
 				fieldtype: "Link",
-				label: __("Share With"),
+				label: __("Share With_in_fs_share"),
 				fieldname: "share_with",
 				options: "User",
 				filters: {

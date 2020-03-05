@@ -11,9 +11,9 @@
 		>
 			<div v-if="!is_dragging">
 				<div>
-					{{ __('Drag and drop files, ') }}
+					{{ __('Drag and drop files, _inFileUploadervue') }}
 					<label style="margin: 0">
-						<a href="#" class="text-primary" @click.prevent>{{ __('browse,') }}</a>
+						<a href="#" class="text-primary" @click.prevent>{{ __('browse,_inFileUploadervue') }}</a>
 						<input
 							type="file"
 							class="hidden"
@@ -24,18 +24,18 @@
 						>
 					</label>
 					<span v-if="!disable_file_browser">
-						{{ __('choose an') }}
+						{{ __('choose an_inFileUploadervue') }}
 						<a href="#" class="text-primary bold"
 							@click.stop.prevent="show_file_browser = true"
 						>
-							{{ __('uploaded file') }}
+							{{ __('uploaded file_inFileUploadervue') }}
 						</a>
 					</span>
-					{{ __('or attach a') }}
+					{{ __('or attach a_inFileUploadervue') }}
 					<a class="text-primary bold" href
 						@click.stop.prevent="show_web_link = true"
 					>
-						{{ __('web link') }}
+						{{ __('web link_inFileUploadervue') }}
 					</a>
 				</div>
 				<div class="text-muted text-medium">
@@ -43,7 +43,7 @@
 				</div>
 			</div>
 			<div v-else>
-				{{ __('Drop files here') }}
+				{{ __('Drop files here_inFileUploadervue') }}
 			</div>
 		</div>
 		<div class="file-preview-area" v-show="files.length && !show_file_browser && !show_web_link">
@@ -51,7 +51,7 @@
 				<label>
 					<input type="checkbox" class="input-with-feedback" @change="e => toggle_all_private(e.target.checked)">
 					<span class="text-medium" style="font-weight: normal;">
-						{{ __('Make all attachments private') }}
+						{{ __('Make all attachments private_inFileUploadervue') }}
 					</span>
 				</label>
 			</div>
@@ -70,21 +70,21 @@
 					@click="upload_files"
 				>
 					<span v-if="files.length === 1">
-						{{ __('Upload file') }}
+						{{ __('Upload file_inFileUploadervue') }}
 					</span>
 					<span v-else>
-						{{ __('Upload {0} files', [files.length]) }}
+						{{ __('Upload {0} files_inFileUploadervue', [files.length]) }}
 					</span>
 				</button>
 				<div class="text-muted text-medium">
-					{{ __('Click on the lock icon to toggle public/private') }}
+					{{ __('Click on the lock icon to toggle public/private_inFileUploadervue') }}
 				</div>
 			</div>
 		</div>
 		<div class="upload-progress" v-if="currently_uploading !== -1 && !upload_complete && !show_file_browser && !show_web_link">
 			<span
 				class="text-medium"
-				v-html="__('Uploading {0} of {1}', [String(currently_uploading + 1).bold(), String(files.length).bold()])"
+				v-html="__('Uploading {0} of {1}_inFileUploadervue', [String(currently_uploading + 1).bold(), String(files.length).bold()])"
 			>
 			</span>
 			<div
@@ -297,7 +297,7 @@ export default {
 		upload_via_file_browser() {
 			let selected_file = this.$refs.file_browser.selected_node;
 			if (!selected_file.value) {
-				frappe.msgprint(__('Click on a file to select it.'));
+				frappe.msgprint(__('Click on a file to select it._inFileUploadervue'));
 				return Promise.reject();
 			}
 
@@ -308,7 +308,7 @@ export default {
 		upload_via_web_link() {
 			let file_url = this.$refs.web_link.url;
 			if (!file_url) {
-				frappe.msgprint(__('Invalid URL'));
+				frappe.msgprint(__('Invalid URL_inFileUploadervue'));
 				return Promise.reject();
 			}
 
@@ -370,7 +370,7 @@ export default {
 						} else if (xhr.status === 403) {
 							let response = JSON.parse(xhr.responseText);
 							frappe.msgprint({
-								title: __('Not permitted'),
+								title: __('Not permitted_inFileUploadervue'),
 								indicator: 'red',
 								message: response._error_message
 							});

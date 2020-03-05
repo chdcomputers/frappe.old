@@ -5,14 +5,14 @@
 				href=""
 				class="text-muted text-medium"
 				@click.prevent="$emit('hide-browser')"
-			>{{ __('← Back to upload files') }}</a>
+			>{{ __('← Back to upload files_inFileBrowservue') }}</a>
 		</div>
 		<div class="file-browser-list border rounded">
 			<div class="file-filter">
 				<input
 					type="text"
 					class="form-control input-xs"
-					:placeholder="__('Search by filename or extension')"
+					:placeholder="__('Search by filename or extension_inFileBrowservue')"
 					v-model="filter_text"
 					@input="apply_filter"
 				>
@@ -37,7 +37,7 @@ export default {
 	data() {
 		return {
 			node: {
-				label: __('Home'),
+				label: __('Home_inFileBrowservue'),
 				value: 'Home',
 				children: [],
 				is_leaf: false,

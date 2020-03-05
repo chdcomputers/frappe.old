@@ -79,22 +79,22 @@ export default {
 		},
 		update_primary_action(current_route) {
 			if (current_route === 'home') {
-				this.$root.page.set_title(__('Social'));
+				this.$root.page.set_title(__('Social_in_s_Homevue'));
 				frappe.breadcrumbs.update();
-				this.$root.page.set_primary_action(__('Post'), () => {
+				this.$root.page.set_primary_action(__('Post_in_s_Homevue'), () => {
 					frappe.social.post_dialog.show();
 				});
 			} else {
 				frappe.breadcrumbs.add({
 					type: 'Custom',
-					label: __('Social Home'),
+					label: __('Social Home_in_s_Homevue'),
 					route: '#social/home'
 				});
 				this.$root.page.clear_primary_action();
 			}
 
 			if (current_route === 'users') {
-				this.$root.page.set_title(__('Leaderboard'));
+				this.$root.page.set_title(__('Leaderboard_in_s_Homevue'));
 			}
 		},
 		get_current_page() {

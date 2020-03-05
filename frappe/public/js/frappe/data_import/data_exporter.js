@@ -11,27 +11,27 @@ frappe.data_import.DataExporter = class DataExporter {
 
 	make_dialog() {
 		this.dialog = new frappe.ui.Dialog({
-			title: __('Export Data'),
+			title: __('Export Data_in_data_exporter'),
 			fields: [
 				{
 					fieldtype: 'Select',
 					fieldname: 'export_records',
-					label: __('Export Type'),
+					label: __('Export Type_in_data_exporter'),
 					options: [
 						{
-							label: __('All Records'),
+							label: __('All Records_in_data_exporter'),
 							value: 'all'
 						},
 						{
-							label: __('Filtered Records'),
+							label: __('Filtered Records_in_data_exporter'),
 							value: 'by_filter'
 						},
 						{
-							label: __('5 Records'),
+							label: __('5 Records_in_data_exporter'),
 							value: '5_records'
 						},
 						{
-							label: __('Blank Template'),
+							label: __('Blank Template_in_data_exporter'),
 							value: 'blank_template'
 						}
 					],
@@ -48,7 +48,7 @@ frappe.data_import.DataExporter = class DataExporter {
 				{
 					fieldtype: 'Select',
 					fieldname: 'file_type',
-					label: __('File Type'),
+					label: __('File Type_in_data_exporter'),
 					options: ['Excel', 'CSV'],
 					default: 'CSV'
 				},
@@ -71,7 +71,7 @@ frappe.data_import.DataExporter = class DataExporter {
 					.map(df => {
 						let doctype = df.options;
 						let label = df.reqd
-							? __('{0} (1 row mandatory)', [doctype])
+							? __('{0} (1 row mandatory)_in_data_exporter', [doctype])
 							: __(doctype);
 						return {
 							label,
@@ -83,7 +83,7 @@ frappe.data_import.DataExporter = class DataExporter {
 						};
 					})
 			],
-			primary_action_label: __('Export'),
+			primary_action_label: __('Export_in_data_exporter'),
 			primary_action: values => this.export_records(values),
 			on_page_show: () => this.select_mandatory()
 		});
@@ -139,15 +139,15 @@ frappe.data_import.DataExporter = class DataExporter {
 	make_select_all_buttons() {
 		let $select_all_buttons = $(`
 			<div>
-				<h6 class="form-section-heading uppercase">${__('Select fields to export')}</h6>
+				<h6 class="form-section-heading uppercase">${__('Select fields to export_in_data_exporter')}</h6>
 				<button class="btn btn-default btn-xs" data-action="select_all">
-					${__('Select All')}
+					${__('Select All_in_data_exporter')}
 				</button>
 				<button class="btn btn-default btn-xs" data-action="select_mandatory">
-					${__('Select Mandatory')}
+					${__('Select Mandatory_in_data_exporter')}
 				</button>
 				<button class="btn btn-default btn-xs" data-action="unselect_all">
-					${__('Unselect All')}
+					${__('Unselect All_in_data_exporter')}
 				</button>
 			</div>
 		`);
@@ -214,11 +214,11 @@ frappe.data_import.DataExporter = class DataExporter {
 			let message = '';
 			value = parseInt(value, 10);
 			if (value === 0) {
-				message = __('No records will be exported');
+				message = __('No records will be exported_in_data_exporter');
 			} else if (value === 1) {
-				message = __('1 record will be exported');
+				message = __('1 record will be exported_in_data_exporter');
 			} else {
-				message = __('{0} records will be exported', [value]);
+				message = __('{0} records will be exported_in_data_exporter', [value]);
 			}
 			this.dialog.set_df_property('export_records', 'description', message);
 
@@ -232,11 +232,11 @@ frappe.data_import.DataExporter = class DataExporter {
 		if (no_of_records != null) {
 			let label = '';
 			if (no_of_records === 0) {
-				label = __('Export');
+				label = __('Export_in_data_exporter');
 			} else if (no_of_records === 1) {
-				label = __('Export 1 record');
+				label = __('Export 1 record_in_data_exporter');
 			} else {
-				label = __('Export {0} records', [no_of_records]);
+				label = __('Export {0} records_in_data_exporter', [no_of_records]);
 			}
 			$primary_action.html(label);
 		} else {
@@ -284,7 +284,7 @@ frappe.data_import.DataExporter = class DataExporter {
 					value: df.fieldname,
 					danger: df.reqd,
 					checked: false,
-					description: `${df.fieldname} ${df.reqd ? __('(Mandatory)') : ''}`
+					description: `${df.fieldname} ${df.reqd ? __('(Mandatory)_in_data_exporter') : ''}`
 				};
 			});
 	}

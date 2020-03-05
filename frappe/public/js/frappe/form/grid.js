@@ -59,7 +59,7 @@ export default class Grid {
 				<div class="grid-heading-row"></div>
 				<div class="grid-body">
 					<div class="rows"></div>
-					<div class="grid-empty text-center">${__("No Data")}</div>
+					<div class="grid-empty text-center">${__("No Data_in_f_grid")}</div>
 				</div>
 			</div>
 			<div class="small form-clickable-section grid-footer">
@@ -68,20 +68,20 @@ export default class Grid {
 						<button class="btn btn-xs btn-danger grid-remove-rows hidden"
 							style="margin-right: 4px;"
 							data-action="delete_rows">
-							${__("Delete")}
+							${__("Delete_in_f_grid")}
 						</button>
 						<button class="btn btn-xs btn-danger grid-remove-all-rows hidden"
 							style="margin-right: 4px;"
 							data-action="delete_all_rows">
-							${__("Delete All")}
+							${__("Delete All_in_f_grid")}
 						</button>
 						<button class="grid-add-multiple-rows btn btn-xs btn-default hidden"
 							style="margin-right: 4px;">
-							${__("Add Multiple")}</a>
+							${__("Add Multiple_in_f_grid")}</a>
 						</button>
 						<!-- hack to allow firefox include this in tabs -->
 						<button class="btn btn-xs btn-default grid-add-row">
-							${__("Add Row")}
+							${__("Add Row_in_f_grid")}
 						</button>
 					</div>
 					<div class="col-sm-4 grid-pagination">
@@ -89,10 +89,10 @@ export default class Grid {
 					<div class="col-sm-3 text-right">
 						<a href="#" class="grid-download btn btn-xs btn-default hidden"
 							style="margin-left: 4px;">
-							${__("Download")}</a>
+							${__("Download_in_f_grid")}</a>
 						<a href="#" class="grid-upload btn btn-xs btn-default hidden"
 							style="margin-left: 4px;">
-							${__("Upload")}</a>
+							${__("Upload_in_f_grid")}</a>
 					</div>
 				</div>
 			</div>
@@ -191,7 +191,7 @@ export default class Grid {
 	}
 
 	delete_all_rows() {
-		frappe.confirm(__("Are you sure you want to delete all rows?"), () => {
+		frappe.confirm(__("Are you sure you want to delete all rows?_in_f_grid"), () => {
 			this.frm.doc[this.df.fieldname] = [];
 			$(this.parent).find('.rows').empty();
 			this.grid_rows = [];
@@ -803,7 +803,7 @@ export default class Grid {
 						});
 
 						me.frm.refresh_field(me.df.fieldname);
-						frappe.msgprint({message: __('Table updated'), title: __('Success'), indicator: 'green'});
+						frappe.msgprint({message: __('Table updated_in_f_grid'), title: __('Success_in_f_grid'), indicator: 'green'});
 					}
 				});
 				return false;
@@ -816,12 +816,12 @@ export default class Grid {
 		$(this.wrapper).find(".grid-download").removeClass('hidden').on("click", () => {
 			var data = [];
 			var docfields = [];
-			data.push([__("Bulk Edit {0}", [title])]);
+			data.push([__("Bulk Edit {0}_in_f_grid", [title])]);
 			data.push([]);
 			data.push([]);
 			data.push([]);
-			data.push([__("The CSV format is case sensitive")]);
-			data.push([__("Do not edit headers which are preset in the template")]);
+			data.push([__("The CSV format is case sensitive_in_f_grid")]);
+			data.push([__("Do not edit headers which are preset in the template_in_f_grid")]);
 			data.push(["------"]);
 			$.each(frappe.get_meta(this.df.options).fields, (i, df) => {
 				// don't include the read-only field in the template

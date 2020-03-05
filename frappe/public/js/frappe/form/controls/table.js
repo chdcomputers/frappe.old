@@ -37,7 +37,7 @@ frappe.ui.form.ControlTable = frappe.ui.form.Control.extend({
 			if (data.length === 1 & data[0].length === 1) return;
 			if (data.length > 100){
 				data = data.slice(0, 100);
-				frappe.msgprint(__('For performance, only the first 100 rows were processed.'));
+				frappe.msgprint(__('For performance, only the first 100 rows were processed._in_fc_table'));
 			}
 			var fieldnames = [];
 			var get_field = function(name_or_label){
@@ -82,7 +82,7 @@ frappe.ui.form.ControlTable = frappe.ui.form.Control.extend({
 					$.each(row, function(ci, value) {
 						if (fieldnames[ci]) frappe.model.set_value(cur_doctype, row_name, fieldnames[ci], value);
 					});
-					frappe.show_progress(__('Processing'), i, data.length);
+					frappe.show_progress(__('Processing_in_fc_table'), i, data.length);
 				}
 			});
 			frappe.hide_progress();

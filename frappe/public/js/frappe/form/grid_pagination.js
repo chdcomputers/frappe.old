@@ -66,19 +66,19 @@ export default class GridPagination {
 	get_pagination_html() {
 		let page_text_html = `<div class="page-text">
 				<span class="current-page-number page-number">${__(this.page_index)}</span>
-				<span>${__('of')}</span>
+				<span>${__('of_in_f_grid_pagination')}</span>
 				<span class="total-page-number page-number"> ${__(this.total_pages)} </span> 
 			</div>`;
 
 		return $(`<button class="btn btn-default btn-xs first-page"">
 				<span class="first-page-icon">&laquo;</span>
-				<span>${__('First')}</span>
+				<span>${__('First_in_f_grid_pagination')}</span>
 			</button>
 			<a class="prev-page">&#8249;</a>
 			${page_text_html}
 			<a class="next-page">&#8250;</a>
 			<button class="btn btn-default btn-xs last-page">
-				<span>${__('Last')}</span>
+				<span>${__('Last_in_f_grid_pagination')}</span>
 				<span class="first-page-icon">&raquo;</span>
 			</button>`);
 	}

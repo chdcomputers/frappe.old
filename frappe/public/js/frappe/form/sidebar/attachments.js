@@ -75,7 +75,7 @@ frappe.ui.form.Attachments = Class.extend({
 			.data("fileid", fileid)
 			.click(function() {
 				var remove_btn = this;
-				frappe.confirm(__("Are you sure you want to delete the attachment?"),
+				frappe.confirm(__("Are you sure you want to delete the attachment?_in_fs_attachment"),
 					function() {
 						me.remove_attachment($(remove_btn).data("fileid"))
 					}
@@ -130,7 +130,7 @@ frappe.ui.form.Attachments = Class.extend({
 			callback: function(r,rt) {
 				if(r.exc) {
 					if(!r._server_messages)
-						frappe.msgprint(__("There were errors"));
+						frappe.msgprint(__("There were errors_in_fs_attachment"));
 					return;
 				}
 				me.remove_fileid(fileid);

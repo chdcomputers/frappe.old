@@ -109,8 +109,8 @@ frappe.search.utils = {
 					if(level) {
 						out.push({
 							type: "In List",
-							label: __('Find {0} in {1}', [__(parts[0]), me.bolden_match_part(__(item), parts[1])]),
-							value: __('Find {0} in {1}', [__(parts[0]), __(item)]),
+							label: __('Find {0} in {1}_in_uit_search_utils', [__(parts[0]), me.bolden_match_part(__(item), parts[1])]),
+							value: __('Find {0} in {1}_in_uit_search_utils', [__(parts[0]), __(item)]),
 							route_options: {"name": ["like", "%" + parts[0] + "%"]},
 							index: 1 + level,
 							route: ["List", item]
@@ -126,14 +126,14 @@ frappe.search.utils = {
 		var me = this;
 		var out = [];
 		var firstKeyword = keywords.split(" ")[0];
-		if(firstKeyword.toLowerCase() === __("new")) {
+		if(firstKeyword.toLowerCase() === __("new_in_uit_search_utils")) {
 			frappe.boot.user.can_create.forEach(function(item) {
 				var level = me.fuzzy_search(keywords.substr(4), item);
 				if(level) {
 					out.push({
 						type: "New",
-						label: __("New {0}", [me.bolden_match_part(__(item), keywords.substr(4))]),
-						value: __("New {0}", [__(item)]),
+						label: __("New {0}_in_uit_search_utils", [me.bolden_match_part(__(item), keywords.substr(4))]),
+						value: __("New {0}_in_uit_search_utils", [__(item)]),
 						index: 1 + level,
 						match: item,
 						onclick: function() {
@@ -180,8 +180,8 @@ frappe.search.utils = {
 						var match = item;
 						out.push({
 							type: "New",
-							label: __("New {0}", [me.bolden_match_part(__(item), keywords)]),
-							value: __("New {0}", [__(item)]),
+							label: __("New {0}_in_uit_search_utils", [me.bolden_match_part(__(item), keywords)]),
+							value: __("New {0}_in_uit_search_utils", [__(item)]),
 							index: level + 0.015,
 							match: item,
 							onclick: function() {
@@ -218,8 +218,8 @@ frappe.search.utils = {
 					route = ["query-report",  item];
 				out.push({
 					type: "Report",
-					label: __("Report {0}" , [me.bolden_match_part(__(item), keywords)]),
-					value: __("Report {0}" , [__(item)]),
+					label: __("Report {0}_in_uit_search_utils" , [me.bolden_match_part(__(item), keywords)]),
+					value: __("Report {0}_in_uit_search_utils" , [__(item)]),
 					index: level,
 					route: route
 				});
@@ -243,8 +243,8 @@ frappe.search.utils = {
 				var page = me.pages[item];
 				out.push({
 					type: "Page",
-					label: __("Open {0}", [me.bolden_match_part(__(item), keywords)]),
-					value: __("Open {0}", [__(item)]),
+					label: __("Open {0}_in_uit_search_utils", [me.bolden_match_part(__(item), keywords)]),
+					value: __("Open {0}_in_uit_search_utils", [__(item)]),
 					match: item,
 					index: level,
 					route: [page.route || page.name]
@@ -252,29 +252,29 @@ frappe.search.utils = {
 			}
 		});
 		var target = 'Calendar';
-		if(__('calendar').indexOf(keywords.toLowerCase()) === 0) {
+		if(__('calendar_in_uit_search_utils').indexOf(keywords.toLowerCase()) === 0) {
 			out.push({
 				type: "Calendar",
-				value: __("Open {0}", [__(target)]),
+				value: __("Open {0}_in_uit_search_utils", [__(target)]),
 				index: me.fuzzy_search(keywords, 'Calendar'),
 				match: target,
 				route: ['List', 'Event', target],
 			});
 		}
 		target = 'Hub';
-		if(__('hub').indexOf(keywords.toLowerCase()) === 0) {
+		if(__('hub_in_uit_search_utils').indexOf(keywords.toLowerCase()) === 0) {
 			out.push({
 				type: "Hub",
-				value: __("Open {0}", [__(target)]),
+				value: __("Open {0}_in_uit_search_utils", [__(target)]),
 				index: me.fuzzy_search(keywords, 'Hub'),
 				match: target,
 				route: [target, 'Item'],
 			});
 		}
-		if(__('email inbox').indexOf(keywords.toLowerCase()) === 0) {
+		if(__('email inbox_in_uit_search_utils').indexOf(keywords.toLowerCase()) === 0) {
 			out.push({
 				type: "Inbox",
-				value: __("Open {0}", [__('Email Inbox')]),
+				value: __("Open {0}_in_uit_search_utils", [__('Email Inbox_in_uit_search_utils')]),
 				index: me.fuzzy_search(keywords, 'email inbox'),
 				match: target,
 				route: ['List', 'Communication', 'Inbox'],
@@ -299,8 +299,8 @@ frappe.search.utils = {
 				}
 				var ret = {
 					type: "Module",
-					label: __("Open {0}", [me.bolden_match_part(__(item), keywords)]),
-					value: __("Open {0}", [__(item)]),
+					label: __("Open {0}_in_uit_search_utils", [me.bolden_match_part(__(item), keywords)]),
+					value: __("Open {0}_in_uit_search_utils", [__(item)]),
 					index: level,
 				};
 				if(module.link) {

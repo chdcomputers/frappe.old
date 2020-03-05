@@ -19,7 +19,7 @@ frappe.views.ListGroupBy = class ListGroupBy {
 
 	make_group_by_fields_modal() {
 		let d = new frappe.ui.Dialog ({
-			title: __("Select Filters"),
+			title: __("Select Filters_in_list_sidebar_group_by"),
 			fields: this.get_group_by_dropdown_fields()
 		});
 		d.set_primary_action("Save", ({ group_by_fields }) => {
@@ -38,13 +38,13 @@ frappe.views.ListGroupBy = class ListGroupBy {
 		this.$wrapper = this.sidebar.sidebar.find('.list-group-by');
 		let html = `
 			<li class="list-sidebar-label">
-				${__('Filter By')}
+				${__('Filter By_in_list_sidebar_group_by')}
 			</li>
 			<div class="list-group-by-fields">
 			</div>
 			<li class="add-list-group-by list-link">
 				<a class="add-group-by hidden-xs text-muted">
-					${__("Add Fields")} <i class="octicon octicon-plus" style="margin-left: 2px;"></i>
+					${__("Add Fields_in_list_sidebar_group_by")} <i class="octicon octicon-plus" style="margin-left: 2px;"></i>
 				</a>
 			</li>
 		`;
@@ -55,9 +55,9 @@ frappe.views.ListGroupBy = class ListGroupBy {
 		let get_item_html = (fieldname) => {
 			let label;
 			if (fieldname === 'assigned_to') {
-				label = __('Assigned To');
+				label = __('Assigned To_in_list_sidebar_group_by');
 			} else if (fieldname === 'owner') {
-				label = __('Created By');
+				label = __('Created By_in_list_sidebar_group_by');
 			} else {
 				label = frappe.meta.get_label(this.doctype, fieldname);
 			}
@@ -70,7 +70,7 @@ frappe.views.ListGroupBy = class ListGroupBy {
 					</a>
 					<ul class="dropdown-menu group-by-dropdown" role="menu">
 						<li><div class="list-loading text-center group-by-loading text-muted">
-							${__("Loading...")}
+							${__("Loading..._in_list_sidebar_group_by")}
 							</div>
 						</li>
 					</ul>
@@ -90,7 +90,7 @@ frappe.views.ListGroupBy = class ListGroupBy {
 					this.render_dropdown_items(field_count_list, dropdown);
 					this.sidebar.setup_dropdown_search(dropdown, '.group-by-value');
 				} else {
-					dropdown.find('.group-by-loading').html(`${__("No filters found")}`);
+					dropdown.find('.group-by-loading').html(`${__("No filters found_in_list_sidebar_group_by")}`);
 				}
 			});
 		});
@@ -140,9 +140,9 @@ frappe.views.ListGroupBy = class ListGroupBy {
 
 	render_dropdown_items(fields, dropdown) {
 		let get_dropdown_html = (field) => {
-			let label = field.name == null ? __('Not Specified') : field.name;
+			let label = field.name == null ? __('Not Specified_in_list_sidebar_group_by') : field.name;
 			if (label === frappe.session.user) {
-				label = __('Me');
+				label = __('Me_in_list_sidebar_group_by');
 			}
 			let value = field.name == null ? '' : encodeURIComponent(field.name);
 
@@ -155,7 +155,7 @@ frappe.views.ListGroupBy = class ListGroupBy {
 		};
 		let standard_html = `
 			<div class="dropdown-search">
-				<input type="text" placeholder="${__('Search')}" class="form-control dropdown-search-input input-xs">
+				<input type="text" placeholder="${__('Search_in_list_sidebar_group_by')}" class="form-control dropdown-search-input input-xs">
 			</div>
 		`;
 

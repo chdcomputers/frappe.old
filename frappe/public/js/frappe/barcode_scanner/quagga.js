@@ -44,7 +44,7 @@ Quagga.onProcessed(function(result) {
 frappe.barcode.get_barcode = function() {
 	return new Promise(resolve => {
 		let d = new frappe.ui.Dialog({
-			title: __('Scan Barcode'),
+			title: __('Scan Barcode_in_guagga'),
 			fields: [
 				{
 					fieldtype: 'HTML',

@@ -179,7 +179,7 @@ frappe.ui.SortSelector = Class.extend({
 	},
 	get_label: function(fieldname) {
 		if(fieldname==='idx') {
-			return __("Most Used");
+			return __("Most Used_in_ui_sort_selector");
 		} else {
 			return this.labels[fieldname]
 				|| frappe.meta.get_label(this.doctype, fieldname);

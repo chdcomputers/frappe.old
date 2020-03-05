@@ -98,11 +98,11 @@ frappe.ui.keys.show_keyboard_shortcut_dialog = () => {
 		return html;
 	}
 
-	let global_shortcuts_html = generate_shortcuts_html(global_shortcuts, __('Global Shortcuts'));
-	let current_page_shortcuts_html = generate_shortcuts_html(current_page_shortcuts, __('Page Shortcuts'));
+	let global_shortcuts_html = generate_shortcuts_html(global_shortcuts, __('Global Shortcuts_in_ui_keyboard'));
+	let current_page_shortcuts_html = generate_shortcuts_html(current_page_shortcuts, __('Page Shortcuts_in_ui_keyboard'));
 
 	let dialog = new frappe.ui.Dialog({
-		title: __('Keyboard Shortcuts'),
+		title: __('Keyboard Shortcuts_in_ui_keyboard'),
 		on_hide() {
 			frappe.ui.keys.is_dialog_shown = false;
 		}
@@ -112,7 +112,7 @@ frappe.ui.keys.show_keyboard_shortcut_dialog = () => {
 	dialog.$body.append(current_page_shortcuts_html);
 	dialog.$body.append(`
 		<div class="text-muted">
-			${__('Press Alt Key to trigger additional shortcuts in Menu and Sidebar')}
+			${__('Press Alt Key to trigger additional shortcuts in Menu and Sidebar_in_ui_keyboard')}
 		</div>
 	`);
 
@@ -166,7 +166,7 @@ frappe.ui.keys.add_shortcut({
 		e.preventDefault();
 		return false;
 	},
-	description: __('Trigger Primary Action'),
+	description: __('Trigger Primary Action_in_ui_keyboard'),
 	ignore_inputs: true
 });
 
@@ -177,7 +177,7 @@ frappe.ui.keys.add_shortcut({
 		e.preventDefault();
 		return false;
 	},
-	description: __('Open Awesomebar')
+	description: __('Open Awesomebar_in_ui_keyboard')
 });
 
 frappe.ui.keys.add_shortcut({
@@ -195,7 +195,7 @@ frappe.ui.keys.add_shortcut({
 		e.preventDefault();
 		$('.dropdown-navbar-user a').eq(0).click();
 	},
-	description: __('Open Settings')
+	description: __('Open Settings_in_ui_keyboard')
 });
 
 frappe.ui.keys.add_shortcut({
@@ -203,7 +203,7 @@ frappe.ui.keys.add_shortcut({
 	action: function() {
 		frappe.ui.keys.show_keyboard_shortcut_dialog();
 	},
-	description: __('Show Keyboard Shortcuts')
+	description: __('Show Keyboard Shortcuts_in_ui_keyboard')
 });
 
 frappe.ui.keys.add_shortcut({
@@ -212,7 +212,7 @@ frappe.ui.keys.add_shortcut({
 		e.preventDefault();
 		$('.dropdown-help a').eq(0).click();
 	},
-	description: __('Open Help')
+	description: __('Open Help_in_ui_keyboard')
 });
 
 frappe.ui.keys.on('escape', function(e) {
@@ -244,7 +244,7 @@ frappe.ui.keys.add_shortcut({
 	action: function() {
 		frappe.ui.toolbar.clear_cache();
 	},
-	description: __('Clear Cache and Reload')
+	description: __('Clear Cache and Reload_in_ui_keyboard')
 });
 
 frappe.ui.keys.key_map = {

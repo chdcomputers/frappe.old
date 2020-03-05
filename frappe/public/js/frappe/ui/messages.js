@@ -17,7 +17,7 @@ frappe.messages.get_waiting_message = function(msg) {
 
 frappe.throw = function(msg) {
 	if(typeof msg==='string') {
-		msg = {message: msg, title: __('Error')};
+		msg = {message: msg, title: __('Error_in_ui_messages')};
 	}
 	if(!msg.indicator) msg.indicator = 'red';
 	frappe.msgprint(msg);
@@ -26,16 +26,16 @@ frappe.throw = function(msg) {
 
 frappe.confirm = function(message, ifyes, ifno) {
 	var d = new frappe.ui.Dialog({
-		title: __("Confirm"),
+		title: __("Confirm_in_ui_messages"),
 		fields: [
 			{fieldtype:"HTML", options:`<p class="frappe-confirm-message">${message}</p>`}
 		],
-		primary_action_label: __("Yes"),
+		primary_action_label: __("Yes_in_ui_messages"),
 		primary_action: function() {
 			if(ifyes) ifyes();
 			d.hide();
 		},
-		secondary_action_label: __("No")
+		secondary_action_label: __("No_in_ui_messages")
 	});
 	d.show();
 
@@ -65,9 +65,9 @@ frappe.prompt = function(fields, callback, title, primary_label) {
 	if(!$.isArray(fields)) fields = [fields];
 	var d = new frappe.ui.Dialog({
 		fields: fields,
-		title: title || __("Enter Value"),
+		title: title || __("Enter Value_in_ui_messages"),
 	});
-	d.set_primary_action(primary_label || __("Submit"), function() {
+	d.set_primary_action(primary_label || __("Submit_in_ui_messages"), function() {
 		var values = d.get_values();
 		if(!values) {
 			return;
@@ -111,7 +111,7 @@ frappe.msgprint = function(msg, title) {
 
 	if(!frappe.msg_dialog) {
 		frappe.msg_dialog = new frappe.ui.Dialog({
-			title: __("Message"),
+			title: __("Message_in_ui_messages"),
 			onhide: function() {
 				if(frappe.msg_dialog.custom_onhide) {
 					frappe.msg_dialog.custom_onhide();
@@ -158,7 +158,7 @@ frappe.msgprint = function(msg, title) {
 		}
 
 		frappe.msg_dialog.set_primary_action(
-			__(data.primary_action.label || "Done"),
+			__(data.primary_action.label || "Done_in_ui_messages"),
 			data.primary_action.action
 		);
 	} else {
@@ -186,7 +186,7 @@ frappe.msgprint = function(msg, title) {
 	if(data.title || !msg_exists) {
 		// set title only if it is explicitly given
 		// and no existing title exists
-		frappe.msg_dialog.set_title(data.title || __('Message'));
+		frappe.msg_dialog.set_title(data.title || __('Message_in_ui_messages'));
 	}
 
 	// show / hide indicator
@@ -261,7 +261,7 @@ frappe.update_msgprint = function(html) {
 frappe.verify_password = function(callback) {
 	frappe.prompt({
 		fieldname: "password",
-		label: __("Enter your password"),
+		label: __("Enter your password_in_ui_messages"),
 		fieldtype: "Password",
 		reqd: 1
 	}, function(data) {
@@ -276,7 +276,7 @@ frappe.verify_password = function(callback) {
 				}
 			}
 		});
-	}, __("Verify Password"), __("Verify"))
+	}, __("Verify Password"), __("Verify_in_ui_messages"))
 }
 
 frappe.show_progress = function(title, count, total=100, description) {

@@ -56,7 +56,7 @@ frappe.ui.form.AssignTo = Class.extend({
 					.insertBefore(this.parent.find('.add-assignment'));
 
 				if(d[i].owner===frappe.session.user) {
-					me.primary_action = this.frm.page.add_menu_item(__("Assignment Complete"), function() {
+					me.primary_action = this.frm.page.add_menu_item(__("Assignment Complete_in_fs_assign_to"), function() {
 						me.remove(frappe.session.user);
 					}, "fa fa-check", "btn-success")
 				}
@@ -81,7 +81,7 @@ frappe.ui.form.AssignTo = Class.extend({
 		var me = this;
 
 		if(this.frm.is_new()) {
-			frappe.throw(__("Please save the document before assignment"));
+			frappe.throw(__("Please save the document before assignment_in_fs_assign_to"));
 			return;
 		}
 
@@ -109,7 +109,7 @@ frappe.ui.form.AssignTo = Class.extend({
 		var me = this;
 
 		if(this.frm.is_new()) {
-			frappe.throw(__("Please save the document before removing assignment"));
+			frappe.throw(__("Please save the document before removing assignment_in_fs_assign_to"));
 			return;
 		}
 
@@ -132,20 +132,20 @@ frappe.ui.form.AssignToDialog = Class.extend({
 	init: function(opts){
 		var me = this
 		var dialog = new frappe.ui.Dialog({
-			title: __('Add to To Do'),
+			title: __('Add to To Do_in_fs_assign_to'),
 			fields: [
-				{ fieldtype: 'Link', fieldname: 'assign_to', options: 'User', label: __("Assign To"), reqd: true, filters: { 'user_type': 'System User' }},
-				{ fieldtype: 'Check', fieldname: 'myself', label: __("Assign to me"), "default": 0 },
-				{ fieldtype: 'Small Text', fieldname: 'description', label: __("Comment") },
+				{ fieldtype: 'Link', fieldname: 'assign_to', options: 'User', label: __("Assign To_in_fs_assign_to"), reqd: true, filters: { 'user_type': 'System User' }},
+				{ fieldtype: 'Check', fieldname: 'myself', label: __("Assign to me_in_fs_assign_to"), "default": 0 },
+				{ fieldtype: 'Small Text', fieldname: 'description', label: __("Comment_in_fs_assign_to") },
 				{ fieldtype: 'Section Break' },
 				{ fieldtype: 'Column Break' },
-				{ fieldtype: 'Date', fieldname: 'date', label: __("Complete By") },
+				{ fieldtype: 'Date', fieldname: 'date', label: __("Complete By_in_fs_assign_to") },
 				{ fieldtype: 'Column Break' },
-				{ fieldtype: 'Select', fieldname: 'priority', label: __("Priority"),
+				{ fieldtype: 'Select', fieldname: 'priority', label: __("Priority_in_fs_assign_to"),
 					options: [
-						{ value: 'Low', label: __('Low') },
-						{ value: 'Medium', label: __('Medium') },
-						{ value: 'High', label: __('High') }
+						{ value: 'Low', label: __('Low_in_fs_assign_to') },
+						{ value: 'Medium', label: __('Medium_in_fs_assign_to') },
+						{ value: 'High', label: __('High_in_fs_assign_to') }
 					],
 					// Pick up priority from the source document, if it exists and is available in ToDo
 					'default': ["Low", "Medium", "High"].includes(opts.obj.frm && opts.obj.frm.doc.priority
@@ -153,7 +153,7 @@ frappe.ui.form.AssignToDialog = Class.extend({
 				},
 			],
 			primary_action: function() { frappe.ui.add_assignment(opts, this) },
-			primary_action_label: __("Add")
+			primary_action_label: __("Add_in_fs_assign_to")
 		})
 		$.extend(me, dialog);
 

@@ -40,23 +40,23 @@ export default class GridRowForm {
 			let template = `<div class="grid-form-heading">
 				<div class="toolbar grid-header-toolbar">
 					<span class="panel-title">
-						${ __("Editing Row") } #<span class="grid-form-row-index"></span></span>
+						${ __("Editing Row_in_f_grid_row_form") } #<span class="grid-form-row-index"></span></span>
 					<button class="btn btn-default btn-xs pull-right" style="margin-left: 7px;">
 						<i class="octicon octicon-check visible-xs" style="padding-bottom: 2px;"></i>
 						<span class="hidden-xs octicon octicon-triangle-up"></span></button>
 					<span class="row-actions">
 						<button class="btn btn-default btn-xs pull-right grid-move-row hidden-xs"
 							style="margin-left: 7px;">
-							${ __("Move") }</button>
+							${ __("Move_in_f_grid_row_form") }</button>
 						<button class="btn btn-default btn-xs pull-right grid-duplicate-row hidden-xs"
 							style="margin-left: 7px;">
-							${ __("Duplicate") }</button>
+							${ __("Duplicate_in_f_grid_row_form") }</button>
 						<button class="btn btn-default btn-xs pull-right grid-insert-row"
 							style="margin-left: 7px;">
-							${ __("Insert Above") }</button>
+							${ __("Insert Above_in_f_grid_row_form") }</button>
 						<button class="btn btn-default btn-xs pull-right grid-insert-row-below hidden-xs"
 							style="margin-left: 7px;">
-							${ __("Insert Below") }</button>
+							${ __("Insert Below_in_f_grid_row_form") }</button>
 						<button class="btn btn-danger btn-xs pull-right grid-delete-row">
 							<i class="octicon octicon-trashcan"
 								style="padding-bottom: 2px; margin-top: 1px;"></i>
@@ -69,11 +69,11 @@ export default class GridRowForm {
 				<div class="grid-footer-toolbar clearfix hidden-xs">
 					<span class="text-muted">
 						<i class="octicon octicon-keyboard"></i> &ndash;
-						<kbd>${ __("Ctrl + Up") }</kbd>, <kbd>${ __("Ctrl + Down") }</kbd>, <kbd>${ __("ESC") }</kbd>
+						<kbd>${ __("Ctrl + Up_in_f_grid_row_form") }</kbd>, <kbd>${ __("Ctrl + Down_in_f_grid_row_form") }</kbd>, <kbd>${ __("ESC_in_f_grid_row_form") }</kbd>
 					</span>
 					<button class="btn btn-default btn-xs pull-right grid-append-row"
 						style="margin-left: 7px;">
-						${ __("Insert Below") }</button>
+						${ __("Insert Below_in_f_grid_row_form") }</button>
 				</div>
 			</div>`;
 

@@ -151,7 +151,7 @@ frappe.ui.form.ControlMultiSelectList = frappe.ui.form.ControlData.extend({
 			let option = this._options.find(opt => opt.value === val);
 			text = option ? option.label : val;
 		} else {
-			text = __('{0} values selected', [this.values.length]);
+			text = __('{0} values selected_in_fc_multiselect_list', [this.values.length]);
 		}
 		this.set_status(text);
 	},
@@ -213,7 +213,7 @@ frappe.ui.form.ControlMultiSelectList = frappe.ui.form.ControlData.extend({
 			</li>`;
 		}).join('');
 		if (!html) {
-			html = `<li class="text-muted">${__('No values to show')}</li>`;
+			html = `<li class="text-muted">${__('No values to show_in_fc_multiselect_list')}</li>`;
 		}
 		this.$list_wrapper
 			.find('.selectable-items')

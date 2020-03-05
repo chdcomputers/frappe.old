@@ -18,7 +18,7 @@ frappe.ui.FilterList = Class.extend({
 					<button
 						style="margin-right: 10px;"
 						class="btn btn-default btn-xs new-filter text-muted">
-						${__("Add Filter")}</button>
+						${__("Add Filter_in_uif_filters")}</button>
 				</div>
 			</div>
 			<div class="filter_area"></div>`);
@@ -74,7 +74,7 @@ frappe.ui.FilterList = Class.extend({
 			&& !frappe.meta.has_field(doctype, fieldname)
 			&& !in_list(frappe.model.std_fields_list, fieldname)) {
 			frappe.msgprint({
-				message: __('Filter {0} missing', [fieldname.bold()]),
+				message: __('Filter {0} missing_in_uif_filters', [fieldname.bold()]),
 				title: 'Invalid Filter',
 				indicator: 'red'
 			});
@@ -258,8 +258,8 @@ frappe.ui.Filter = Class.extend({
 				}
 				// set description
 				me.field.desc_area.html((in_list(["in", "not in"], condition)==="in"
-					? __("values separated by commas")
-					: __("use % as wildcard"))+'</div>');
+					? __("values separated by commas_in_uif_filters")
+					: __("use % as wildcard_in_uif_filters"))+'</div>');
 			} else {
 				//if condition selected after refresh
 				me.set_field(me.field.df.parent, me.field.df.fieldname, null, condition);
@@ -324,7 +324,7 @@ frappe.ui.Filter = Class.extend({
 
 		var original_docfield = me.fieldselect.fields_by_name[doctype][fieldname];
 		if(!original_docfield) {
-			frappe.msgprint(__("Field {0} is not selectable.", [fieldname]));
+			frappe.msgprint(__("Field {0} is not selectable._in_uif_filters", [fieldname]));
 			return;
 		}
 
@@ -395,9 +395,9 @@ frappe.ui.Filter = Class.extend({
 		if(df.fieldname=="docstatus") {
 			df.fieldtype="Select",
 			df.options=[
-				{value:0, label:__("Draft")},
-				{value:1, label:__("Submitted")},
-				{value:2, label:__("Cancelled")}
+				{value:0, label:__("Draft_in_uif_filters")},
+				{value:1, label:__("Submitted_in_uif_filters")},
+				{value:2, label:__("Cancelled_in_uif_filters")}
 			]
 		} else if(df.fieldtype=='Check') {
 			df.fieldtype='Select';
@@ -483,10 +483,10 @@ frappe.ui.Filter = Class.extend({
 		// add a button for new filter if missing
 		this.$btn_group = $(`<div class="btn-group">
 			<button class="btn btn-default btn-xs toggle-filter"
-				title="${ __("Edit Filter") }">
+				title="${ __("Edit Filter_in_uif_filters") }">
 			</button>
 			<button class="btn btn-default btn-xs remove-filter"
-				title="${ __("Remove Filter") }">
+				title="${ __("Remove Filter_in_uif_filters") }">
 				<i class="fa fa-remove text-muted"></i>
 			</button></div>`)
 			.insertAfter(this.flist.wrapper.find(".set-filters .new-filter"));
@@ -509,7 +509,7 @@ frappe.ui.Filter = Class.extend({
 		value = this.flist.get_formatted_value(this.field, value);
 
 		// for translations
-		// __("like"), __("not like"), __("in")
+		// __("like_in_uif_filters"), __("not like_in_uif_filters"), __("in_in_uif_filters")
 
 		this.$btn_group.find(".toggle-filter")
 			.html(repl('%(label)s %(condition)s "%(value)s"', {

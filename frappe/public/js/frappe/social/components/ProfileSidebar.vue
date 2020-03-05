@@ -3,7 +3,7 @@
 		<div class="user-details">
 			<h3>{{ user.fullname }}</h3>
 			<p><a @click="view_energy_point_list(user)" class="text-muted">
-				{{ __("Energy Points") }}: {{ energy_points }}</a></p>
+				{{ __("Energy Points_in_sc_ProfileSidebarvue") }}: {{ energy_points }}</a></p>
 			<p>{{ user.bio }}</p>
 			<div class="location" v-if="user.location">
 				<span class="text-muted">
@@ -22,12 +22,12 @@
 			class="edit-profile-link"
 			v-if="can_edit_profile"
 			@click="edit_profile()"
-		>{{ __('Edit Profile') }}</a>
+		>{{ __('Edit Profile_in_sc_ProfileSidebarvue') }}</a>
 		<a
 			class="edit-profile-link"
 			v-if="can_edit_user"
 			@click="edit_user()"
-		>{{ __('User Settings') }}</a>
+		>{{ __('User Settings_in_sc_ProfileSidebarvue') }}</a>
 
 	</div>
 </template>
@@ -55,7 +55,7 @@ export default {
 		},
 		edit_profile() {
 			const edit_profile_dialog = new frappe.ui.Dialog({
-				title: __('Edit Profile'),
+				title: __('Edit Profile_in_sc_ProfileSidebarvue'),
 				fields: [
 					{
 						fieldtype: 'Attach Image',
@@ -107,7 +107,7 @@ export default {
 							edit_profile_dialog.enable_primary_action();
 						});
 				},
-				primary_action_label: __('Save')
+				primary_action_label: __('Save_in_sc_ProfileSidebarvue')
 			});
 			edit_profile_dialog.set_values({
 				user_image: this.user.image,

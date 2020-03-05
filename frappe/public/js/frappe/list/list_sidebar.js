@@ -168,7 +168,7 @@ frappe.views.ListSidebar = class ListSidebar {
 			if (frappe.views.calendar[this.doctype]) {
 				// has standard calendar view
 				default_link = `<li><a href="#List/${doctype}/Calendar/Default">
-					${ __("Default") }</a></li>`;
+					${ __("Default_in_list_sidebar") }</a></li>`;
 			}
 			const other_links = calendar_views.map(
 				calendar_view => `<li><a href="#List/${doctype}/Calendar/${calendar_view.name}">
@@ -179,7 +179,7 @@ frappe.views.ListSidebar = class ListSidebar {
 			const dropdown_html = `
 				<div class="btn-group">
 					<a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						${ __("Calendar") } <span class="caret"></span>
+						${ __("Calendar_in_list_sidebar") } <span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu calendar-dropdown" style="max-height: 300px; overflow-y: auto;">
 						${default_link}
@@ -201,7 +201,7 @@ frappe.views.ListSidebar = class ListSidebar {
 		let divider = false;
 
 		if (has_common(frappe.user_roles, ["System Manager", "Administrator"])) {
-			$(`<li class="new-email-account"><a>${__("New Email Account")}</a></li>`)
+			$(`<li class="new-email-account"><a>${__("New Email Account_in_list_sidebar")}</a></li>`)
 				.appendTo($dropdown);
 		}
 
@@ -335,7 +335,7 @@ frappe.views.ListSidebar = class ListSidebar {
 			field: field,
 			stat: stats,
 			sum: sum,
-			label: field === '_user_tags' ? (tags ? __(label) : __("Tags")) : __(label),
+			label: field === '_user_tags' ? (tags ? __(label) : __("Tags_in_list_sidebar")) : __(label),
 		};
 		$(frappe.render_template("list_sidebar_stat", context))
 			.on("click", ".stat-link", function() {

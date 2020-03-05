@@ -179,10 +179,10 @@ Object.assign(frappe.utils, {
 		return ret;
 	},
 	comma_or: function(list) {
-		return frappe.utils.comma_sep(list, " " + __("or") + " ");
+		return frappe.utils.comma_sep(list, " " + __("or_in_utils_utils") + " ");
 	},
 	comma_and: function(list) {
-		return frappe.utils.comma_sep(list, " " + __("and") + " ");
+		return frappe.utils.comma_sep(list, " " + __("and_in_utils_utils") + " ");
 	},
 	comma_sep: function(list, sep) {
 		if(list instanceof Array) {
@@ -524,7 +524,7 @@ Object.assign(frappe.utils, {
 	},
 
 	warn_page_name_change: function(frm) {
-		frappe.msgprint(__("Note: Changing the Page Name will break previous URL to this page."));
+		frappe.msgprint(__("Note: Changing the Page Name will break previous URL to this page._in_utils_utils"));
 	},
 
 	notify: function(subject, body, route, onclick) {
@@ -656,16 +656,16 @@ Object.assign(frappe.utils, {
 		let route = route_str.split('/');
 
 		if (route[2] === 'Report' || route[0] === 'query-report') {
-			return __('{0} Report', [route[3] || route[1]]);
+			return __('{0} Report_in_utils_utils', [route[3] || route[1]]);
 		}
 		if (route[0] === 'List') {
-			return __('{0} List', [route[1]]);
+			return __('{0} List_in_utils_utils', [route[1]]);
 		}
 		if (route[0] === 'modules') {
-			return __('{0} Modules', [route[1]]);
+			return __('{0} Modules_in_utils_utils', [route[1]]);
 		}
 		if (route[0] === 'dashboard') {
-			return __('{0} Dashboard', [route[1]]);
+			return __('{0} Dashboard_in_utils_utils', [route[1]]);
 		}
 		return __(frappe.utils.to_title_case(route[0], true));
 	},
@@ -720,7 +720,7 @@ Object.assign(frappe.utils, {
 
 		frappe.show_alert({
 			indicator: 'green',
-			message: __('Copied to clipboard.')
+			message: __('Copied to clipboard._in_utils_utils')
 		});
 	},
 	is_rtl() {

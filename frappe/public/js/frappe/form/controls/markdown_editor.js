@@ -7,7 +7,7 @@ frappe.ui.form.ControlMarkdownEditor = frappe.ui.form.ControlCode.extend({
 		this.markdown_container = this.$input_wrapper.find(`.${this.editor_class}-container`);
 
 		this.showing_preview = false;
-		this.preview_toggle_btn = $(`<button class="btn btn-default btn-xs ${this.editor_class}-toggle">${__('Preview')}</button>`)
+		this.preview_toggle_btn = $(`<button class="btn btn-default btn-xs ${this.editor_class}-toggle">${__('Preview_in_fc_markdown_editor')}</button>`)
 			.click(e => {
 				if (!this.showing_preview) {
 					this.update_preview();
@@ -19,7 +19,7 @@ frappe.ui.form.ControlMarkdownEditor = frappe.ui.form.ControlCode.extend({
 
 				this.showing_preview = !this.showing_preview;
 
-				$btn.text(this.showing_preview ? __('Edit') : __('Preview'));
+				$btn.text(this.showing_preview ? __('Edit_in_fc_markdown_editor') : __('Preview_in_fc_markdown_editor'));
 			});
 		this.markdown_container.prepend(this.preview_toggle_btn);
 

@@ -2,7 +2,7 @@ frappe.ui.form.ControlAttach = frappe.ui.form.ControlData.extend({
 	make_input: function() {
 		var me = this;
 		this.$input = $('<button class="btn btn-default btn-sm btn-attach">')
-			.html(__("Attach"))
+			.html(__("Attach_in_fc_attach"))
 			.prependTo(me.input_area)
 			.on("click", function() {
 				me.on_attach_click();
@@ -14,8 +14,8 @@ frappe.ui.form.ControlAttach = frappe.ui.form.ControlData.extend({
 					<a class="attached-file-link" target="_blank"></a>
 				</div>
 				<div>
-					<a class="btn btn-xs btn-default" data-action="reload_attachment">${__('Reload File')}</a>
-					<a class="btn btn-xs btn-default" data-action="clear_attachment">${__('Clear')}</a>
+					<a class="btn btn-xs btn-default" data-action="reload_attachment">${__('Reload File_in_fc_attach')}</a>
+					<a class="btn btn-xs btn-default" data-action="clear_attachment">${__('Clear_in_fc_attach')}</a>
 				</div>
 			</div>`)
 			.prependTo(me.input_area)

@@ -69,7 +69,7 @@ frappe.data_import.ImportPreview = class ImportPreview {
 					column_width += 50;
 				}
 				let column_title = `<span class="indicator red">
-					${col.header_title || `<i>${__('Untitled Column')}</i>`}
+					${col.header_title || `<i>${__('Untitled Column_in_import_preview')}</i>`}
 					${!col.df ? show_warnings_button : ''}
 				</span>`;
 				return {
@@ -120,7 +120,7 @@ frappe.data_import.ImportPreview = class ImportPreview {
 			cellHeight: 35,
 			serialNoColumn: false,
 			checkboxColumn: false,
-			noDataMessage: __('No Data'),
+			noDataMessage: __('No Data_in_import_preview'),
 			disableReorderColumn: true
 		});
 
@@ -128,7 +128,7 @@ frappe.data_import.ImportPreview = class ImportPreview {
 		if (max_rows_exceeded) {
 			this.wrapper.find('.table-message').html(`
 				<div class="text-muted margin-top text-medium">
-				${__('Showing only first {0} rows in preview', [max_rows_in_preview])}
+				${__('Showing only first {0} rows in preview_in_import_preview', [max_rows_in_preview])}
 				</div>
 			`);
 		}
@@ -167,17 +167,17 @@ frappe.data_import.ImportPreview = class ImportPreview {
 	add_actions() {
 		let actions = [
 			{
-				label: __('Map Columns'),
+				label: __('Map Columns_in_import_preview'),
 				handler: 'show_column_mapper',
 				condition: this.frm.doc.status !== 'Success'
 			},
 			{
-				label: __('Export Errored Rows'),
+				label: __('Export Errored Rows_in_import_preview'),
 				handler: 'export_errored_rows',
 				condition: this.import_log.filter(log => !log.success).length > 0
 			},
 			{
-				label: __('Show Warnings'),
+				label: __('Show Warnings_in_import_preview'),
 				handler: 'show_warnings',
 				condition: this.preview_data.warnings.length > 0
 			}
@@ -243,7 +243,7 @@ frappe.data_import.ImportPreview = class ImportPreview {
 					max_items: Infinity,
 					options: [
 						{
-							label: __("Don't Import"),
+							label: __("Don't Import_in_import_preview"),
 							value: "Don't Import"
 						}
 					].concat(column_picker_fields.get_fields_as_options()),
@@ -266,7 +266,7 @@ frappe.data_import.ImportPreview = class ImportPreview {
 				fieldname: 'heading',
 				options: `
 					<div class="margin-top text-muted">
-					${__('Map columns from {0} to fields in {1}', [file_name.bold(), this.doctype.bold()])}
+					${__('Map columns from {0} to fields in {1}_in_import_preview', [file_name.bold(), this.doctype.bold()])}
 					</div>
 				`
 			},
@@ -276,7 +276,7 @@ frappe.data_import.ImportPreview = class ImportPreview {
 		].concat(fields);
 
 		let dialog = new frappe.ui.Dialog({
-			title: __('Map Columns'),
+			title: __('Map Columns_in_import_preview'),
 			fields,
 			primary_action: (values) => {
 				let changed_map = {};

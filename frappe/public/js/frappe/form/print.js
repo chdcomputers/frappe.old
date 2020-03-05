@@ -80,7 +80,7 @@ frappe.ui.form.PrintPreview = Class.extend({
 					+ (me.lang_code ? ("&_lang=" + me.lang_code) : ""))
 			);
 			if (!w) {
-				frappe.msgprint(__("Please enable pop-ups")); return;
+				frappe.msgprint(__("Please enable pop-ups_in_f_print")); return;
 			}
 		});
 
@@ -102,13 +102,13 @@ frappe.ui.form.PrintPreview = Class.extend({
 			// start a new print format
 			frappe.prompt([
 				{
-					label: __("New Print Format Name"),
+					label: __("New Print Format Name_in_f_print"),
 					fieldname: "print_format_name",
 					fieldtype: "Data",
 					reqd: 1,
 				},
 				{
-					label: __('Based On'),
+					label: __('Based On_in_f_print'),
 					fieldname: 'based_on',
 					fieldtype: 'Read Only',
 					default: print_format.name || 'Standard'
@@ -121,7 +121,7 @@ frappe.ui.form.PrintPreview = Class.extend({
 					based_on: data.based_on
 				};
 				frappe.set_route("print-format-builder");
-			}, __("New Custom Print Format"), __("Start"));
+			}, __("New Custom Print Format_in_f_print"), __("Start_in_f_print"));
 		});
 
 		$(document).on('new-print-format', (e) => {
@@ -132,13 +132,13 @@ frappe.ui.form.PrintPreview = Class.extend({
 			// start a new print format
 			frappe.prompt([
 				{
-					label: __("New Print Format Name"),
+					label: __("New Print Format Name_in_f_print"),
 					fieldname: "print_format_name",
 					fieldtype: "Data",
 					reqd: 1,
 				},
 				{
-					label: __('Based On'),
+					label: __('Based On_in_f_print'),
 					fieldname: 'based_on',
 					fieldtype: 'Read Only',
 					default: print_format.name || 'Standard'
@@ -151,7 +151,7 @@ frappe.ui.form.PrintPreview = Class.extend({
 					based_on: data.based_on
 				};
 				frappe.set_route("print-format-builder");
-			}, __("New Custom Print Format"), __("Start"));
+			}, __("New Custom Print Format_in_f_print"), __("Start_in_f_print"));
 		});
 	},
 	setup_keyboard_shortcuts() {
@@ -163,7 +163,7 @@ frappe.ui.form.PrintPreview = Class.extend({
 		this.lang_code = this.frm.doc.language;
 		// Load all languages in the field
 		this.language_sel.empty()
-			.add_options([{value:'', label:__("Select Language...")}]
+			.add_options([{value:'', label:__("Select Language..._in_f_print")}]
 				.concat(frappe.get_languages()))
 			.val(this.lang_code);
 		this.preview();
@@ -193,7 +193,7 @@ frappe.ui.form.PrintPreview = Class.extend({
 		} else {
 			// show
 			if(!frappe.model.can_print(this.frm.doc.doctype, this.frm)) {
-				frappe.msgprint(__("You are not allowed to print this document"));
+				frappe.msgprint(__("You are not allowed to print this document_in_f_print"));
 				return;
 			}
 			this.refresh_print_options().trigger("change");
@@ -221,7 +221,7 @@ frappe.ui.form.PrintPreview = Class.extend({
 			// if contents are large enough, indicate that it will get printed on multiple pages
 			// Maximum height for an A4 document is 11.69 inches
 			if (print_height_inches > 11.69) {
-				$message.text(__('This may get printed on multiple pages'));
+				$message.text(__('This may get printed on multiple pages_in_f_print'));
 			} else {
 				$message.text('');
 			}
@@ -284,7 +284,7 @@ frappe.ui.form.PrintPreview = Class.extend({
 						});
 					} else {
 						frappe.show_alert({
-							message: __('PDF printing via "Raw Print" is not yet supported. Please remove the printer mapping in Printer Settings and try again.'),
+							message: __('PDF printing via "Raw Print" is not yet supported. Please remove the printer mapping in Printer Settings and try again._in_f_print'),
 							indicator: 'blue'
 						}, 14);
 						//Note: need to solve "Error: Cannot parse (FILE)<URL> as a PDF file" to enable qz pdf printing.
@@ -292,7 +292,7 @@ frappe.ui.form.PrintPreview = Class.extend({
 				} else if (me.is_raw_printing()) {
 					// printer not mapped in localstorage and the current print format is raw printing
 					frappe.show_alert({
-						message: __('Please set a printer mapping for this print format in the Printer Settings'),
+						message: __('Please set a printer mapping for this print format in the Printer Settings_in_f_print'),
 						indicator: 'blue'
 					}, 14);
 					me.printer_setting_dialog();
@@ -312,7 +312,7 @@ frappe.ui.form.PrintPreview = Class.extend({
 			+ "&no_letterhead=" + (me.with_letterhead() ? "0" : "1")
 			+ (me.lang_code ? ("&_lang=" + me.lang_code) : "")));
 		if (!w) {
-			frappe.msgprint(__("Please enable pop-ups")); return;
+			frappe.msgprint(__("Please enable pop-ups_in_f_print")); return;
 		}
 	},
 	get_print_html: function (callback) {
@@ -343,7 +343,7 @@ frappe.ui.form.PrintPreview = Class.extend({
 	},
 	get_no_preview_html() {
 		return `<div class="text-muted text-center" style="font-size: 1.2em;">
-			${__("No Preview Available")}
+			${__("No Preview Available_in_f_print")}
 		</div>` ;
 	},
 	get_raw_commands: function (callback) {
@@ -420,14 +420,14 @@ frappe.ui.form.PrintPreview = Class.extend({
 		frappe.ui.form.qz_get_printer_list().then((data) => {
 			this.printer_list = data;
 			const dialog = new frappe.ui.Dialog({
-				title: __("Printer Settings"),
+				title: __("Printer Settings_in_f_print"),
 				fields: [{
 					fieldtype: 'Section Break'
 				},
 				{
 					fieldname: "printer_mapping",
 					fieldtype: "Table",
-					label: __('Printer Mapping'),
+					label: __('Printer Mapping_in_f_print'),
 					in_place_edit: true,
 					data: this.data,
 					get_data: () => {
@@ -440,7 +440,7 @@ frappe.ui.form.PrintPreview = Class.extend({
 						options: this.print_formats,
 						read_only: 0,
 						in_list_view: 1,
-						label: __('Print Format')
+						label: __('Print Format_in_f_print')
 					}, {
 						fieldtype: 'Select',
 						fieldname: "printer",
@@ -448,7 +448,7 @@ frappe.ui.form.PrintPreview = Class.extend({
 						options: this.printer_list,
 						read_only: 0,
 						in_list_view: 1,
-						label: __('Printer')
+						label: __('Printer_in_f_print')
 					}]
 				},
 				],
@@ -458,7 +458,7 @@ frappe.ui.form.PrintPreview = Class.extend({
 						let print_format_list = printer_mapping.map(a => a.print_format);
 						let has_duplicate = print_format_list.some((item, idx) => print_format_list.indexOf(item) != idx);
 						if (has_duplicate)
-							frappe.throw(__("Cannot have multiple printers mapped to a single print format."));
+							frappe.throw(__("Cannot have multiple printers mapped to a single print format._in_f_print"));
 					} else {
 						printer_mapping = [];
 					}
@@ -467,11 +467,11 @@ frappe.ui.form.PrintPreview = Class.extend({
 					localStorage.print_format_printer_map = JSON.stringify(this.print_format_printer_map);
 					this.hide();
 				},
-				primary_action_label: __('Save')
+				primary_action_label: __('Save_in_f_print')
 			});
 			dialog.show();
 			if (!(this.printer_list && this.printer_list.length)) {
-				frappe.throw(__("No Printer is Available."));
+				frappe.throw(__("No Printer is Available._in_f_print"));
 			}
 		});
 	}
@@ -487,21 +487,21 @@ frappe.ui.get_print_settings = function (pdf, callback, letter_head, pick_column
 	var columns = [{
 		fieldtype: "Check",
 		fieldname: "with_letter_head",
-		label: __("With Letter head")
+		label: __("With Letter head_in_f_print")
 	}, {
 		fieldtype: "Select",
 		fieldname: "letter_head",
-		label: __("Letter Head"),
+		label: __("Letter Head_in_f_print"),
 		depends_on: "with_letter_head",
 		options: $.map(frappe.boot.letter_heads, function (i, d) { return d }),
 		default: letter_head || default_letter_head
 	}, {
 		fieldtype: "Select",
 		fieldname: "orientation",
-		label: __("Orientation"),
+		label: __("Orientation_in_f_print"),
 		options: [
-			{ "value": "Landscape", "label": __("Landscape") },
-			{ "value": "Portrait", "label": __("Portrait") }
+			{ "value": "Landscape", "label": __("Landscape_in_f_print") },
+			{ "value": "Portrait", "label": __("Portrait_in_f_print") }
 		],
 		default: "Landscape"
 	}];
@@ -509,12 +509,12 @@ frappe.ui.get_print_settings = function (pdf, callback, letter_head, pick_column
 	if (pick_columns) {
 		columns.push(
 			{
-				label: __("Pick Columns"),
+				label: __("Pick Columns_in_f_print"),
 				fieldtype: "Check",
 				fieldname: "pick_columns",
 			},
 			{
-				label: __("Select Columns"),
+				label: __("Select Columns_in_f_print"),
 				fieldtype: "MultiCheck",
 				fieldname: "columns",
 				depends_on: "pick_columns",
@@ -536,7 +536,7 @@ frappe.ui.get_print_settings = function (pdf, callback, letter_head, pick_column
 			data.letter_head = frappe.boot.letter_heads[print_settings.letter_head];
 		}
 		callback(data);
-	}, __("Print Settings"));
+	}, __("Print Settings_in_f_print"));
 }
 
 
@@ -550,17 +550,17 @@ frappe.ui.form.qz_connect = function () {
 	return new Promise(function (resolve, reject) {
 		frappe.ui.form.qz_init().then(() => {
 			if (qz.websocket.isActive()) { // if already active, resolve immediately
-				// frappe.show_alert({message: __('QZ Tray Connection Active!'), indicator: 'green'});
+				// frappe.show_alert({message: __('QZ Tray Connection Active!_in_f_print'), indicator: 'green'});
 				resolve();
 			} else {
 				// try to connect once before firing the mimetype launcher
 				frappe.show_alert({
-					message: __('Attempting Connection to QZ Tray...'),
+					message: __('Attempting Connection to QZ Tray..._in_f_print'),
 					indicator: 'blue'
 				});
 				qz.websocket.connect().then(() => {
 					frappe.show_alert({
-						message: __('Connected to QZ Tray!'),
+						message: __('Connected to QZ Tray!_in_f_print'),
 						indicator: 'green'
 					});
 					resolve();
@@ -577,13 +577,13 @@ frappe.ui.form.qz_connect = function () {
 							delay: 1
 						}).then(() => {
 							frappe.show_alert({
-								message: __('Connected to QZ Tray!'),
+								message: __('Connected to QZ Tray!_in_f_print'),
 								indicator: 'green'
 							});
 							resolve();
 						},
 						() => {
-							frappe.throw(__('Error connecting to QZ Tray Application...<br><br> You need to have QZ Tray application installed and running, to use the Raw Print feature.<br><br><a target="_blank" href="https://qz.io/download/">Click here to Download and install QZ Tray</a>.<br> <a target="_blank" href="https://erpnext.com/docs/user/manual/en/setting-up/print/raw-printing">Click here to learn more about Raw Printing</a>.'));
+							frappe.throw(__('Error connecting to QZ Tray Application...<br><br> You need to have QZ Tray application installed and running, to use the Raw Print feature.<br><br><a target="_blank" href="https://qz.io/download/">Click here to Download and install QZ Tray</a>.<br> <a target="_blank" href="https://erpnext.com/docs/user/manual/en/setting-up/print/raw-printing">Click here to learn more about Raw Printing_in_f_print</a>.'));
 							reject();
 						});
 					} else {
@@ -641,7 +641,7 @@ frappe.ui.form.qz_get_printer_list = function () {
 frappe.ui.form.qz_success = function () {
 	// notify qz successful print
 	frappe.show_alert({
-		message: __('Print Sent to the printer!'),
+		message: __('Print Sent to the printer!_in_f_print'),
 		indicator: 'green'
 	});
 }
@@ -649,7 +649,7 @@ frappe.ui.form.qz_success = function () {
 frappe.ui.form.qz_fail = function (e) {
 	// notify qz errors
 	frappe.show_alert({
-		message: __("QZ Tray Failed: ") + e.toString(),
+		message: __("QZ Tray Failed: _in_f_print") + e.toString(),
 		indicator: 'red'
 	}, 20);
 }

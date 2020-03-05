@@ -14,10 +14,10 @@
 		</div>
 		<div class="sidebar-image-actions">
 			<div class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ __("Change") }}</a>
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ __("Change_in_ft_form_sidebar") }}</a>
 				<ul class="dropdown-menu" role="menu">
-					<li><a class="sidebar-image-change">{{ __("Upload") }}</a></li>
-					<li><a class="sidebar-image-remove">{{ __("Remove") }}</a></li>
+					<li><a class="sidebar-image-change">{{ __("Upload_in_ft_form_sidebar") }}</a></li>
+					<li><a class="sidebar-image-remove">{{ __("Remove_in_ft_form_sidebar") }}</a></li>
 				</ul>
 			</div>
 		</div>
@@ -25,17 +25,17 @@
 </ul>
 {% if frm.meta.beta %}
 <div class="sidebar-menu">
-	<p><label class="label label-warning" title="{{ __("This feature is brand new and still experimental") }}">{{ __("Under Development") }}</label></p>
+	<p><label class="label label-warning" title="{{ __("This feature is brand new and still experimental_in_ft_form_sidebar") }}">{{ __("Under Development_in_ft_form_sidebar") }}</label></p>
 	<p><a class="small" href="https://github.com/frappe/{{ frappe.boot.module_app[frappe.scrub(frm.meta.module)] }}/issues/new"
 			target="_blank">
-		{{ __("Click here to post bugs and suggestions") }}</a></p>
+		{{ __("Click here to post bugs and suggestions_in_ft_form_sidebar") }}</a></p>
 
 </div>
 {% endif %}
 <ul class="list-unstyled sidebar-menu sidebar-rating hide">
 	<li style="position: relative;">
 		<a class="strong badge-hover">
-			<span>{%= __("Feedback") %}</span>
+			<span>{%= __("Feedback_in_ft_form_sidebar") %}</span>
 		</a>
 	</li>
 	<li class="rating-icons"></li>
@@ -49,36 +49,36 @@
 		</a>
 	</li>
     {% if(frappe.help.has_help(doctype)) { %}
-    <li><a class="help-link list-link" data-doctype="{{ doctype }}">{{ __("Help") }}</a></li>
+    <li><a class="help-link list-link" data-doctype="{{ doctype }}">{{ __("Help_in_ft_form_sidebar") }}</a></li>
     {% } %}
 </ul>
 <ul class="list-unstyled sidebar-menu form-assignments">
-	<li class="h6 assigned-to-label">{%= __("Assigned To") %}</li>
-	<li><a class="add-assignment text-muted">{%= __("Assign") %}
+	<li class="h6 assigned-to-label">{%= __("Assigned To_in_ft_form_sidebar") %}</li>
+	<li><a class="add-assignment text-muted">{%= __("Assign_in_ft_form_sidebar") %}
 		<i class="octicon octicon-plus" style="margin-left: 2px;"></i></a></li>
 </ul>
 <ul class="list-unstyled sidebar-menu form-attachments">
-	<li class="h6 attachments-label">{%= __("Attachments") %}</li>
-	<li><a class="add-attachment text-muted">{%= __("Attach File") %}
+	<li class="h6 attachments-label">{%= __("Attachments_in_ft_form_sidebar") %}</li>
+	<li><a class="add-attachment text-muted">{%= __("Attach File_in_ft_form_sidebar") %}
 		<i class="octicon octicon-plus" style="margin-left: 2px;"></i></li></a>
 </ul>
 <ul class="list-unstyled sidebar-menu">
-	<li class="h6 tags-label">{%= __("Tags") %}</li>
+	<li class="h6 tags-label">{%= __("Tags_in_ft_form_sidebar") %}</li>
 	<li class="form-tags">
 		<div class="tag-area"></div>
 		<div class="clearfix"></div>
 	</li>
 </ul>
 <ul class="list-unstyled sidebar-menu form-reviews">
-	<li class="h6 attachments-label">{%= __("Reviews") %}</li>
+	<li class="h6 attachments-label">{%= __("Reviews_in_ft_form_sidebar") %}</li>
 	<li class="review-list"></li>
 </ul>
 <ul class="list-unstyled sidebar-menu">
-	<li class="h6 shared-with-label">{%= __("Shared With") %}</li>
+	<li class="h6 shared-with-label">{%= __("Shared With_in_ft_form_sidebar") %}</li>
 	<li class="form-shared"></li>
 </ul>
 <ul class="list-unstyled sidebar-menu">
-	<li class="h6 viewers-label">{%= __("Currently Viewing") %}</li>
+	<li class="h6 viewers-label">{%= __("Currently Viewing_in_ft_form_sidebar") %}</li>
 	<li class="form-viewers"></li>
 </ul>
 <ul class="list-unstyled sidebar-menu">
@@ -93,14 +93,14 @@
 	</li>
 </ul>
 <ul class="list-unstyled sidebar-menu followed-by-section">
-	<li class="h6 followed-by-label text-medium hidden">{%= __("Followed by") %}</li>
+	<li class="h6 followed-by-label text-medium hidden">{%= __("Followed by_in_ft_form_sidebar") %}</li>
 	<li class="followed-by"></li>
 	<li class="document-follow">
 		<a class="badge-hover follow-document-link hidden">
-			{%= __("Follow") %}
+			{%= __("Follow_in_ft_form_sidebar") %}
 		</a>
 		<a class="badge-hover unfollow-document-link hidden">
-			{%= __("Unfollow") %}
+			{%= __("Unfollow_in_ft_form_sidebar") %}
 		</a>
 	</li>
 </ul>

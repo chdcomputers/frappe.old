@@ -35,29 +35,29 @@ Object.assign(frappe.energy_points, {
 		const ref_doc = log.reference_name;
 
 		if (log.type === 'Appreciation') {
-			return __('{0} appreciated on {1}', [owner_name, ref_doc]);
+			return __('{0} appreciated on {1}_in_utils_enerpoiut', [owner_name, ref_doc]);
 		}
 		if (log.type === 'Criticism') {
-			return __('{0} criticized on {1}', [owner_name, ref_doc]);
+			return __('{0} criticized on {1}_in_utils_enerpoiut', [owner_name, ref_doc]);
 		}
 		if (log.type === 'Revert') {
-			return __('{0} reverted {1}', [owner_name, log.revert_of]);
+			return __('{0} reverted {1}_in_utils_enerpoiut', [owner_name, log.revert_of]);
 		}
-		return __('via automatic rule {0} on {1}', [log.rule.bold(), ref_doc]);
+		return __('via automatic rule {0} on {1}_in_utils_enerpoiut', [log.rule.bold(), ref_doc]);
 	},
 	get_form_log_message(log) {
 		// redundant code to honor readability and to avoid confusion
 		const owner_name = frappe.user.full_name(log.owner).bold();
 		const user = frappe.user.full_name(log.user).bold();
 		if (log.type === 'Appreciation') {
-			return __('{0} appreciated {1}', [owner_name, user]);
+			return __('{0} appreciated {1}_in_utils_enerpoiut', [owner_name, user]);
 		}
 		if (log.type === 'Criticism') {
-			return __('{0} criticized {1}', [owner_name, user]);
+			return __('{0} criticized {1}_in_utils_enerpoiut', [owner_name, user]);
 		}
 		if (log.type === 'Revert') {
-			return __('{0} reverted {1}', [owner_name, log.revert_of]);
+			return __('{0} reverted {1}_in_utils_enerpoiut', [owner_name, log.revert_of]);
 		}
-		return __('gained by {0} via automatic rule {1}', [user, log.rule.bold()]);
+		return __('gained by {0} via automatic rule {1}_in_utils_enerpoiut', [user, log.rule.bold()]);
 	},
 });

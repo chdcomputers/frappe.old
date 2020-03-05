@@ -77,10 +77,10 @@ frappe.ui.form.Sidebar = Class.extend({
 			this.frm.follow.refresh();
 			this.frm.viewers.refresh();
 			this.frm.tags && this.frm.tags.refresh(this.frm.get_docinfo().tags);
-			this.sidebar.find(".modified-by").html(__("{0} edited this {1}",
+			this.sidebar.find(".modified-by").html(__("{0} edited this {1}_in_fs_form_sidebar",
 				["<strong>" + frappe.user.full_name(this.frm.doc.modified_by) + "</strong>",
 					"<br>" + comment_when(this.frm.doc.modified)]));
-			this.sidebar.find(".created-by").html(__("{0} created this {1}",
+			this.sidebar.find(".created-by").html(__("{0} created this {1}_in_fs_form_sidebar",
 				["<strong>" + frappe.user.full_name(this.frm.doc.owner) + "</strong>",
 					"<br>" + comment_when(this.frm.doc.creation)]));
 
@@ -102,7 +102,7 @@ frappe.ui.form.Sidebar = Class.extend({
 					fieldname: ["frequency"]
 				},
 				callback: function(res) {
-					me.sidebar.find(".auto-repeat-status").html(__("Repeats {0}", [res.message.frequency]));
+					me.sidebar.find(".auto-repeat-status").html(__("Repeats {0}_in_fs_form_sidebar", [res.message.frequency]));
 					me.sidebar.find(".auto-repeat-status").on("click", function(){
 						frappe.set_route("Form", "Auto Repeat", me.frm.doc.auto_repeat);
 					});

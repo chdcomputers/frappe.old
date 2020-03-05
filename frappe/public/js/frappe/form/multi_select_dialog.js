@@ -24,7 +24,7 @@ frappe.ui.form.MultiSelectDialog = Class.extend({
 		let fields = [
 			{
 				fieldtype: "Data",
-				label: __("Search Term"),
+				label: __("Search Term_in_f_multi_select_dialog"),
 				fieldname: "search_term"
 			},
 			{
@@ -71,12 +71,12 @@ frappe.ui.form.MultiSelectDialog = Class.extend({
 		fields = fields.concat([
 			{
 				"fieldname":"date_range",
-				"label": __("Date Range"),
+				"label": __("Date Range_in_f_multi_select_dialog"),
 				"fieldtype": "DateRange",
 			},
 			{ fieldtype: "Section Break" },
 			{ fieldtype: "HTML", fieldname: "results_area" },
-			{ fieldtype: "Button", fieldname: "more_btn", label: __("More"),
+			{ fieldtype: "Button", fieldname: "more_btn", label: __("More_in_f_multi_select_dialog"),
 				click: function(){
 					me.start += 20;
 					frappe.flags.auto_scroll = true;
@@ -88,10 +88,10 @@ frappe.ui.form.MultiSelectDialog = Class.extend({
 		let doctype_plural = !this.doctype.endsWith('y') ? this.doctype + 's'
 			: this.doctype.slice(0, -1) + 'ies';
 		this.dialog = new frappe.ui.Dialog({
-			title: __("Select {0}", [(this.doctype=='[Select]') ? __("value") : __(doctype_plural)]),
+			title: __("Select {0}", [(this.doctype=='[Select]') ? __("value_in_f_multi_select_dialog") : __(doctype_plural)]),
 			fields: fields,
-			primary_action_label: __("Get Items"),
-			secondary_action_label: __("Make {0}", [me.doctype]),
+			primary_action_label: __("Get Items_in_f_multi_select_dialog"),
+			secondary_action_label: __("Make {0}_in_f_multi_select_dialog", [me.doctype]),
 			primary_action: function() {
 				me.action(me.get_checked_values(), me.args);
 			},

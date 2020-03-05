@@ -3,16 +3,16 @@
 		<a href class="text-muted text-medium"
 			@click.prevent="$emit('hide-web-link')"
 		>
-			{{ __('← Back to upload files') }}
+			{{ __('← Back to upload files_inWebLinkvue') }}
 		</a>
 		<div class="input-group">
 			<div class="input-group-addon">
-				<span class="text-muted text-medium">{{ __('Web Link') }}</span>
+				<span class="text-muted text-medium">{{ __('Web Link_inWebLinkvue') }}</span>
 			</div>
 			<input
 				type="text"
 				class="form-control"
-				:placeholder="__('Attach a web link')"
+				:placeholder="__('Attach a web link_inWebLinkvue')"
 				v-model="url"
 			>
 		</div>

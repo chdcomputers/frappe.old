@@ -13,7 +13,7 @@ frappe.ui.form.ControlLink = frappe.ui.form.ControlData.extend({
 		$('<div class="link-field ui-front" style="position: relative; line-height: 1;">\
 			<input type="text" class="input-with-feedback form-control">\
 			<span class="link-btn">\
-				<a class="btn-open no-decoration" title="' + __("Open Link") + '">\
+				<a class="btn-open no-decoration" title="' + __("Open Link_in_fc_link") + '">\
 					<i class="octicon octicon-arrow-right"></i></a>\
 			</span>\
 		</div>').prependTo(this.input_area);
@@ -191,7 +191,7 @@ frappe.ui.form.ControlLink = frappe.ui.form.ControlData.extend({
 							r.results.push({
 								label: "<span class='text-primary link-option'>"
 									+ "<i class='fa fa-plus' style='margin-right: 5px;'></i> "
-									+ __("Create a new {0}", [__(me.get_options())])
+									+ __("Create a new {0}_in_fc_link", [__(me.get_options())])
 									+ "</span>",
 								value: "create_new__link_option",
 								action: me.new_doc
@@ -204,7 +204,7 @@ frappe.ui.form.ControlLink = frappe.ui.form.ControlData.extend({
 							r.results.push({
 								label: "<span class='text-primary link-option'>"
 									+ "<i class='fa fa-search' style='margin-right: 5px;'></i> "
-									+ __("Advanced Search")
+									+ __("Advanced Search_in_fc_link")
 									+ "</span>",
 								value: "advanced_search__link_option",
 								action: me.open_advanced_search
@@ -336,7 +336,7 @@ frappe.ui.form.ControlLink = frappe.ui.form.ControlData.extend({
 			}
 
 			let value = filter[3] == null || filter[3] === ''
-				? __('empty')
+				? __('empty_in_fc_link')
 				: String(filter[3]);
 
 			return [__(label).bold(), filter[2], value.bold()].join(' ');
@@ -346,7 +346,7 @@ frappe.ui.form.ControlLink = frappe.ui.form.ControlData.extend({
 			.map(get_filter_description)
 			.join(', ');
 
-		return __('Filters applied for {0}', [filter_string]);
+		return __('Filters applied for {0}_in_fc_link', [filter_string]);
 	},
 
 	set_custom_query: function(args) {

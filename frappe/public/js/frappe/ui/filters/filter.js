@@ -7,27 +7,27 @@ frappe.ui.Filter = class {
 
 		this.utils = frappe.ui.filter_utils;
 		this.conditions = [
-			["=", __("Equals")],
-			["!=", __("Not Equals")],
-			["like", __("Like")],
-			["not like", __("Not Like")],
-			["in", __("In")],
-			["not in", __("Not In")],
-			["is", __("Is")],
+			["=", __("Equals_in_uif_filter")],
+			["!=", __("Not Equals_in_uif_filter")],
+			["like", __("Like_in_uif_filter")],
+			["not like", __("Not Like_in_uif_filter")],
+			["in", __("In_in_uif_filter")],
+			["not in", __("Not In_in_uif_filter")],
+			["is", __("Is_in_uif_filter")],
 			[">", ">"],
 			["<", "<"],
 			[">=", ">="],
 			["<=", "<="],
-			["Between", __("Between")],
-			["Previous", __("Previous")],
-			["Next", __("Next")]
+			["Between", __("Between_in_uif_filter")],
+			["Previous", __("Previous_in_uif_filter")],
+			["Next", __("Next_in_uif_filter")]
 		];
 
 		this.nested_set_conditions = [
-			["descendants of", __("Descendants Of")],
-			["not descendants of", __("Not Descendants Of")],
-			["ancestors of", __("Ancestors Of")],
-			["not ancestors of", __("Not Ancestors Of")],
+			["descendants of", __("Descendants Of_in_uif_filter")],
+			["not descendants of", __("Not Descendants Of_in_uif_filter")],
+			["ancestors of", __("Ancestors Of_in_uif_filter")],
+			["not ancestors of", __("Not Ancestors Of_in_uif_filter")],
 		];
 
 		this.conditions.push(...this.nested_set_conditions);
@@ -207,23 +207,23 @@ frappe.ui.Filter = class {
 			df.fieldtype = 'Select';
 			df.options = [
 				{
-					label: __('1 week'),
+					label: __('1 week_in_uif_filter'),
 					value: '1 week'
 				},
 				{
-					label: __('1 month'),
+					label: __('1 month_in_uif_filter'),
 					value: '1 month'
 				},
 				{
-					label: __('3 months'),
+					label: __('3 months_in_uif_filter'),
 					value: '3 months'
 				},
 				{
-					label: __('6 months'),
+					label: __('6 months_in_uif_filter'),
 					value: '6 months'
 				},
 				{
-					label: __('1 year'),
+					label: __('1 year_in_uif_filter'),
 					value: '1 year'
 				}
 			];
@@ -311,10 +311,10 @@ frappe.ui.Filter = class {
 	get_filter_tag_element() {
 		return $(`<div class="filter-tag btn-group">
 			<button class="btn btn-default btn-xs toggle-filter"
-				title="${ __("Edit Filter") }">
+				title="${ __("Edit Filter_in_uif_filter") }">
 			</button>
 			<button class="btn btn-default btn-xs remove-filter"
-				title="${ __("Remove Filter") }">
+				title="${ __("Remove Filter_in_uif_filter") }">
 				<i class="fa fa-remove text-muted"></i>
 			</button>
 		</div>`);
@@ -327,8 +327,8 @@ frappe.ui.Filter = class {
 		}
 		// set description
 		$desc.html((in_list(["in", "not in"], condition)==="in"
-			? __("values separated by commas")
-			: __("use % as wildcard"))+'</div>');
+			? __("values separated by commas_in_uif_filter")
+			: __("use % as wildcard_in_uif_filter"))+'</div>');
 	}
 
 	hide_invalid_conditions(fieldtype, original_type) {
@@ -421,9 +421,9 @@ frappe.ui.filter_utils = {
 		if(df.fieldname=="docstatus") {
 			df.fieldtype="Select",
 			df.options=[
-				{value:0, label:__("Draft")},
-				{value:1, label:__("Submitted")},
-				{value:2, label:__("Cancelled")}
+				{value:0, label:__("Draft_in_uif_filter")},
+				{value:1, label:__("Submitted_in_uif_filter")},
+				{value:2, label:__("Cancelled_in_uif_filter")}
 			];
 		} else if(df.fieldtype=='Check') {
 			df.fieldtype='Select';
@@ -443,8 +443,8 @@ frappe.ui.filter_utils = {
 		if (condition === 'is') {
 			df.fieldtype = 'Select';
 			df.options = [
-				{ label: __('Set'), value: 'set' },
-				{ label: __('Not Set'), value: 'not set' },
+				{ label: __('Set_in_uif_filter'), value: 'set' },
+				{ label: __('Not Set_in_uif_filter'), value: 'not set' },
 			];
 		}
 	}

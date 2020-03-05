@@ -26,7 +26,7 @@ frappe.ui.form.Review = class Review {
 	add_review_button() {
 
 		this.review_list_wrapper.append(`
-			<span class="avatar avatar-small avatar-empty btn-add-review" title="${__('Add Review')}">
+			<span class="avatar avatar-small avatar-empty btn-add-review" title="${__('Add Review_in_fs_review')}">
 				<i class="octicon octicon-plus text-muted"></i>
 			</span>
 		`);
@@ -39,7 +39,7 @@ frappe.ui.form.Review = class Review {
 				trigger: 'hover',
 				content: () => {
 					return `<div class="text-medium">
-						${__('You do not have enough review points')}
+						${__('You do not have enough review points_in_fs_review')}
 					</div>`;
 				},
 				html: true
@@ -74,33 +74,33 @@ frappe.ui.form.Review = class Review {
 		const user_options = this.get_involved_users();
 		const doc_owner = this.frm.doc.owner;
 		const review_dialog = new frappe.ui.Dialog({
-			'title': __('Add Review'),
+			'title': __('Add Review_in_fs_review'),
 			'fields': [{
 				fieldname: 'to_user',
 				fieldtype: 'Autocomplete',
-				label: __('To User'),
+				label: __('To User_in_fs_review'),
 				reqd: 1,
 				options: user_options,
 				ignore_validation: 1,
-				description: __('Only users involved in the document are listed')
+				description: __('Only users involved in the document are listed_in_fs_review')
 			}, {
 				fieldname: 'review_type',
 				fieldtype: 'Select',
-				label: __('Action'),
+				label: __('Action_in_fs_review'),
 				options: [{
-					'label': __('Appreciate'),
+					'label': __('Appreciate_in_fs_review'),
 					'value': 'Appreciation'
 				}, {
-					'label': __('Criticize'),
+					'label': __('Criticize_in_fs_review'),
 					'value': 'Criticism'
 				}],
 				default: 'Appreciation'
 			}, {
 				fieldname: 'points',
 				fieldtype: 'Int',
-				label: __('Points'),
+				label: __('Points_in_fs_review'),
 				reqd: 1,
-				description: __(`Currently you have ${this.points.review_points} review points`)
+				description: __(`Currently you have ${this.points.review_points} review points_in_fs_review`)
 			}, {
 				fieldtype: 'Small Text',
 				fieldname: 'reason',
@@ -110,7 +110,7 @@ frappe.ui.form.Review = class Review {
 			primary_action: (values) => {
 				review_dialog.disable_primary_action();
 				if (values.points > this.points.review_points) {
-					return frappe.msgprint(__('You do not have enough points'));
+					return frappe.msgprint(__('You do not have enough points_in_fs_review'));
 				}
 				frappe.xcall('frappe.social.doctype.energy_point_log.energy_point_log.review', {
 					doc: {
@@ -132,7 +132,7 @@ frappe.ui.form.Review = class Review {
 					review_dialog.enable_primary_action();
 				});
 			},
-			primary_action_label: __('Submit')
+			primary_action_label: __('Submit_in_fs_review')
 		});
 		review_dialog.show();
 	}
@@ -159,15 +159,15 @@ frappe.ui.form.Review = class Review {
 		let message_parts = [Math.abs(data.points), fullname, timestamp];
 		if (data.type === 'Appreciation') {
 			if (data.points == 1) {
-				subject = __('{0} appreciation point for {1} {2}', message_parts);
+				subject = __('{0} appreciation point for {1} {2}_in_fs_review', message_parts);
 			} else {
-				subject = __('{0} appreciation points for {1} {2}', message_parts);
+				subject = __('{0} appreciation points for {1} {2}_in_fs_review', message_parts);
 			}
 		} else {
 			if (data.points == -1) {
-				subject = __('{0} criticism point for {1} {2}', message_parts);
+				subject = __('{0} criticism point for {1} {2}_in_fs_review', message_parts);
 			} else {
-				subject = __('{0} criticism points for {1} {2}', message_parts);
+				subject = __('{0} criticism points for {1} {2}_in_fs_review', message_parts);
 			}
 		}
 		el.popover({

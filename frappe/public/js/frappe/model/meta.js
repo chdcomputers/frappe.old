@@ -161,7 +161,7 @@ $.extend(frappe.meta, {
 
 			if(!out) {
 				// eslint-disable-next-line
-				console.log(__('Warning: Unable to find {0} in any table related to {1}', [
+				console.log(__('Warning: Unable to find {0} in any table related to {1}_in_m_meta', [
 					key, __(doctype)]));
 			}
 		}
@@ -178,12 +178,12 @@ $.extend(frappe.meta, {
 
 	get_label: function(dt, fn, dn) {
 		var standard = {
-			'owner': __('Owner'),
-			'creation': __('Created On'),
-			'modified': __('Last Modified On'),
-			'idx': __('Idx'),
-			'name': __('Name'),
-			'modified_by': __('Last Modified By')
+			'owner': __('Owner_in_m_meta'),
+			'creation': __('Created On_in_m_meta'),
+			'modified': __('Last Modified On_in_m_meta'),
+			'idx': __('Idx_in_m_meta'),
+			'name': __('Name_in_m_meta'),
+			'modified_by': __('Last Modified By_in_m_meta')
 		}
 		if(standard[fn]) {
 			return standard[fn];

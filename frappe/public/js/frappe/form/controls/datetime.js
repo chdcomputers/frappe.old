@@ -1,7 +1,7 @@
 frappe.ui.form.ControlDatetime = frappe.ui.form.ControlDate.extend({
 	set_date_options: function() {
 		this._super();
-		this.today_text = __("Now");
+		this.today_text = __("Now_in_fc_datetime");
 		let sysdefaults = frappe.boot.sysdefaults;
 		this.date_format = frappe.defaultDatetimeFormat;
 		let time_format = sysdefaults && sysdefaults.time_format

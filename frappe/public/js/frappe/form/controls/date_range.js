@@ -41,7 +41,7 @@ frappe.ui.form.ControlDateRange = frappe.ui.form.ControlData.extend({
 	},
 	parse: function(value) {
 		// replace the separator (which can be in user language) with comma
-		const to = __('{0} to {1}').replace('{0}', '').replace('{1}', '');
+		const to = __('{0} to {1}_in_fc_date_range').replace('{0}', '').replace('{1}', '');
 		value = value.replace(to, ',');
 
 		if(value && value.includes(',')) {
@@ -55,7 +55,7 @@ frappe.ui.form.ControlDateRange = frappe.ui.form.ControlData.extend({
 		if(value1 && value2) {
 			value1 = frappe.datetime.str_to_user(value1);
 			value2 = frappe.datetime.str_to_user(value2);
-			return __("{0} to {1}", [value1, value2]);
+			return __("{0} to {1}_in_fc_date_range", [value1, value2]);
 		}
 		return "";
 	}

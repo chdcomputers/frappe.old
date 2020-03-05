@@ -104,7 +104,7 @@ frappe.ui.form.Control = Class.extend({
 		if (this.$wrapper.find('.clearfix .btn-translation').length) return;
 
 		const translation_btn =
-			`<a class="btn-translation no-decoration text-muted" title="${__('Open Translation')}">
+			`<a class="btn-translation no-decoration text-muted" title="${__('Open Translation_in_fc_base_control')}">
 				<i class="fa fa-globe"></i>
 			</a>`;
 

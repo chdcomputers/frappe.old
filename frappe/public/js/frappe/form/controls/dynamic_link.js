@@ -27,7 +27,7 @@ frappe.ui.form.ControlDynamicLink = frappe.ui.form.ControlLink.extend({
 		}
 
 		if (frappe.model.is_single(options)) {
-			frappe.throw(__(`${options.bold()} is not a valid DocType for Dynamic Link`));
+			frappe.throw(__(`${options.bold()} is not a valid DocType for Dynamic Link_in_fc_dynamic_link`));
 		}
 
 		return options;

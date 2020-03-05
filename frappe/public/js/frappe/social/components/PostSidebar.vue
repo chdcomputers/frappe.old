@@ -2,11 +2,11 @@
 	<div class="flex flex-column">
 		<a class="leaderboard-link"
 			@click.prevent="go_to_user_list()">
-			{{ __('Leaderboard') }}
+			{{ __('Leaderboard_in_sc_PostSidebarvue') }}
 		</a>
 		<div class="links" v-if="frequently_visited_list.length">
 			<div class="muted-title">
-				{{ __('Frequently Visited Links') }}
+				{{ __('Frequently Visited Links_in_sc_PostSidebarvue') }}
 			</div>
 			<div class="flex flex-column">
 				<a class="route-link"

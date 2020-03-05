@@ -121,7 +121,7 @@ frappe.ui.form.Form = class FrappeForm {
 			shortcut: 'shift+ctrl+>',
 			action: () => this.navigate_records(0),
 			page: this.page,
-			description: __('Go to next record'),
+			description: __('Go to next record_in_f_form'),
 			ignore_inputs: true,
 			condition: () => !this.is_new()
 		});
@@ -130,7 +130,7 @@ frappe.ui.form.Form = class FrappeForm {
 			shortcut: 'shift+ctrl+<',
 			action: () => this.navigate_records(1),
 			page: this.page,
-			description: __('Go to previous record'),
+			description: __('Go to previous record_in_f_form'),
 			ignore_inputs: true,
 			condition: () => !this.is_new()
 		});
@@ -234,12 +234,12 @@ frappe.ui.form.Form = class FrappeForm {
 				e.preventDefault();
 
 				if(me.doc.__islocal) {
-					frappe.msgprint(__("Please save before attaching."));
+					frappe.msgprint(__("Please save before attaching._in_f_form"));
 					throw "attach error";
 				}
 
 				if(me.attachments.max_reached()) {
-					frappe.msgprint(__("Maximum Attachment Limit for this record reached."));
+					frappe.msgprint(__("Maximum Attachment Limit for this record reached._in_f_form"));
 					throw "attach error";
 				}
 
@@ -331,7 +331,7 @@ frappe.ui.form.Form = class FrappeForm {
 							if (action.action_type==='Server Action') {
 								frappe.xcall(action.action, {doc: this.doc}).then(() => {
 									frappe.msgprint({
-										message: __('{} Complete', [action.label]),
+										message: __('{} Complete_in_f_form', [action.label]),
 										alert: true
 									});
 								});
@@ -625,7 +625,7 @@ frappe.ui.form.Form = class FrappeForm {
 		var me = this;
 		return new Promise(resolve => {
 			this.validate_form_action("Submit");
-			frappe.confirm(__("Permanently Submit {0}?", [this.docname]), function() {
+			frappe.confirm(__("Permanently Submit {0}?_in_f_form", [this.docname]), function() {
 				frappe.validated = true;
 				me.script_manager.trigger("before_submit").then(function() {
 					if(!frappe.validated) {
@@ -685,19 +685,19 @@ frappe.ui.form.Form = class FrappeForm {
 		}
 		links_text = `<ul>${links_text}</ul>`;
 
-		let confirm_message = __('{0} {1} is linked with the following submitted documents: {2}',
+		let confirm_message = __('{0} {1} is linked with the following submitted documents: {2}_in_f_form',
 			[(me.doc.doctype).bold(), me.doc.name, links_text]);
 
 		let can_cancel = links.every((link) => frappe.model.can_cancel(link.doctype));
 		if (can_cancel) {
-			confirm_message += __('Do you want to cancel all linked documents?');
+			confirm_message += __('Do you want to cancel all linked documents?_in_f_form');
 		} else {
-			confirm_message += __('You do not have permissions to cancel all linked documents.');
+			confirm_message += __('You do not have permissions to cancel all linked documents._in_f_form');
 		}
 
 		// generate dialog box to cancel all linked docs
 		let d = new frappe.ui.Dialog({
-			title: __("Cancel All Documents"),
+			title: __("Cancel All Documents_in_f_form"),
 			fields: [{
 				fieldtype: "HTML",
 				options: `<p class="frappe-confirm-message">${confirm_message}</p>`
@@ -766,7 +766,7 @@ frappe.ui.form.Form = class FrappeForm {
 
 	amend_doc() {
 		if (!this.fields_dict['amended_from']) {
-			frappe.msgprint(__('"amended_from" field must be present to do an amendment.'));
+			frappe.msgprint(__('"amended_from" field must be present to do an amendment._in_f_form'));
 			return;
 		}
 		this.validate_form_action("Amend");
@@ -798,7 +798,7 @@ frappe.ui.form.Form = class FrappeForm {
 				// re-enable buttons
 				resolve();
 			}
-			frappe.throw (__("No permission to '{0}' {1}", [__(action), __(this.doc.doctype)]));
+			frappe.throw (__("No permission to '{0}' {1}_in_f_form", [__(action), __(this.doc.doctype)]));
 		}
 	}
 
@@ -841,9 +841,9 @@ frappe.ui.form.Form = class FrappeForm {
 		if(this.doc.__needs_refresh) {
 			if(this.doc.__unsaved) {
 				this.dashboard.clear_headline();
-				this.dashboard.set_headline_alert(__("This form has been modified after you have loaded it")
+				this.dashboard.set_headline_alert(__("This form has been modified after you have loaded it_in_f_form")
 					+ '<a class="btn btn-xs btn-primary pull-right" onclick="cur_frm.reload_doc()">'
-					+ __("Refresh") + '</a>', "alert-warning");
+					+ __("Refresh_in_f_form") + '</a>', "alert-warning");
 			} else {
 				this.reload_doc();
 			}
@@ -857,7 +857,7 @@ frappe.ui.form.Form = class FrappeForm {
 			&& !this.is_new()
 			&& !frappe.model.has_workflow(this.doctype) // show only if no workflow
 			&& this.doc.docstatus===0) {
-			this.dashboard.add_comment(__('Submit this document to confirm'), 'blue', true);
+			this.dashboard.add_comment(__('Submit this document to confirm_in_f_form'), 'blue', true);
 		}
 	}
 
@@ -889,17 +889,17 @@ frappe.ui.form.Form = class FrappeForm {
 
 	check_doctype_conflict(docname) {
 		if(this.doctype=='DocType' && docname=='DocType') {
-			frappe.msgprint(__('Allowing DocType, DocType. Be careful!'));
+			frappe.msgprint(__('Allowing DocType, DocType. Be careful!_in_f_form'));
 		} else if(this.doctype=='DocType') {
 			if (frappe.views.formview[docname] || frappe.pages['List/'+docname]) {
 				window.location.reload();
-				//	frappe.msgprint(__("Cannot open {0} when its instance is open", ['DocType']))
+				//	frappe.msgprint(__("Cannot open {0} when its instance is open_in_f_form", ['DocType']))
 				// throw 'doctype open conflict'
 			}
 		} else {
 			if (frappe.views.formview.DocType && frappe.views.formview.DocType.frm.opendocs[this.doctype]) {
 				window.location.reload();
-				//	frappe.msgprint(__("Cannot open instance when its {0} is open", ['DocType']))
+				//	frappe.msgprint(__("Cannot open instance when its {0} is open_in_f_form", ['DocType']))
 				// throw 'doctype open conflict'
 			}
 		}
@@ -1289,7 +1289,7 @@ frappe.ui.form.Form = class FrappeForm {
 					}
 				}
 			} else {
-				frappe.msgprint(__("Field {0} not found.",[f]));
+				frappe.msgprint(__("Field {0} not found._in_f_form",[f]));
 				throw "frm.set_value";
 			}
 		};

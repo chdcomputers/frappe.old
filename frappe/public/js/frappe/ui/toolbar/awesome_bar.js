@@ -130,25 +130,25 @@ frappe.search.AwesomeBar = Class.extend({
 
 	add_help: function() {
 		this.options.push({
-			value: __("Help on Search"),
+			value: __("Help on Search_in_uit_awesome_bar"),
 			index: -10,
 			default: "Help",
 			onclick: function() {
 				var txt = '<table class="table table-bordered">\
-					<tr><td style="width: 50%">'+__('Create a new record')+'</td><td>'+
-						__("new type of document")+'</td></tr>\
-					<tr><td>'+__("List a document type")+'</td><td>'+
-						__("document type..., e.g. customer")+'</td></tr>\
-					<tr><td>'+__("Search in a document type")+'</td><td>'+
-						__("text in document type")+'</td></tr>\
-					<tr><td>'+__("Tags")+'</td><td>'+
-						__("tag name..., e.g. #tag")+'</td></tr>\
-					<tr><td>'+__("Open a module or tool")+'</td><td>'+
-						__("module name...")+'</td></tr>\
-					<tr><td>'+__("Calculate")+'</td><td>'+
-						__("e.g. (55 + 434) / 4 or =Math.sin(Math.PI/2)...")+'</td></tr>\
+					<tr><td style="width: 50%">'+__('Create a new record_in_uit_awesome_bar')+'</td><td>'+
+						__("new type of document_in_uit_awesome_bar")+'</td></tr>\
+					<tr><td>'+__("List a document type_in_uit_awesome_bar")+'</td><td>'+
+						__("document type..., e.g. customer_in_uit_awesome_bar")+'</td></tr>\
+					<tr><td>'+__("Search in a document type_in_uit_awesome_bar")+'</td><td>'+
+						__("text in document type_in_uit_awesome_bar")+'</td></tr>\
+					<tr><td>'+__("Tags_in_uit_awesome_bar")+'</td><td>'+
+						__("tag name..., e.g. #tag_in_uit_awesome_bar")+'</td></tr>\
+					<tr><td>'+__("Open a module or tool_in_uit_awesome_bar")+'</td><td>'+
+						__("module name..._in_uit_awesome_bar")+'</td></tr>\
+					<tr><td>'+__("Calculate_in_uit_awesome_bar")+'</td><td>'+
+						__("e.g. (55 + 434) / 4 or =Math.sin(Math.PI/2)..._in_uit_awesome_bar")+'</td></tr>\
 				</table>';
-				frappe.msgprint(txt, __("Search Help"));
+				frappe.msgprint(txt, __("Search Help_in_uit_awesome_bar"));
 			}
 		});
 	},
@@ -227,8 +227,8 @@ frappe.search.AwesomeBar = Class.extend({
 		}
 
 		this.options.push({
-			label: __("Search for '{0}'", [txt.bold()]),
-			value: __("Search for '{0}'", [txt]),
+			label: __("Search for '{0}'_in_uit_awesome_bar", [txt.bold()]),
+			value: __("Search for '{0}'_in_uit_awesome_bar", [txt]),
 			match: txt,
 			index: 100,
 			default: "Search",
@@ -247,8 +247,8 @@ frappe.search.AwesomeBar = Class.extend({
 			var options = {};
 			options[search_field] = ["like", "%" + txt + "%"];
 			this.options.push({
-				label: __('Find {0} in {1}', [txt.bold(), __(route[1]).bold()]),
-				value: __('Find {0} in {1}', [txt, __(route[1])]),
+				label: __('Find {0} in {1}_in_uit_awesome_bar', [txt.bold(), __(route[1]).bold()]),
+				value: __('Find {0} in {1}_in_uit_awesome_bar', [txt, __(route[1])]),
 				route_options: options,
 				onclick: function() {
 					cur_list.show();
@@ -268,10 +268,10 @@ frappe.search.AwesomeBar = Class.extend({
 			}
 			try {
 				var val = eval(txt);
-				var formatted_value = __('{0} = {1}', [txt, (val + '').bold()]);
+				var formatted_value = __('{0} = {1}_in_uit_awesome_bar', [txt, (val + '').bold()]);
 				this.options.push({
 					label: formatted_value,
-					value: __('{0} = {1}', [txt, val]),
+					value: __('{0} = {1}_in_uit_awesome_bar', [txt, val]),
 					match: val,
 					index: 80,
 					default: "Calculator",

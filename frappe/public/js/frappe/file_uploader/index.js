@@ -64,7 +64,7 @@ export default class FileUploader {
 					fieldname: 'upload_area'
 				}
 			],
-			primary_action_label: __('Upload'),
+			primary_action_label: __('Upload_in_indexfu'),
 			primary_action: () => this.upload_files()
 		});
 

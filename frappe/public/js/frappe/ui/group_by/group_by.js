@@ -98,7 +98,7 @@ frappe.ui.GroupBy = class {
 		let group_by_button =  $(`<div class="tag-groupby-area">
 			<div class="active-tag-groupby">
 				<button class="btn btn-default btn-xs add-groupby text-muted">
-						${__("Add Group")}
+						${__("Add Group_in_uigb_group_byjs")}
 				</button>
 			</div>
 		</div>`);
@@ -189,7 +189,7 @@ frappe.ui.GroupBy = class {
 		if (this.aggregate_function === 'count') {
 			docfield = {
 				fieldtype: 'Int',
-				label: __('Count'),
+				label: __('Count_in_uigb_group_byjs'),
 				parent: this.doctype,
 				width: 120
 			};
@@ -197,9 +197,9 @@ frappe.ui.GroupBy = class {
 			// get properties of "aggregate_on", for example Net Total
 			docfield = Object.assign({}, frappe.meta.docfield_map[this.doctype][this.aggregate_on]);
 			if (this.aggregate_function === 'sum') {
-				docfield.label = __('Sum of {0}', [docfield.label]);
+				docfield.label = __('Sum of {0}_in_uigb_group_byjs', [docfield.label]);
 			} else {
-				docfield.label = __('Average of {0}', [docfield.label]);
+				docfield.label = __('Average of {0}_in_uigb_group_byjs', [docfield.label]);
 			}
 		}
 		docfield.fieldname = '_aggregate_column';

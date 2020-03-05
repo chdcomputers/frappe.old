@@ -8,11 +8,11 @@ frappe.ui.form.save = function (frm, action, callback, btn) {
 
 	// specified here because there are keyboard shortcuts to save
 	var working_label = {
-		"Save": __("Saving"),
-		"Submit": __("Submitting"),
-		"Update": __("Updating"),
-		"Amend": __("Amending"),
-		"Cancel": __("Cancelling")
+		"Save": __("Saving_in_f_save"),
+		"Submit": __("Submitting_in_f_save"),
+		"Update": __("Updating_in_f_save"),
+		"Amend": __("Amending_in_f_save"),
+		"Cancel": __("Cancelling_in_f_save")
 	}[toTitle(action)];
 
 	var freeze_message = working_label ? __(working_label) : "";
@@ -148,22 +148,22 @@ frappe.ui.form.save = function (frm, action, callback, btn) {
 			});
 
 			if (frm.is_new() && frm.meta.autoname === 'Prompt' && !frm.doc.__newname) {
-				error_fields = [__('Name'), ...error_fields];
+				error_fields = [__('Name_in_f_save'), ...error_fields];
 			}
 
 			if (error_fields.length) {
 				let meta = frappe.get_meta(doc.doctype);
 				if (meta.istable) {
-					var message = __('Mandatory fields required in table {0}, Row {1}',
+					var message = __('Mandatory fields required in table {0}, Row {1}_in_f_save',
 						[__(frappe.meta.docfield_map[doc.parenttype][doc.parentfield].label).bold(), doc.idx]);
 				} else {
-					var message = __('Mandatory fields required in {0}', [__(doc.doctype)]);
+					var message = __('Mandatory fields required in {0}_in_f_save', [__(doc.doctype)]);
 				}
 				message = message + '<br><br><ul><li>' + error_fields.join('</li><li>') + "</ul>";
 				frappe.msgprint({
 					message: message,
 					indicator: 'red',
-					title: __('Missing Fields')
+					title: __('Missing Fields_in_f_save')
 				});
 			}
 		});
@@ -215,7 +215,7 @@ frappe.ui.form.save = function (frm, action, callback, btn) {
 				frappe.ui.form.is_saving = false;
 
 				if (!r.exc) {
-					frappe.show_alert({message: __('Saved'), indicator: 'green'});
+					frappe.show_alert({message: __('Saved_in_f_save'), indicator: 'green'});
 				}
 
 				if (r) {

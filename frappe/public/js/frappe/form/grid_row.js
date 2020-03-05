@@ -118,13 +118,13 @@ export default class GridRow {
 		var me = this;
 		frappe.prompt({
 			fieldname: 'move_to',
-			label: __('Move to Row Number'),
+			label: __('Move to Row Number_in_f_grid_row'),
 			fieldtype: 'Int',
 			reqd: 1,
 			default: this.doc.idx,
 		}, function(values) {
 			if (me.doc._sortable === false) {
-				frappe.msgprint(__('Cannot move row'));
+				frappe.msgprint(__('Cannot move row_in_f_grid_row'));
 				return;
 			}
 
@@ -140,7 +140,7 @@ export default class GridRow {
 			me.toggle_view(false);
 			me.grid.refresh();
 			$(me.frm.wrapper).trigger("grid-move-row", [me.frm, me]);
-		}, __('Move To'), 'Update');
+		}, __('Move To_in_f_grid_row'), 'Update');
 	}
 	refresh() {
 		if(this.frm && this.doc) {

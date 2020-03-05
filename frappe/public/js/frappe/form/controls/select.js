@@ -61,7 +61,7 @@ frappe.ui.form.ControlSelect = frappe.ui.form.ControlData.extend({
 			});
 			return options;
 		} else {
-			this.set_description(__("Please attach a file first."));
+			this.set_description(__("Please attach a file first._in_fc_select"));
 			return [""];
 		}
 	}

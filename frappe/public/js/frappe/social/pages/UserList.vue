@@ -20,7 +20,7 @@
 			</li>
 			<li class="user-card user-list-header text-medium">
 				<span class="rank-column">#</span>
-				<span class="user-details text-muted">{{ __('User') }}</span>
+				<span class="user-details text-muted">{{ __('User_in_sp_UserListvue') }}</span>
 				<span
 					class="flex-20 text-muted"
 					v-for="title in ['Energy Points', 'Review Points', 'Points Given']"
@@ -48,7 +48,7 @@
 					>{{ user[key] }}</span>
 				</div>
 			</li>
-			<li class="user-card text-muted" v-if="!filtered_users.length">{{__('No user found')}}</li>
+			<li class="user-card text-muted" v-if="!filtered_users.length">{{__('No user found_in_sp_UserListvue')}}</li>
 		</ul>
 	</div>
 </template>

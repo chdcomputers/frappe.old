@@ -1,6 +1,6 @@
 export default class BulkOperations {
 	constructor({ doctype }) {
-		if (!doctype) frappe.throw(__('Doctype required'));
+		if (!doctype) frappe.throw(__('Doctype required_in_l_bulk_operations'));
 		this.doctype = doctype;
 	}
 
@@ -20,27 +20,27 @@ export default class BulkOperations {
 		const invalid_docs = docs.filter(doc => !valid_docs.includes(doc.name));
 
 		if (invalid_docs.length > 0) {
-			frappe.msgprint(__('You selected Draft or Cancelled documents'));
+			frappe.msgprint(__('You selected Draft or Cancelled documents_in_l_bulk_operations'));
 			return;
 		}
 
 		if (valid_docs.length > 0) {
 			const dialog = new frappe.ui.Dialog({
-				title: __('Print Documents'),
+				title: __('Print Documents_in_l_bulk_operations'),
 				fields: [{
 					'fieldtype': 'Check',
-					'label': __('With Letterhead'),
+					'label': __('With Letterhead_in_l_bulk_operations'),
 					'fieldname': 'with_letterhead'
 				},
 				{
 					'fieldtype': 'Select',
-					'label': __('Print Format'),
+					'label': __('Print Format_in_l_bulk_operations'),
 					'fieldname': 'print_sel',
 					options: frappe.meta.get_print_formats(this.doctype)
 				}]
 			});
 
-			dialog.set_primary_action(__('Print'), args => {
+			dialog.set_primary_action(__('Print_in_l_bulk_operations'), args => {
 				if (!args) return;
 				const default_print_format = frappe.get_meta(this.doctype).default_print_format;
 				const with_letterhead = args.with_letterhead ? 1 : 0;
@@ -53,14 +53,14 @@ export default class BulkOperations {
 					'&format=' + encodeURIComponent(print_format) +
 					'&no_letterhead=' + (with_letterhead ? '0' : '1'));
 				if (!w) {
-					frappe.msgprint(__('Please enable pop-ups'));
+					frappe.msgprint(__('Please enable pop-ups_in_l_bulk_operations'));
 					return;
 				}
 			});
 
 			dialog.show();
 		} else {
-			frappe.msgprint(__('Select atleast 1 record for printing'));
+			frappe.msgprint(__('Select atleast 1 record for printing_in_l_bulk_operations'));
 		}
 	}
 
@@ -79,7 +79,7 @@ export default class BulkOperations {
 				if (!failed) failed = [];
 
 				if (failed.length && !r._server_messages) {
-					frappe.throw(__('Cannot delete {0}', [failed.map(f => f.bold()).join(', ')]));
+					frappe.throw(__('Cannot delete {0}_in_l_bulk_operations', [failed.map(f => f.bold()).join(', ')]));
 				}
 				if (failed.length < docnames.length) {
 					frappe.utils.play_sound('delete');
@@ -102,7 +102,7 @@ export default class BulkOperations {
 			assign_to.dialog.clear();
 			assign_to.dialog.show();
 		} else {
-			frappe.msgprint(__('Select records for assignment'));
+			frappe.msgprint(__('Select records for assignment_in_l_bulk_operations'));
 		}
 	}
 
@@ -131,7 +131,7 @@ export default class BulkOperations {
 				if (!failed) failed = [];
 
 				if (failed.length && !r._server_messages) {
-					frappe.throw(__('Cannot {0} {1}', [action, failed.map(f => f.bold()).join(', ')]));
+					frappe.throw(__('Cannot {0} {1}_in_l_bulk_operations', [action, failed.map(f => f.bold()).join(', ')]));
 				}
 				if (failed.length < docnames.length) {
 					frappe.utils.play_sound(action);
@@ -147,13 +147,13 @@ export default class BulkOperations {
 		const default_field = field_options.find(value => status_regex.test(value));
 
 		const dialog = new frappe.ui.Dialog({
-			title: __('Edit'),
+			title: __('Edit_in_l_bulk_operations'),
 			fields: [
 				{
 					'fieldtype': 'Select',
 					'options': field_options,
 					'default': default_field,
-					'label': __('Field'),
+					'label': __('Field_in_l_bulk_operations'),
 					'fieldname': 'field',
 					'reqd': 1,
 					'onchange': () => {
@@ -162,7 +162,7 @@ export default class BulkOperations {
 				},
 				{
 					'fieldtype': 'Data',
-					'label': __('Value'),
+					'label': __('Value_in_l_bulk_operations'),
 					'fieldname': 'value',
 					'reqd': 1
 				}
@@ -186,14 +186,14 @@ export default class BulkOperations {
 
 					if (failed.length && !r._server_messages) {
 						dialog.enable_primary_action();
-						frappe.throw(__('Cannot update {0}', [failed.map(f => f.bold ? f.bold() : f).join(', ')]));
+						frappe.throw(__('Cannot update {0}_in_l_bulk_operations', [failed.map(f => f.bold ? f.bold() : f).join(', ')]));
 					}
 					done();
 					dialog.hide();
-					frappe.show_alert(__('Updated successfully'));
+					frappe.show_alert(__('Updated successfully_in_l_bulk_operations'));
 				});
 			},
-			primary_action_label: __('Update')
+			primary_action_label: __('Update_in_l_bulk_operations')
 		});
 
 		if (default_field) set_value_field(dialog); // to set `Value` df based on default `Field`
@@ -213,7 +213,7 @@ export default class BulkOperations {
 				//set second option as default if first option is an empty string
 				new_df.default = options[0] || options[1];
 			}
-			new_df.label = __('Value');
+			new_df.label = __('Value_in_l_bulk_operations');
 			new_df.reqd = 1;
 			delete new_df.depends_on;
 			dialogObj.replace_field('value', new_df);

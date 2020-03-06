@@ -4,7 +4,7 @@
 			class="btn-show-hide text-muted text-medium"
 			@click="show_hide_cards_dialog"
 		>
-			{{ __('Show / Hide Cards') }}
+			{{ __('Show / Hide Cards_in_vco_Desktopvue') }}
 		</a>
 		<div
 			class="modules-section"
@@ -79,16 +79,16 @@ export default {
 					let user_value = `User (${frappe.session.user})`
 					let fields = [
 						{
-							label: __('Setup For'),
+							label: __('Setup For_in_vco_Desktopvue'),
 							fieldname: 'setup_for',
 							fieldtype: 'Select',
 							options: [
 								{
-									label: __('User ({0})', [frappe.session.user]),
+									label: __('User ({0})_in_vco_Desktopvue', [frappe.session.user]),
 									value: user_value
 								},
 								{
-									label: __('Everyone'),
+									label: __('Everyone_in_vco_Desktopvue'),
 									value: 'Everyone'
 								}
 							],
@@ -97,7 +97,7 @@ export default {
 							onchange() {
 								let value = d.get_value('setup_for');
 								let field = d.get_field('setup_for');
-								let description = value === 'Everyone' ? __('Hide cards for all users') : '';
+								let description = value === 'Everyone' ? __('Hide cards for all users_in_vco_Desktopvue') : '';
 								field.set_description(description);
 							}
 						}
@@ -145,9 +145,9 @@ export default {
 
 					let old_values = null;
 					const d = new frappe.ui.Dialog({
-						title: __('Show / Hide Cards'),
+						title: __('Show / Hide Cards_in_vco_Desktopvue'),
 						fields: fields,
-						primary_action_label: __('Save'),
+						primary_action_label: __('Save_in_vco_Desktopvue'),
 						primary_action: (values) => {
 							if (values.setup_for === 'Everyone') {
 								this.update_global_modules(d);

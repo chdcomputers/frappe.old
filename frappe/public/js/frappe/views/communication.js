@@ -13,10 +13,10 @@ frappe.views.CommunicationComposer = Class.extend({
 		var me = this;
 
 		this.dialog = new frappe.ui.Dialog({
-			title: (this.title || this.subject || __("New Email")),
+			title: (this.title || this.subject || __("New Email_in_v_communication")),
 			no_submit_on_enter: true,
 			fields: this.get_fields(),
-			primary_action_label: __("Send"),
+			primary_action_label: __("Send_in_v_communication"),
 			primary_action: function() {
 				me.delete_saved_draft();
 				me.send_action();
@@ -70,18 +70,18 @@ frappe.views.CommunicationComposer = Class.extend({
 	get_fields: function() {
 		let contactList = [];
 		var fields= [
-			{label:__("To"), fieldtype:"MultiSelect", reqd: 0, fieldname:"recipients",options:contactList},
-			{fieldtype: "Section Break", collapsible: 1, label: __("CC, BCC & Email Template")},
-			{label:__("CC"), fieldtype:"MultiSelect", fieldname:"cc",options:contactList},
-			{label:__("BCC"), fieldtype:"MultiSelect", fieldname:"bcc",options:contactList},
-			{label:__("Email Template"), fieldtype:"Link", options:"Email Template",
+			{label:__("To_in_v_communication"), fieldtype:"MultiSelect", reqd: 0, fieldname:"recipients",options:contactList},
+			{fieldtype: "Section Break", collapsible: 1, label: __("CC, BCC & Email Template_in_v_communication")},
+			{label:__("CC_in_v_communication"), fieldtype:"MultiSelect", fieldname:"cc",options:contactList},
+			{label:__("BCC_in_v_communication"), fieldtype:"MultiSelect", fieldname:"bcc",options:contactList},
+			{label:__("Email Template_in_v_communication"), fieldtype:"Link", options:"Email Template",
 				fieldname:"email_template"},
 			{fieldtype: "Section Break"},
-			{label:__("Subject"), fieldtype:"Data", reqd: 1,
+			{label:__("Subject_in_v_communication"), fieldtype:"Data", reqd: 1,
 				fieldname:"subject", length:524288},
 			{fieldtype: "Section Break"},
 			{
-				label:__("Message"),
+				label:__("Message_in_v_communication"),
 				fieldtype:"Text Editor", reqd: 1,
 				fieldname:"content",
 				onchange: frappe.utils.debounce(this.save_as_draft.bind(this), 300)
@@ -89,18 +89,18 @@ frappe.views.CommunicationComposer = Class.extend({
 
 			{fieldtype: "Section Break"},
 			{fieldtype: "Column Break"},
-			{label:__("Send me a copy"), fieldtype:"Check",
+			{label:__("Send me a copy_in_v_communication"), fieldtype:"Check",
 				fieldname:"send_me_a_copy", 'default': frappe.boot.user.send_me_a_copy},
-			{label:__("Send Read Receipt"), fieldtype:"Check",
+			{label:__("Send Read Receipt_in_v_communication"), fieldtype:"Check",
 				fieldname:"send_read_receipt"},
-			{label:__("Attach Document Print"), fieldtype:"Check",
+			{label:__("Attach Document Print_in_v_communication"), fieldtype:"Check",
 				fieldname:"attach_document_print"},
-			{label:__("Select Print Format"), fieldtype:"Select",
+			{label:__("Select Print Format_in_v_communication"), fieldtype:"Select",
 				fieldname:"select_print_format"},
-			{label:__("Select Languages"), fieldtype:"Select",
+			{label:__("Select Languages_in_v_communication"), fieldtype:"Select",
 				fieldname:"language_sel"},
 			{fieldtype: "Column Break"},
-			{label:__("Select Attachments"), fieldtype:"HTML",
+			{label:__("Select Attachments_in_v_communication"), fieldtype:"HTML",
 				fieldname:"select_attachments"}
 		];
 
@@ -111,7 +111,7 @@ frappe.views.CommunicationComposer = Class.extend({
 		})
 		if(frappe.boot.email_accounts && email_accounts.length > 1) {
 			fields = [
-				{label: __("From"), fieldtype: "Select", reqd: 1, fieldname: "sender",
+				{label: __("From_in_v_communication"), fieldtype: "Select", reqd: 1, fieldname: "sender",
 					options: email_accounts.map(function(e) { return e.email_id; }) }
 			].concat(fields);
 		}
@@ -164,13 +164,13 @@ frappe.views.CommunicationComposer = Class.extend({
 
 				// prepend "Re:"
 				if(strip(this.subject.toLowerCase().split(":")[0])!="re") {
-					this.subject = __("Re: {0}", [this.subject]);
+					this.subject = __("Re: {0}_in_v_communication", [this.subject]);
 				}
 			}
 
 			if (!this.subject) {
 				if (this.frm.subject_field && this.frm.doc[this.frm.subject_field]) {
-					this.subject = __("Re: {0}", [this.frm.doc[this.frm.subject_field]]);
+					this.subject = __("Re: {0}_in_v_communication", [this.frm.doc[this.frm.subject_field]]);
 				} else {
 					let title = this.frm.doc.name;
 					if(this.frm.meta.title_field && this.frm.doc[this.frm.meta.title_field]
@@ -391,10 +391,10 @@ frappe.views.CommunicationComposer = Class.extend({
 		}
 
 		$("<h6 class='text-muted add-attachment' style='margin-top: 12px; cursor:pointer;'>"
-			+__("Select Attachments")+"</h6><div class='attach-list'></div>\
+			+__("Select Attachments_in_v_communication")+"</h6><div class='attach-list'></div>\
 			<p class='add-more-attachments'>\
 			<a class='text-muted small'><i class='octicon octicon-plus' style='font-size: 12px'></i> "
-			+__("Add Attachment")+"</a></p>").appendTo(attach.empty())
+			+__("Add Attachment_in_v_communication")+"</a></p>").appendTo(attach.empty())
 		attach
 			.find(".add-more-attachments a")
 			.on('click',() => new frappe.ui.FileUploader(args));
@@ -532,7 +532,7 @@ frappe.views.CommunicationComposer = Class.extend({
 		me.dialog.hide();
 
 		if(!form_values.recipients) {
-			frappe.msgprint(__("Enter Email Recipient(s)"));
+			frappe.msgprint(__("Enter Email Recipient(s)_in_v_communication"));
 			return;
 		}
 
@@ -543,7 +543,7 @@ frappe.views.CommunicationComposer = Class.extend({
 
 
 		if(cur_frm && !frappe.model.can_email(me.doc.doctype, cur_frm)) {
-			frappe.msgprint(__("You are not allowed to send emails related to this document"));
+			frappe.msgprint(__("You are not allowed to send emails related to this document_in_v_communication"));
 			return;
 		}
 
@@ -576,7 +576,7 @@ frappe.views.CommunicationComposer = Class.extend({
 					frappe.utils.play_sound("email");
 
 					if(r.message["emails_not_sent_to"]) {
-						frappe.msgprint(__("Email not sent to {0} (unsubscribed / disabled)",
+						frappe.msgprint(__("Email not sent to {0} (unsubscribed / disabled)_in_v_communication",
 							[ frappe.utils.escape_html(r.message["emails_not_sent_to"]) ]) );
 					}
 
@@ -599,7 +599,7 @@ frappe.views.CommunicationComposer = Class.extend({
 					}
 
 				} else {
-					frappe.msgprint(__("There were errors while sending email. Please try again."));
+					frappe.msgprint(__("There were errors while sending email. Please try again._in_v_communication"));
 
 					// try the error callback if it exists
 					if (me.error) {
@@ -642,7 +642,7 @@ frappe.views.CommunicationComposer = Class.extend({
 		}
 
 		if(this.real_name) {
-			this.message = '<p>'+__('Dear') +' '
+			this.message = '<p>'+__('Dear_in_v_communication') +' '
 				+ this.real_name + ",</p><!-- salutation-ends --><br>" + (this.message || "");
 		}
 
@@ -675,7 +675,7 @@ frappe.views.CommunicationComposer = Class.extend({
 			// clip last email for a maximum of 20k characters
 			// to prevent the email content from getting too large
 			if (last_email_content.length > 20 * 1024) {
-				last_email_content += '<div>' + __('Message clipped') + '</div>' + last_email_content;
+				last_email_content += '<div>' + __('Message clipped_in_v_communication') + '</div>' + last_email_content;
 				last_email_content = last_email_content.slice(0, 20 * 1024);
 			}
 
@@ -684,7 +684,7 @@ frappe.views.CommunicationComposer = Class.extend({
 				<div><br></div>
 				${reply}
 				${frappe.separator_element}
-				<p>${__("On {0}, {1} wrote:", [frappe.datetime.global_date_format(communication_date) , last_email.sender])}</p>
+				<p>${__("On {0}, {1} wrote_in_v_communication:", [frappe.datetime.global_date_format(communication_date) , last_email.sender])}</p>
 				<blockquote>
 				${last_email_content}
 				</blockquote>

@@ -113,7 +113,7 @@ frappe.render_grid = function(opts) {
 	var w = window.open();
 
 	if(!w) {
-		frappe.msgprint(__("Please enable pop-ups in your browser"))
+		frappe.msgprint(__("Please enable pop-ups in your browser_in_microtemplate"))
 	}
 
 	w.document.write(html);
@@ -127,7 +127,7 @@ frappe.render_tree = function(opts) {
 	var w = window.open();
 
 	if(!w) {
-		frappe.msgprint(__("Please enable pop-ups in your browser"))
+		frappe.msgprint(__("Please enable pop-ups in your browser_in_microtemplate"))
 	}
 
 	w.document.write(tree);

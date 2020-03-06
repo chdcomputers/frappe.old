@@ -8,9 +8,9 @@ frappe.views.KanbanView = class KanbanView extends frappe.views.ListView {
 			const user_settings = frappe.get_user_settings(doctype)['Kanban'] || {};
 			if (!user_settings.last_kanban_board) {
 				frappe.msgprint({
-					title: __('Error'),
+					title: __('Error_in_vk_kanban_view'),
 					indicator: 'red',
-					message: __('Missing parameter Kanban Board Name')
+					message: __('Missing parameter Kanban Board Name_in_vk_kanban_view')
 				});
 				frappe.set_route('List', doctype, 'List');
 				return true;
@@ -34,7 +34,7 @@ frappe.views.KanbanView = class KanbanView extends frappe.views.ListView {
 				this.card_meta = this.get_card_meta();
 
 				this.menu_items.push({
-					label: __('Save filters'),
+					label: __('Save filters_in_vk_kanban_view'),
 					action: () => {
 						this.save_kanban_board_filters();
 					}
@@ -75,7 +75,7 @@ frappe.views.KanbanView = class KanbanView extends frappe.views.ListView {
 
 	on_filter_change() {
 		if (JSON.stringify(this.board.filters_array) !== JSON.stringify(this.filter_area.get())) {
-			this.page.set_indicator(__('Not Saved'), 'orange');
+			this.page.set_indicator(__('Not Saved_in_vk_kanban_view'), 'orange');
 		} else {
 			this.page.clear_indicator();
 		}
@@ -94,13 +94,13 @@ frappe.views.KanbanView = class KanbanView extends frappe.views.ListView {
 			if (r.exc) {
 				frappe.show_alert({
 					indicator: 'red',
-					message: __('There was an error saving filters')
+					message: __('There was an error saving filters_in_vk_kanban_view')
 				});
 				return;
 			}
 			frappe.show_alert({
 				indicator: 'green',
-				message: __('Filters saved')
+				message: __('Filters saved_in_vk_kanban_view')
 			});
 
 			this.board.filters_array = filters;
@@ -232,7 +232,7 @@ frappe.views.KanbanView.setup_dropdown_in_sidebar = function(doctype, $dropdown)
 
 		const fields = get_fields_for_dialog();
 
-		let primary_action_label = fields.length > 1 ? __('Save') : '';
+		let primary_action_label = fields.length > 1 ? __('Save_in_vk_kanban_view') : '';
 		let primary_action = fields.length > 1 ?
 			({ board_name, field_name, project }) => {
 				make_kanban_board(board_name, field_name, project)
@@ -240,7 +240,7 @@ frappe.views.KanbanView.setup_dropdown_in_sidebar = function(doctype, $dropdown)
 			} : null;
 
 		dialog = new frappe.ui.Dialog({
-			title: __('New Kanban Board'),
+			title: __('New Kanban Board_in_vk_kanban_view'),
 			fields,
 			primary_action_label,
 			primary_action
@@ -253,17 +253,17 @@ frappe.views.KanbanView.setup_dropdown_in_sidebar = function(doctype, $dropdown)
 		let fields = [{
 			fieldtype: 'Data',
 			fieldname: 'board_name',
-			label: __('Kanban Board Name'),
+			label: __('Kanban Board Name_in_vk_kanban_view'),
 			reqd: 1,
 			description: ['Note', 'ToDo'].includes(doctype) ?
-				__('This Kanban Board will be private') : ''
+				__('This Kanban Board will be private_in_vk_kanban_view') : ''
 		}];
 
 		if (doctype === 'Task') {
 			fields.push({
 				fieldtype: 'Link',
 				fieldname: 'project',
-				label: __('Project'),
+				label: __('Project_in_vk_kanban_view'),
 				options: 'Project'
 			});
 		}
@@ -290,10 +290,10 @@ frappe.views.KanbanView.setup_dropdown_in_sidebar = function(doctype, $dropdown)
 				options: `
 					<div>
 						<p class="text-medium">
-						${__('No fields found that can be used as a Kanban Column. Use the Customize Form to add a Custom Field of type "Select".')}
+						${__('No fields found that can be used as a Kanban Column. Use the Customize Form to add a Custom Field of type "Select"._in_vk_kanban_view')}
 						</p>
 						<a class="btn btn-xs btn-default" href="#Form/Customize Form?doc_type=${doctype}">
-							${__('Customize Form')}
+							${__('Customize Form_in_vk_kanban_view')}
 						</a>
 					</div>
 				`

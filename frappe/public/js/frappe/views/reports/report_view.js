@@ -12,7 +12,7 @@ frappe.views.ReportView = class ReportView extends frappe.views.ListView {
 
 	setup_defaults() {
 		super.setup_defaults();
-		this.page_title = __('Report:') + ' ' + this.page_title;
+		this.page_title = __('Report_in_vr_report_view:') + ' ' + this.page_title;
 		this.menu_items = this.report_menu_items();
 
 		const route = frappe.get_route();
@@ -66,7 +66,7 @@ frappe.views.ReportView = class ReportView extends frappe.views.ListView {
 
 	setup_paging_area() {
 		super.setup_paging_area();
-		const message = __('For comparison, use >5, <10 or =324. For ranges, use 5:10 (for values between 5 & 10).');
+		const message = __('For comparison, use >5, <10 or =324. For ranges, use 5:10 (for values between 5 & 10)._in_vr_report_view');
 		this.$paging_area.find('.level-left').append(
 			`<p class="text-muted text-medium margin-left">${message}</p>`
 		)
@@ -139,7 +139,7 @@ frappe.views.ReportView = class ReportView extends frappe.views.ListView {
 		};
 
 		if (!frappe.utils.deep_equal(current_settings, report_settings)) {
-			this.page.set_indicator(__('Not Saved'), 'orange');
+			this.page.set_indicator(__('Not Saved_in_vr_report_view'), 'orange');
 		} else {
 			this.page.clear_indicator();
 		}
@@ -286,7 +286,7 @@ frappe.views.ReportView = class ReportView extends frappe.views.ListView {
 				columnTotal: frappe.utils.report_column_total
 			},
 			headerDropdown: [{
-				label: __('Add Column'),
+				label: __('Add Column_in_vr_report_view'),
 				action: (datatabe_col) => {
 					let columns_in_picker = [];
 					const columns = this.get_columns_for_picker();
@@ -311,23 +311,23 @@ frappe.views.ReportView = class ReportView extends frappe.views.ListView {
 					}
 
 					const d = new frappe.ui.Dialog({
-						title: __('Add Column'),
+						title: __('Add Column_in_vr_report_view'),
 						fields: [
 							{
-								label: __('Select Column'),
+								label: __('Select Column_in_vr_report_view'),
 								fieldname: 'column',
 								fieldtype: 'Autocomplete',
 								options: columns_in_picker
 							},
 							{
-								label: __('Insert Column Before {0}', [datatabe_col.docfield.label.bold()]),
+								label: __('Insert Column Before {0}_in_vr_report_view', [datatabe_col.docfield.label.bold()]),
 								fieldname: 'insert_before',
 								fieldtype: 'Check'
 							}
 						],
 						primary_action: ({ column, insert_before }) => {
 							if (!columns_in_picker.map(col => col.value).includes(column)) {
-								frappe.show_alert(__('Invalid column'));
+								frappe.show_alert(__('Invalid column_in_vr_report_view'));
 								d.hide();
 								return;
 							}
@@ -410,25 +410,25 @@ frappe.views.ReportView = class ReportView extends frappe.views.ListView {
 		const defaults = this.chart_args || {};
 
 		const dialog = new frappe.ui.Dialog({
-			title: __('Configure Chart'),
+			title: __('Configure Chart_in_vr_report_view'),
 			fields: [
 				{
-					label: __('X Axis Field'),
+					label: __('X Axis Field_in_vr_report_view'),
 					fieldtype: 'Select',
 					fieldname: 'x_axis',
 					options: x_fields,
 					default: defaults.x_axis
 				},
 				{
-					label: __('Y Axis Fields'),
+					label: __('Y Axis Fields_in_vr_report_view'),
 					fieldtype: 'MultiSelect',
 					fieldname: 'y_axes',
 					options: y_fields,
-					description: __('Showing only Numeric fields from Report'),
+					description: __('Showing only Numeric fields from Report_in_vr_report_view'),
 					default: defaults.y_axes ? defaults.y_axes.join(', ') : null
 				},
 				{
-					label: __('Chart Type'),
+					label: __('Chart Type_in_vr_report_view'),
 					fieldtype: 'Select',
 					options: ['Bar', 'Line', 'Pie', 'Percentage', 'Donut'],
 					fieldname: 'chart_type',
@@ -492,7 +492,7 @@ frappe.views.ReportView = class ReportView extends frappe.views.ListView {
 		this.$charts_wrapper.removeClass('hidden');
 
 		this.chart = new frappe.Chart(this.$charts_wrapper.find('.charts-inner-wrapper')[0], {
-			title: __("{0} Chart", [this.doctype]),
+			title: __("{0} Chart_in_vr_report_view", [this.doctype]),
 			data: data,
 			type: args.chart_type,
 			truncateLegends: 1,
@@ -589,7 +589,7 @@ frappe.views.ReportView = class ReportView extends frappe.views.ListView {
 
 		if (col.docfield.fieldtype === 'Text Editor') {
 			const d = new frappe.ui.Dialog({
-				title: __('Edit {0}', [col.docfield.label]),
+				title: __('Edit {0}_in_vr_report_view', [col.docfield.label]),
 				fields: [col.docfield],
 				primary_action: () => {
 					this.datatable.cellmanager.submitEditing();
@@ -737,7 +737,7 @@ frappe.views.ReportView = class ReportView extends frappe.views.ListView {
 			} else {
 				this.fields.splice(col_index, 0, field);
 			}
-			frappe.show_alert(__('Also adding the dependent currency field {0}', [field[0].bold()]));
+			frappe.show_alert(__('Also adding the dependent currency field {0}_in_vr_report_view', [field[0].bold()]));
 		}
 	}
 
@@ -747,7 +747,7 @@ frappe.views.ReportView = class ReportView extends frappe.views.ListView {
 			const field = [col, doctype];
 			this.fields.push(field);
 			this.refresh();
-			frappe.show_alert(__('Also adding the status dependency field {0}', [field[0].bold()]));
+			frappe.show_alert(__('Also adding the status dependency field {0}_in_vr_report_view', [field[0].bold()]));
 		}
 	}
 
@@ -757,7 +757,7 @@ frappe.views.ReportView = class ReportView extends frappe.views.ListView {
 		const field = this.fields[index];
 		if (field[0] === 'name' && this.group_by === null) {
 			this.refresh();
-			frappe.throw(__('Cannot remove ID field'));
+			frappe.throw(__('Cannot remove ID field_in_vr_report_view'));
 		}
 		this.fields.splice(index, 1);
 		this.build_fields();
@@ -793,14 +793,14 @@ frappe.views.ReportView = class ReportView extends frappe.views.ListView {
 		// add status field derived from docstatus, if status is not a standard field
 		if (!frappe.meta.has_field(this.doctype, 'status')) {
 			doctype_fields = [{
-				label: __('Status'),
+				label: __('Status_in_vr_report_view'),
 				fieldname: 'docstatus',
 				fieldtype: 'Data'
 			}].concat(doctype_fields);
 		}
 
 		doctype_fields = [{
-			label: __('ID'),
+			label: __('ID_in_vr_report_view'),
 			fieldname: 'name',
 			fieldtype: 'Data',
 			reqd: 1
@@ -1004,7 +1004,7 @@ frappe.views.ReportView = class ReportView extends frappe.views.ListView {
 			const totals = this.get_columns_totals(data);
 			const totals_row = this.columns.map((col, i) => {
 				return {
-					name: __('Totals Row'),
+					name: __('Totals Row_in_vr_report_view'),
 					content: totals[col.id],
 					format: value => {
 						return frappe.format(value, col.docfield, { always_show_decimals: true });
@@ -1012,7 +1012,7 @@ frappe.views.ReportView = class ReportView extends frappe.views.ListView {
 				}
 			})
 
-			totals_row[0].content = __('Totals').bold();
+			totals_row[0].content = __('Totals_in_vr_report_view').bold();
 			out.push(totals_row);
 		}
 		return out;
@@ -1100,7 +1100,7 @@ frappe.views.ReportView = class ReportView extends frappe.views.ListView {
 				},
 				callback:(r) => {
 					if(r.exc) {
-						frappe.msgprint(__("Report was not saved (there were errors)"));
+						frappe.msgprint(__("Report was not saved (there were errors)_in_vr_report_view"));
 						return;
 					}
 					if(r.message != this.report_name) {
@@ -1127,9 +1127,9 @@ frappe.views.ReportView = class ReportView extends frappe.views.ListView {
 		if(this.report_name && save_type == "save") {
 			_save_report(this.report_name);
 		} else {
-			frappe.prompt({fieldname: 'name', label: __('New Report name'), reqd: 1, fieldtype: 'Data'}, (data) => {
+			frappe.prompt({fieldname: 'name', label: __('New Report name_in_vr_report_view'), reqd: 1, fieldtype: 'Data'}, (data) => {
 				_save_report(data.name);
-			}, __('Save As'));
+			}, __('Save As_in_vr_report_view'));
 		}
 	}
 
@@ -1191,7 +1191,7 @@ frappe.views.ReportView = class ReportView extends frappe.views.ListView {
 	report_menu_items() {
 		let items = [
 			{
-				label: __('Show Totals'),
+				label: __('Show Totals_in_vr_report_view'),
 				action: () => {
 					this.add_totals_row = !this.add_totals_row;
 					this.save_view_user_settings(
@@ -1200,7 +1200,7 @@ frappe.views.ReportView = class ReportView extends frappe.views.ListView {
 				}
 			},
 			{
-				label: __('Print'),
+				label: __('Print_in_vr_report_view'),
 				action: () => {
 					// prepare rows in their current state, sorted and filtered
 					const rows_in_order = this.datatable.datamanager.rowViewOrder.map(index => {
@@ -1212,7 +1212,7 @@ frappe.views.ReportView = class ReportView extends frappe.views.ListView {
 					if (this.add_totals_row) {
 						const total_data = this.get_columns_totals(this.data);
 
-						total_data['name'] = __('Totals').bold();
+						total_data['name'] = __('Totals_in_vr_report_view').bold();
 						rows_in_order.push(total_data);
 					}
 
@@ -1229,18 +1229,18 @@ frappe.views.ReportView = class ReportView extends frappe.views.ListView {
 				}
 			},
 			{
-				label: __('Toggle Chart'),
+				label: __('Toggle Chart_in_vr_report_view'),
 				action: () => this.toggle_charts()
 			},
 			{
-				label: __('Toggle Sidebar'),
+				label: __('Toggle Sidebar_in_vr_report_view'),
 				action: () => this.toggle_side_bar()
 			},
 			{
-				label: __('Pick Columns'),
+				label: __('Pick Columns_in_vr_report_view'),
 				action: () => {
 					const d = new frappe.ui.Dialog({
-						title: __('Pick Columns'),
+						title: __('Pick Columns_in_vr_report_view'),
 						fields: this.get_dialog_fields(),
 						primary_action: (values) => {
 							// doctype fields
@@ -1275,14 +1275,14 @@ frappe.views.ReportView = class ReportView extends frappe.views.ListView {
 
 		if (frappe.model.can_export(this.doctype)) {
 			items.push({
-				label: __('Export'),
+				label: __('Export_in_vr_report_view'),
 				action: () => {
 					const args = this.get_args();
 					const selected_items = this.get_checked_items(true);
 					let fields = [
 						{
 							fieldtype: 'Select',
-							label: __('Select File Type'),
+							label: __('Select File Type_in_vr_report_view'),
 							fieldname:'file_format_type',
 							options: ['Excel', 'CSV'],
 							default: 'Excel'
@@ -1293,14 +1293,14 @@ frappe.views.ReportView = class ReportView extends frappe.views.ListView {
 						fields.push({
 							fieldtype: 'Check',
 							fieldname: 'export_all_rows',
-							label: __('Export All {0} rows?', [(this.total_count + "").bold()])
+							label: __('Export All {0} rows_in_vr_report_view?', [(this.total_count + "").bold()])
 						});
 					}
 
 					const d = new frappe.ui.Dialog({
-						title: __("Export Report: {0}",[__(this.doctype)]),
+						title: __("Export Report: {0}_in_vr_report_view",[__(this.doctype)]),
 						fields: fields,
-						primary_action_label: __('Download'),
+						primary_action_label: __('Download_in_vr_report_view'),
 						primary_action: (data) => {
 							args.cmd = 'frappe.desk.reportview.export_query';
 							args.file_format_type = data.file_format_type;
@@ -1334,12 +1334,12 @@ frappe.views.ReportView = class ReportView extends frappe.views.ListView {
 		}
 
 		items.push({
-			label: __("Setup Auto Email"),
+			label: __("Setup Auto Email_in_vr_report_view"),
 			action: () => {
 				if(this.report_name) {
 					frappe.set_route('List', 'Auto Email Report', {'report' : this.report_name});
 				} else {
-					frappe.msgprint(__('Please save the report first'));
+					frappe.msgprint(__('Please save the report first_in_vr_report_view'));
 				}
 			}
 		});
@@ -1347,15 +1347,15 @@ frappe.views.ReportView = class ReportView extends frappe.views.ListView {
 		// save buttons
 		if(frappe.user.is_report_manager()) {
 			items = items.concat([
-				{ label: __('Save'), action: () => this.save_report('save') },
-				{ label: __('Save As'), action: () => this.save_report('save_as') }
+				{ label: __('Save_in_vr_report_view'), action: () => this.save_report('save') },
+				{ label: __('Save As_in_vr_report_view'), action: () => this.save_report('save_as') }
 			]);
 		}
 
 		// user permissions
 		if(this.report_name && frappe.model.can_set_user_permissions("Report")) {
 			items.push({
-				label: __("User Permissions"),
+				label: __("User Permissions_in_vr_report_view"),
 				action: () => {
 					const args = {
 						doctype: "Report",

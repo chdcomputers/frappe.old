@@ -171,7 +171,7 @@ export default class WebForm extends frappe.ui.FieldGroup {
 		}
 
 		const success_dialog = new frappe.ui.Dialog({
-			title: __("Saved Successfully"),
+			title: __("Saved Successfully_in_w_web_form"),
 			secondary_action: () => {
 				if (this.success_url) {
 					window.location.pathname = this.success_url;
@@ -184,7 +184,7 @@ export default class WebForm extends frappe.ui.FieldGroup {
 
 		success_dialog.show();
 		const success_message =
-			this.success_message || __("Your information has been submitted");
+			this.success_message || __("Your information has been submitted_in_w_web_form");
 		success_dialog.set_message(success_message);
 	}
 }

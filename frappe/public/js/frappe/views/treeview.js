@@ -14,7 +14,7 @@ frappe.views.TreeFactory = class TreeFactory extends frappe.views.Factory {
 			};
 
 			if (!frappe.treeview_settings[route[1]] && !frappe.meta.get_docfield(route[1], "is_group")) {
-				frappe.msgprint(__("Tree view not available for {0}", [route[1]] ));
+				frappe.msgprint(__("Tree view not available for {0}_in_v_treeview", [route[1]] ));
 				return false;
 			}
 			$.extend(options, frappe.treeview_settings[route[1]] || {});
@@ -72,7 +72,7 @@ frappe.views.TreeView = Class.extend({
 		});
 
 		if(this.opts.show_expand_all) {
-			this.page.add_inner_button(__('Expand All'), function() {
+			this.page.add_inner_button(__('Expand All_in_v_treeview'), function() {
 				me.tree.load_children(me.tree.root_node, true);
 			});
 		}
@@ -86,7 +86,7 @@ frappe.views.TreeView = Class.extend({
 		}
 	},
 	set_title: function() {
-		this.page.set_title(this.opts.title || __('{0} Tree', [__(this.doctype)]));
+		this.page.set_title(this.opts.title || __('{0} Tree_in_v_treeview', [__(this.doctype)]));
 	},
 	onload: function() {
 		var me = this;
@@ -179,7 +179,7 @@ frappe.views.TreeView = Class.extend({
 
 		var toolbar = [
 			{
-				label:__(me.can_write? "Edit": "Details"),
+				label:__(me.can_write? "Edit_in_v_treeview": "Details_in_v_treeview"),
 				condition: function(node) {
 					return !node.is_root && me.can_read;
 				},
@@ -188,7 +188,7 @@ frappe.views.TreeView = Class.extend({
 				}
 			},
 			{
-				label:__("Add Child"),
+				label:__("Add Child_in_v_treeview"),
 				condition: function(node) {
 					return me.can_create && node.expandable && !node.hide_add;
 				},
@@ -198,7 +198,7 @@ frappe.views.TreeView = Class.extend({
 				btnClass: "hidden-xs"
 			},
 			{
-				label:__("Rename"),
+				label:__("Rename_in_v_treeview"),
 				condition: function(node) {
 					let allow_rename = true;
 					if (me.doctype && frappe.get_meta(me.doctype)) {
@@ -215,7 +215,7 @@ frappe.views.TreeView = Class.extend({
 				btnClass: "hidden-xs"
 			},
 			{
-				label:__("Delete"),
+				label:__("Delete_in_v_treeview"),
 				condition: function(node) { return !node.is_root && me.can_delete; },
 				click: function(node) {
 					frappe.model.delete_doc(me.doctype, node.label, function() {
@@ -242,7 +242,7 @@ frappe.views.TreeView = Class.extend({
 		var node = me.tree.get_selected_node();
 
 		if(!(node && node.expandable)) {
-			frappe.msgprint(__("Select a group node first."));
+			frappe.msgprint(__("Select a group node first._in_v_treeview"));
 			return;
 		}
 
@@ -250,7 +250,7 @@ frappe.views.TreeView = Class.extend({
 
 		// the dialog
 		var d = new frappe.ui.Dialog({
-			title: __('New {0}',[__(me.doctype)]),
+			title: __('New {0}_in_v_treeview',[__(me.doctype)]),
 			fields: me.fields
 		});
 
@@ -261,7 +261,7 @@ frappe.views.TreeView = Class.extend({
 		d.set_values(args);
 
 		// create
-		d.set_primary_action(__("Create New"), function() {
+		d.set_primary_action(__("Create New_in_v_treeview"), function() {
 			var btn = this;
 			var v = d.get_values();
 			if(!v) return;
@@ -277,7 +277,7 @@ frappe.views.TreeView = Class.extend({
 			}
 
 			d.hide();
-			frappe.dom.freeze(__('Creating {0}', [me.doctype]));
+			frappe.dom.freeze(__('Creating {0}_in_v_treeview', [me.doctype]));
 
 			$.extend(args, v)
 			return frappe.call({
@@ -302,8 +302,8 @@ frappe.views.TreeView = Class.extend({
 		var me = this;
 
 		this.fields = [
-			{fieldtype:'Check', fieldname:'is_group', label:__('Group Node'),
-				description: __("Further nodes can be only created under 'Group' type nodes")}
+			{fieldtype:'Check', fieldname:'is_group', label:__('Group Node_in_v_treeview'),
+				description: __("Further nodes can be only created under 'Group' type nodes_in_v_treeview")}
 		]
 
 		if (this.opts.fields) {
@@ -327,7 +327,7 @@ frappe.views.TreeView = Class.extend({
 	},
 	print_tree: function() {
 		if(!frappe.model.can_print(this.doctype)) {
-			frappe.msgprint(__("You are not allowed to print this report"));
+			frappe.msgprint(__("You are not allowed to print this report_in_v_treeview"));
 			return false;
 		}
 		var tree = $(".tree:visible").html();
@@ -349,7 +349,7 @@ frappe.views.TreeView = Class.extend({
 	set_primary_action: function(){
 		var me = this;
 		if (!this.opts.disable_add_node && this.can_create) {
-			me.page.set_primary_action(__("New"), function() {
+			me.page.set_primary_action(__("New_in_v_treeview"), function() {
 				me.new_node();
 			}, "octicon octicon-plus")
 		}
@@ -359,20 +359,20 @@ frappe.views.TreeView = Class.extend({
 
 		this.menu_items = [
 			{
-				label: __('View List'),
+				label: __('View List_in_v_treeview'),
 				action: function() {
 					frappe.set_route('List', me.doctype);
 				}
 			},
 			{
-				label: __('Print'),
+				label: __('Print_in_v_treeview'),
 				action: function() {
 					me.print_tree();
 				}
 
 			},
 			{
-				label: __('Refresh'),
+				label: __('Refresh_in_v_treeview'),
 				action: function() {
 					me.make_tree();
 				}

@@ -27,7 +27,7 @@ frappe.views.CalendarView = class CalendarView extends frappe.views.ListView {
 	setup_defaults() {
 		return super.setup_defaults()
 			.then(() => {
-				this.page_title = __('{0} Calendar', [this.page_title]);
+				this.page_title = __('{0} Calendar_in_vc_calendar', [this.page_title]);
 				this.calendar_settings = frappe.views.calendar[this.doctype] || {};
 				this.calendar_name = frappe.get_route()[3];
 			});
@@ -140,7 +140,7 @@ frappe.views.Calendar = Class.extend({
 		this.$wrapper = this.parent;
 		this.$cal = $("<div>").appendTo(this.$wrapper);
 		this.footnote_area = frappe.utils.set_footnote(this.footnote_area, this.$wrapper,
-			__("Select or drag across time slots to create a new event."));
+			__("Select or drag across time slots to create a new event._in_vc_calendar"));
 		this.footnote_area.css({"border-top": "0px"});
 
 		this.$cal.fullCalendar(this.cal_options);
@@ -149,7 +149,7 @@ frappe.views.Calendar = Class.extend({
 	setup_view_mode_button: function(defaults) {
 		var me = this;
 		$(me.footnote_area).find('.btn-weekend').detach();
-		let btnTitle = (defaults.weekends) ? __('Hide Weekends') : __('Show Weekends');
+		let btnTitle = (defaults.weekends) ? __('Hide Weekends_in_vc_calendar') : __('Show Weekends_in_vc_calendar');
 		const btn = `<button class="btn btn-default btn-xs btn-weekend">${btnTitle}</button>`;
 		me.footnote_area.append(btn);
 	},
@@ -387,7 +387,7 @@ frappe.views.Calendar = Class.extend({
 			args: me.get_update_args(event),
 			callback: function(r) {
 				if(r.exc) {
-					frappe.show_alert(__("Unable to update event"));
+					frappe.show_alert(__("Unable to update event_in_vc_calendar"));
 					revertFunc();
 				}
 			},

@@ -55,7 +55,7 @@ frappe.views.pageview = {
 				}
 
 				frappe.container.change_to('desktop');
-				frappe.utils.set_title(__('Home'));
+				frappe.utils.set_title(__('Home_in_v_pageview'));
 				return;
 			}
 		}
@@ -122,7 +122,7 @@ frappe.views.Page = Class.extend({
 frappe.show_not_found = function(page_name) {
 	frappe.show_message_page({
 		page_name: page_name,
-		message: __("Sorry! I could not find what you were looking for."),
+		message: __("Sorry! I could not find what you were looking for._in_v_pageview"),
 		img: "/assets/frappe/images/ui/bubble-tea-sorry.svg"
 	});
 };
@@ -130,7 +130,7 @@ frappe.show_not_found = function(page_name) {
 frappe.show_not_permitted = function(page_name) {
 	frappe.show_message_page({
 		page_name: page_name,
-		message: __("Sorry! You are not permitted to view this page."),
+		message: __("Sorry! You are not permitted to view this page._in_v_pageview"),
 		img: "/assets/frappe/images/ui/bubble-tea-sorry.svg",
 		// icon: "octicon octicon-circle-slash"
 	});
@@ -159,7 +159,7 @@ frappe.show_message_page = function(opts) {
 		</div>', {
 				img: opts.img || "",
 				message: opts.message || "",
-				home: __("Home")
+				home: __("Home_in_v_pageview")
 			})
 	);
 

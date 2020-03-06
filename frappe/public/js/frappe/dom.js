@@ -302,10 +302,10 @@ frappe.get_modal = function(title, content) {
 								</button>
 								<button type="button" class="btn btn-default btn-sm btn-modal-close" data-dismiss="modal">
 									<i class="octicon octicon-x visible-xs" style="padding: 1px 0px;"></i>
-									<span class="hidden-xs">${__("Close")}</span>
+									<span class="hidden-xs">${__("Close_in_dom")}</span>
 								</button>
 								<button type="button" class="btn btn-primary btn-sm hide">
-									${__("Confirm")}
+									${__("Confirm_in_dom")}
 								</button>
 							</div>
 						</div>
@@ -332,13 +332,13 @@ frappe.is_online = function() {
 $(window).on('online', function() {
 	frappe.show_alert({
 		indicator: 'green',
-		message: __('You are connected to internet.')
+		message: __('You are connected to internet._in_dom')
 	});
 });
 
 $(window).on('offline', function() {
 	frappe.show_alert({
 		indicator: 'orange',
-		message: __('Connection lost. Some features might not work.')
+		message: __('Connection lost. Some features might not work._in_dom')
 	});
 });

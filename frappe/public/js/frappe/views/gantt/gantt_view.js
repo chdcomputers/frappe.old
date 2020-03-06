@@ -8,7 +8,7 @@ frappe.views.GanttView = class GanttView extends frappe.views.ListView {
 	setup_defaults() {
 		return super.setup_defaults()
 			.then(() => {
-				this.page_title = this.page_title + ' ' + __('Gantt');
+				this.page_title = this.page_title + ' ' + __('Gantt_in_vg_gantt_view');
 				this.calendar_settings = frappe.views.calendar[this.doctype] || {};
 				if(this.calendar_settings.order_by) {
 					this.sort_by = this.calendar_settings.order_by;
@@ -143,8 +143,8 @@ frappe.views.GanttView = class GanttView extends frappe.views.ListView {
 	}
 
 	setup_view_mode_buttons() {
-		// view modes (for translation) __("Day"), __("Week"), __("Month"),
-		//__("Half Day"), __("Quarter Day")
+		// view modes (for translation) __("Day_in_vg_gantt_view"), __("Week_in_vg_gantt_view"), __("Month_in_vg_gantt_view"),
+		//__("Half Day_in_vg_gantt_view"), __("Quarter Day_in_vg_gantt_view")
 
 		let $btn_group = this.$paging_area.find('.gantt-view-mode');
 		if ($btn_group.length > 0) return;

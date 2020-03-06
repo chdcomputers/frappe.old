@@ -4,7 +4,7 @@ frappe.RoleEditor = Class.extend({
 		this.frm = frm;
 		this.wrapper = wrapper;
 		this.disable = disable;
-		$(wrapper).html('<div class="help">' + __("Loading") + '...</div>');
+		$(wrapper).html('<div class="help">' + __("Loading_in_roles_editor") + '...</div>');
 		frappe.call({
 			method: 'frappe.core.doctype.user.user.get_all_roles',
 			callback: function(r) {
@@ -27,7 +27,7 @@ frappe.RoleEditor = Class.extend({
 				<button class="btn btn-sm btn-default btn-remove"></button></p>').appendTo($(this.wrapper));
 
 			role_toolbar.find(".btn-add")
-				.html(__('Add all roles'))
+				.html(__('Add all roles_in_roles_editor'))
 				.on("click", function() {
 					$(me.wrapper).find('input[type="checkbox"]').each(function(i, check) {
 						if (!$(check).is(":checked")) {
@@ -37,7 +37,7 @@ frappe.RoleEditor = Class.extend({
 				});
 
 			role_toolbar.find(".btn-remove")
-				.html(__('Clear all roles'))
+				.html(__('Clear all roles_in_roles_editor'))
 				.on("click", function() {
 					$(me.wrapper).find('input[type="checkbox"]').each(function(i, check) {
 						if($(check).is(":checked")) {
@@ -144,16 +144,16 @@ frappe.RoleEditor = Class.extend({
 				// TODO fix the overflow issue and also display perms like report, import, etc.
 
 				$body.append('<table class="user-perm"><thead><tr>'
-					+ '<th style="text-align: left">' + __('Document Type') + '</th>'
-					+ '<th>' + __('Level') + '</th>'
-					+ '<th>' + __('Read') + '</th>'
-					+ '<th>' + __('Write') + '</th>'
-					+ '<th>' + __('Create') + '</th>'
-					+ '<th>' + __('Delete') + '</th>'
-					+ '<th>' + __('Submit') + '</th>'
-					+ '<th>' + __('Cancel') + '</th>'
-					+ '<th>' + __('Amend') + '</th>'
-					+ '<th>' + __('Set User Permissions') + '</th>'
+					+ '<th style="text-align: left">' + __('Document Type_in_roles_editor') + '</th>'
+					+ '<th>' + __('Level_in_roles_editor') + '</th>'
+					+ '<th>' + __('Read_in_roles_editor') + '</th>'
+					+ '<th>' + __('Write_in_roles_editor') + '</th>'
+					+ '<th>' + __('Create_in_roles_editor') + '</th>'
+					+ '<th>' + __('Delete_in_roles_editor') + '</th>'
+					+ '<th>' + __('Submit_in_roles_editor') + '</th>'
+					+ '<th>' + __('Cancel_in_roles_editor') + '</th>'
+					+ '<th>' + __('Amend_in_roles_editor') + '</th>'
+					+ '<th>' + __('Set User Permissions_in_roles_editor') + '</th>'
 					+ '</tr></thead><tbody></tbody></table>');
 
 				for(var i=0, l=r.message.length; i<l; i++) {
@@ -191,7 +191,7 @@ frappe.RoleEditor = Class.extend({
 	},
 	make_perm_dialog: function() {
 		this.perm_dialog = new frappe.ui.Dialog({
-			title: __('Role Permissions')
+			title: __('Role Permissions_in_roles_editor')
 		});
 
 		this.perm_dialog.$wrapper.find('.modal-dialog').css("width", "800px");

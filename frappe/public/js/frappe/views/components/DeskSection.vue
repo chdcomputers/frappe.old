@@ -56,10 +56,10 @@ export default {
 		show_module_card_customize_dialog(module) {
 			const me = this;
 			const d = new frappe.ui.Dialog({
-				title: __('Customize Shortcuts'),
+				title: __('Customize Shortcuts_in_vco_DeskSectionvue'),
 				fields: [
 					{
-						label: __('Shortcuts'),
+						label: __('Shortcuts_in_vco_DeskSectionvue'),
 						fieldname: 'links',
 						fieldtype: 'MultiSelectPills',
 						get_data: () => {
@@ -79,7 +79,7 @@ export default {
 						default: module.links.filter(l => !l.hidden).map(l => l.name)
 					}
 				],
-				primary_action_label: __('Save'),
+				primary_action_label: __('Save_in_vco_DeskSectionvue'),
 				primary_action: ({ links }) => {
 					frappe.call('frappe.desk.moduleview.update_links_for_module', {
 						module_name: module.module_name,

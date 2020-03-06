@@ -54,7 +54,7 @@ frappe.views.Container = Class.extend({
 			var page = frappe.pages[label];
 		}
 		if(!page) {
-			console.log(__('Page not found')+ ': ' + label);
+			console.log(__('Page not found_in_v_container')+ ': ' + label);
 			return;
 		}
 

@@ -106,7 +106,7 @@ export default class WebFormList {
 		this.web_list_start += this.page_length
 		this.fetch_data().then((res) => {
 			if (res.message.length === 0) {
-				frappe.msgprint(__("No more items to display"))
+				frappe.msgprint(__("No more items to display_in_w_web_form_list"))
 			}
 			this.append_rows(res.message)
 		})
@@ -151,7 +151,7 @@ export default class WebFormList {
 		th.appendChild(checkbox);
 		row.appendChild(th);
 
-		add_heading(row, __("Sr"));
+		add_heading(row, __("Sr_in_w_web_form_list"));
 		this.columns.forEach(col => {
 			add_heading(row, __(col.label));
 		});

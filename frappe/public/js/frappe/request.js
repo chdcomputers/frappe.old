@@ -29,7 +29,7 @@ frappe.call = function(opts) {
 	if (!frappe.is_online()) {
 		frappe.show_alert({
 			indicator: 'orange',
-			message: __('You are not connected to Internet. Retry after sometime.')
+			message: __('You are not connected to Internet. Retry after sometime._in_request')
 		}, 3);
 		opts.always && opts.always();
 		return $.ajax();
@@ -121,8 +121,8 @@ frappe.request.call = function(opts) {
 			}
 		},
 		404: function(xhr) {
-			frappe.msgprint({title:__("Not found"), indicator:'red',
-				message: __('The resource you are looking for is not available')});
+			frappe.msgprint({title:__("Not found_in_request"), indicator:'red',
+				message: __('The resource you are looking for is not available_in_request')});
 		},
 		403: function(xhr) {
 			if (frappe.get_cookie('sid')==='Guest') {
@@ -131,7 +131,7 @@ frappe.request.call = function(opts) {
 			}
 			else if(xhr.responseJSON && xhr.responseJSON._error_message) {
 				frappe.msgprint({
-					title:__("Not permitted"), indicator:'red',
+					title:__("Not permitted_in_request"), indicator:'red',
 					message: xhr.responseJSON._error_message
 				});
 
@@ -141,25 +141,25 @@ frappe.request.call = function(opts) {
 				var _server_messages = JSON.parse(xhr.responseJSON._server_messages);
 
 				// avoid double messages
-				if (_server_messages.indexOf(__("Not permitted"))!==-1) {
+				if (_server_messages.indexOf(__("Not permitted_in_request"))!==-1) {
 					return;
 				}
 			}
 			else {
 				frappe.msgprint({
-					title:__("Not permitted"), indicator:'red',
-					message: __('You do not have enough permissions to access this resource. Please contact your manager to get access.')});
+					title:__("Not permitted_in_request"), indicator:'red',
+					message: __('You do not have enough permissions to access this resource. Please contact your manager to get access._in_request')});
 			}
 
 
 		},
 		508: function(xhr) {
 			frappe.utils.play_sound("error");
-			frappe.msgprint({title:__('Please try again'), indicator:'red',
-				message:__("Another transaction is blocking this one. Please try again in a few seconds.")});
+			frappe.msgprint({title:__('Please try again_in_request'), indicator:'red',
+				message:__("Another transaction is blocking this one. Please try again in a few seconds._in_request")});
 		},
 		413: function(data, xhr) {
-			frappe.msgprint({indicator:'red', title:__('File too big'), message:__("File size exceeded the maximum allowed size of {0} MB",
+			frappe.msgprint({indicator:'red', title:__('File too big_in_request'), message:__("File size exceeded the maximum allowed size of {0} MB_in_request",
 				[(frappe.boot.max_file_size || 5242880) / 1048576])});
 		},
 		417: function(xhr) {
@@ -188,11 +188,11 @@ frappe.request.call = function(opts) {
 			}
 		},
 		504: function(xhr) {
-			frappe.msgprint(__("Request Timed Out"))
+			frappe.msgprint(__("Request Timed Out_in_request"))
 			opts.error_callback && opts.error_callback();
 		},
 		502: function(xhr) {
-			frappe.msgprint(__("Internal Server Error"));
+			frappe.msgprint(__("Internal Server Error_in_request"));
 		}
 	};
 
@@ -461,12 +461,12 @@ frappe.request.report_error = function(xhr, request_opts) {
 		if (!frappe.error_dialog) {
 			frappe.error_dialog = new frappe.ui.Dialog({
 				title: 'Server Error',
-				primary_action_label: __('Report'),
+				primary_action_label: __('Report_in_request'),
 				primary_action: () => {
 					if (error_report_email) {
 						show_communication();
 					} else {
-						frappe.msgprint(__('Support Email Address Not Specified'));
+						frappe.msgprint(__('Support Email Address Not Specified_in_request'));
 					}
 					frappe.error_dialog.hide();
 				}

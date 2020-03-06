@@ -66,7 +66,7 @@ export default {
 		return this.type === 'module' ? this.links
 			.filter(link => !link.hidden)
 			.concat([
-				{ label: __('Customize'), action: () => this.$emit('customize'), class: 'border-top' }
+				{ label: __('Customize_in_vco_DeskModuleBoxvue'), action: () => this.$emit('customize'), class: 'border-top' }
 			]) : [];
 	}
   },

@@ -10,7 +10,7 @@ frappe.standard_pages['query-report'] = function() {
 
 	frappe.ui.make_app_page({
 		parent: wrapper,
-		title: __('Query Report'),
+		title: __('Query Report_in_vr_query_report'),
 		single_column: true,
 	});
 
@@ -50,7 +50,7 @@ frappe.views.QueryReport = class QueryReport extends frappe.views.BaseList {
 		// Setup buttons
 		this.primary_action = null;
 		this.secondary_action = {
-			label: __('Refresh'),
+			label: __('Refresh_in_vr_query_report'),
 			action: () => {
 				this.setup_progress_bar();
 				this.refresh();
@@ -133,7 +133,7 @@ frappe.views.QueryReport = class QueryReport extends frappe.views.BaseList {
 	}
 
 	add_make_chart_button(){
-		this.page.add_inner_button(__("Set Chart"), () => {
+		this.page.add_inner_button(__("Set Chart_in_vr_query_report"), () => {
 			this.get_possible_chart_options();
 		});
 	}
@@ -197,7 +197,7 @@ frappe.views.QueryReport = class QueryReport extends frappe.views.BaseList {
 
 		this.interval = setInterval(function()  {
 			seconds_elapsed += 1;
-			frappe.show_progress(__('Preparing Report'), seconds_elapsed, execution_time);
+			frappe.show_progress(__('Preparing Report_in_vr_query_report'), seconds_elapsed, execution_time);
 		}, 1000);
 	}
 
@@ -371,16 +371,16 @@ frappe.views.QueryReport = class QueryReport extends frappe.views.BaseList {
 
 	add_prepared_report_buttons(doc) {
 		if(doc){
-			this.page.add_inner_button(__("Download Report"), function (){
+			this.page.add_inner_button(__("Download Report_in_vr_query_report"), function (){
 				window.open(
 					frappe.urllib.get_full_url(
 						"/api/method/frappe.core.doctype.prepared_report.prepared_report.download_attachment?"
 						+"dn="+encodeURIComponent(doc.name)));
 			});
 
-			const part1 = __('This report was generated {0}.', [frappe.datetime.comment_when(doc.report_end_time)]);
-			const part2 = __('To get the updated report, click on {0}.', [__('Rebuild')]);
-			const part3 = __('See all past reports.');
+			const part1 = __('This report was generated {0}._in_vr_query_report', [frappe.datetime.comment_when(doc.report_end_time)]);
+			const part2 = __('To get the updated report, click on {0}._in_vr_query_report', [__('Rebuild_in_vr_query_report')]);
+			const part3 = __('See all past reports._in_vr_query_report');
 
 			this.show_status(`
 				<span class="indicator orange">
@@ -404,14 +404,14 @@ frappe.views.QueryReport = class QueryReport extends frappe.views.BaseList {
 			);
 		} else if(this.prepared_report_action == "Edit") {
 			this.page.set_primary_action(
-				__("Edit"),
+				__("Edit_in_vr_query_report"),
 				() => {
 					frappe.set_route(frappe.get_route());
 				}
 			);
 		} else if(this.prepared_report_action == "Rebuild"){
 			this.page.set_primary_action(
-				__("Rebuild"),
+				__("Rebuild_in_vr_query_report"),
 				this.generate_background_report.bind(this)
 			);
 		}
@@ -602,7 +602,7 @@ frappe.views.QueryReport = class QueryReport extends frappe.views.BaseList {
 		const non_numeric_fields = columns.filter((col, i) => !indices.includes(i))
 
 		const dialog = new frappe.ui.Dialog({
-			title: __('Create Chart'),
+			title: __('Create Chart_in_vr_query_report'),
 			fields: [
 				{
 					fieldname: 'y_field',
@@ -648,7 +648,7 @@ frappe.views.QueryReport = class QueryReport extends frappe.views.BaseList {
 					fieldtype: 'HTML',
 				}
 			],
-			primary_action_label: __('Create'),
+			primary_action_label: __('Create_in_vr_query_report'),
 			primary_action: (values) => {
 				let options = me.make_chart_options(values);
 				me.chart_fields = values
@@ -656,7 +656,7 @@ frappe.views.QueryReport = class QueryReport extends frappe.views.BaseList {
 				let x_field_label = numeric_fields.filter((field) => field.fieldname == values.y_field)[0].label;
 				let y_field_label = non_numeric_fields.filter((field) => field.fieldname == values.x_field)[0].label;
 
-				options.title = __(`${this.report_name}: ${x_field_label} vs ${y_field_label}`);
+				options.title = __(`${this.report_name}: ${x_field_label} vs ${y_field_label}_in_vr_query_report`);
 
 				this.render_chart(options);
 
@@ -769,7 +769,7 @@ frappe.views.QueryReport = class QueryReport extends frappe.views.BaseList {
 		const mandatory = this.filters.filter(f => f.df.reqd);
 		const missing_mandatory = mandatory.filter(f => !f.get_value());
 		if (raise && missing_mandatory.length > 0) {
-			let message = __('Please set filters');
+			let message = __('Please set filters_in_vr_query_report');
 			this.toggle_message(raise, message);
 			throw "Filter missing";
 		}
@@ -920,7 +920,7 @@ frappe.views.QueryReport = class QueryReport extends frappe.views.BaseList {
 
 		this.export_dialog = frappe.prompt([
 			{
-				label: __('Select File Format'),
+				label: __('Select File Format_in_vr_query_report'),
 				fieldname: 'file_format',
 				fieldtype: 'Select',
 				options: ['Excel', 'CSV'],
@@ -928,7 +928,7 @@ frappe.views.QueryReport = class QueryReport extends frappe.views.BaseList {
 				reqd: 1
 			},
 			{
-				label: __("Include indentation"),
+				label: __("Include indentation_in_vr_query_report"),
 				fieldname: "include_indentation",
 				fieldtype: "Check",
 			}
@@ -962,7 +962,7 @@ frappe.views.QueryReport = class QueryReport extends frappe.views.BaseList {
 
 				open_url_post(frappe.request.url, args);
 			}
-		}, __('Export Report: '+ this.report_name), __('Download'));
+		}, __('Export Report: '+ this.report_name), __('Download_in_vr_query_report'));
 	}
 
 	get_data_for_csv(include_indentation) {
@@ -1022,18 +1022,18 @@ frappe.views.QueryReport = class QueryReport extends frappe.views.BaseList {
 	get_menu_items() {
 		return [
 			{
-				label: __('Refresh'),
+				label: __('Refresh_in_vr_query_report'),
 				action: () => this.refresh(),
 				class: 'visible-xs'
 			},
 			{
-				label: __('Edit'),
+				label: __('Edit_in_vr_query_report'),
 				action: () => frappe.set_route('Form', 'Report', this.report_name),
 				condition: () => frappe.user.is_report_manager(),
 				standard: true
 			},
 			{
-				label: __('Print'),
+				label: __('Print_in_vr_query_report'),
 				action: () => {
 					let dialog = frappe.ui.get_print_settings(
 						false,
@@ -1047,7 +1047,7 @@ frappe.views.QueryReport = class QueryReport extends frappe.views.BaseList {
 				standard: true
 			},
 			{
-				label: __('PDF'),
+				label: __('PDF_in_vr_query_report'),
 				action: () => {
 					let dialog = frappe.ui.get_print_settings(
 						false,
@@ -1062,26 +1062,26 @@ frappe.views.QueryReport = class QueryReport extends frappe.views.BaseList {
 				standard: true
 			},
 			{
-				label: __('Export'),
+				label: __('Export_in_vr_query_report'),
 				action: () => this.export_report(),
 				condition: () => frappe.model.can_export(this.report_doc.ref_doctype),
 				standard: true
 			},
 			{
-				label: __('Setup Auto Email'),
+				label: __('Setup Auto Email_in_vr_query_report'),
 				action: () => frappe.set_route('List', 'Auto Email Report', {'report' : this.report_name}),
 				standard: true
 			},
 			{
-				label: __('Add Column'),
+				label: __('Add Column_in_vr_query_report'),
 				action: () => {
 					let d = new frappe.ui.Dialog({
-						title: __('Add Column'),
+						title: __('Add Column_in_vr_query_report'),
 						fields: [
 							{
 								fieldtype: 'Select',
 								fieldname: 'doctype',
-								label: __('From Document Type'),
+								label: __('From Document Type_in_vr_query_report'),
 								options: this.linked_doctypes.map(df => ({ label: df.doctype, value: df.doctype })),
 								change: () => {
 									let doctype = d.get_value('doctype');
@@ -1105,13 +1105,13 @@ frappe.views.QueryReport = class QueryReport extends frappe.views.BaseList {
 							},
 							{
 								fieldtype: 'Select',
-								label: __('Field'),
+								label: __('Field_in_vr_query_report'),
 								fieldname: 'field',
 								options: []
 							},
 							{
 								fieldtype: 'Select',
-								label: __('Insert After'),
+								label: __('Insert After_in_vr_query_report'),
 								fieldname: 'insert_after',
 								options: this.columns.map(df => df.label)
 							}
@@ -1151,15 +1151,15 @@ frappe.views.QueryReport = class QueryReport extends frappe.views.BaseList {
 				standard: true
 			},
 			{
-				label: __('Save'),
+				label: __('Save_in_vr_query_report'),
 				action: () => {
 					let d = new frappe.ui.Dialog({
-						title: __('Save Report'),
+						title: __('Save Report_in_vr_query_report'),
 						fields: [
 							{
 								fieldtype: 'Data',
 								fieldname: 'report_name',
-								label: __("Report Name"),
+								label: __("Report Name_in_vr_query_report"),
 								default: this.report_doc.is_standard == 'No' ? this.report_name : "",
 							}
 						],
@@ -1184,7 +1184,7 @@ frappe.views.QueryReport = class QueryReport extends frappe.views.BaseList {
 				standard: true
 			},
 			{
-				label: __('User Permissions'),
+				label: __('User Permissions_in_vr_query_report'),
 				action: () => frappe.set_route('List', 'User Permission', {
 					doctype: 'Report',
 					name: this.report_name
@@ -1200,7 +1200,7 @@ frappe.views.QueryReport = class QueryReport extends frappe.views.BaseList {
 			dialog.set_df_property('orientation', 'change', () => {
 				let value = dialog.get_value('orientation');
 				let description = value === 'Portrait'
-					? __('Report with more than 10 columns looks better in Landscape mode.')
+					? __('Report with more than 10 columns looks better in Landscape mode._in_vr_query_report')
 					: '';
 				dialog.set_df_property('orientation', 'description', description);
 			});
@@ -1286,8 +1286,8 @@ frappe.views.QueryReport = class QueryReport extends frappe.views.BaseList {
 	}
 
 	show_footer_message() {
-		const message = __('For comparison, use >5, <10 or =324. For ranges, use 5:10 (for values between 5 & 10).');
-		const execution_time_msg = __('Execution Time: {0} sec', [this.execution_time || 0.1]);
+		const message = __('For comparison, use >5, <10 or =324. For ranges, use 5:10 (for values between 5 & 10)._in_vr_query_report');
+		const execution_time_msg = __('Execution Time: {0} sec_in_vr_query_report', [this.execution_time || 0.1]);
 
 		this.page.footer.removeClass('hide').addClass('text-muted col-md-12').html(`
 			<span class="text-left col-md-6">${message}</span><span class="text-right col-md-6">${execution_time_msg}</span>
@@ -1298,9 +1298,9 @@ frappe.views.QueryReport = class QueryReport extends frappe.views.BaseList {
 			this.$tree_footer = this.page.footer.clone().addClass('tree-footer');
 			this.$tree_footer.html(`<div class="col-md-12">
 				<button class="btn btn-xs btn-default" data-action="expand_all_rows">
-					${__('Expand All')}</button>
+					${__('Expand All_in_vr_query_report')}</button>
 				<button class="btn btn-xs btn-default" data-action="collapse_all_rows">
-					${__('Collapse All')}</button>
+					${__('Collapse All_in_vr_query_report')}</button>
 			</div>`);
 			this.page.footer.before(this.$tree_footer);
 			this.$tree_footer.find('[data-action=collapse_all_rows]').show();
@@ -1333,14 +1333,14 @@ frappe.views.QueryReport = class QueryReport extends frappe.views.BaseList {
 	}
 
 	toggle_loading(flag) {
-		this.toggle_message(flag, __('Loading') + '...');
+		this.toggle_message(flag, __('Loading_in_vr_query_report') + '...');
 	}
 
 
 	toggle_nothing_to_show(flag) {
 		let message = this.prepared_report
-			? __('This is a background report. Please set the appropriate filters and then generate a new one.')
-			: __('Nothing to show')
+			? __('This is a background report. Please set the appropriate filters and then generate a new one._in_vr_query_report')
+			: __('Nothing to show_in_vr_query_report')
 
 		this.toggle_message(flag, message);
 

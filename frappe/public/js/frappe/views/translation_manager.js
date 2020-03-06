@@ -8,9 +8,9 @@ frappe.views.TranslationManager = class TranslationManager {
 		this.data = [];
 		this.dialog = new frappe.ui.Dialog({
 			fields: this.get_fields(),
-			title: __('Translate {0}', [this.df.label]),
+			title: __('Translate {0}_in_v_translation_manager', [this.df.label]),
 			no_submit_on_enter: true,
-			primary_action_label: __('Update Translations'),
+			primary_action_label: __('Update Translations_in_v_translation_manager'),
 			primary_action:
 				(values) => this.update_translations(values)
 					.then(() => {
@@ -19,8 +19,8 @@ frappe.views.TranslationManager = class TranslationManager {
 						this.data = [];
 
 						frappe.msgprint({
-							title: __('Success'),
-							message: __('Successfully updated translations'),
+							title: __('Success_in_v_translation_manager'),
+							message: __('Successfully updated translations_in_v_translation_manager'),
 							indicator: 'green'
 						});
 					})
@@ -37,7 +37,7 @@ frappe.views.TranslationManager = class TranslationManager {
 	get_fields() {
 		var fields = [
 			{
-				label: __('Source Text'),
+				label: __('Source Text_in_v_translation_manager'),
 				fieldname: 'source',
 				fieldtype: 'Data',
 				read_only: 1,
@@ -45,7 +45,7 @@ frappe.views.TranslationManager = class TranslationManager {
 				default: this.source_name
 			},
 			{
-				label: __('Translations'),
+				label: __('Translations_in_v_translation_manager'),
 				fieldname: 'translation_data',
 				fieldtype: 'Table',
 				fields: [
@@ -98,8 +98,8 @@ frappe.views.TranslationManager = class TranslationManager {
 			}
 		}).fail(() => {
 			frappe.msgprint({
-				title: __('Something went wrong'),
-				message: __('Please try again'),
+				title: __('Something went wrong_in_v_translation_manager'),
+				message: __('Please try again_in_v_translation_manager'),
 				indicator: 'red'
 			});
 		});

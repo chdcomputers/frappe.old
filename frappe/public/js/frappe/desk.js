@@ -2,7 +2,7 @@
 // MIT License. See license.txt
 /* eslint-disable no-console */
 
-// __('Modules') __('Domains') __('Places') __('Administration') # for translation, don't remove
+// __('Modules_in_desk') __('Domains_in_desk') __('Places_in_desk') __('Administration_in_desk') # for translation, don't remove
 
 frappe.start_app = function() {
 	if(!frappe.Application)
@@ -17,8 +17,8 @@ $(document).ready(function() {
 	if(!frappe.utils.supportsES6) {
 		frappe.msgprint({
 			indicator: 'red',
-			title: __('Browser not supported'),
-			message: __('Some of the features might not work in your browser. Please update your browser to the latest version.')
+			title: __('Browser not supported_in_desk'),
+			message: __('Some of the features might not work in your browser. Please update your browser to the latest version._in_desk')
 		});
 	}
 	frappe.start_app();
@@ -36,7 +36,7 @@ frappe.Application = Class.extend({
 		if(frappe.boot.status==='failed') {
 			frappe.msgprint({
 				message: frappe.boot.error,
-				title: __('Session Start Failed'),
+				title: __('Session Start Failed_in_desk'),
 				indicator: 'red',
 			});
 			throw 'boot failed';
@@ -108,11 +108,11 @@ frappe.Application = Class.extend({
 
 		frappe.realtime.on("version-update", function() {
 			var dialog = frappe.msgprint({
-				message:__("The application has been updated to a new version, please refresh this page"),
+				message:__("The application has been updated to a new version, please refresh this page_in_desk"),
 				indicator: 'green',
-				title: __('Version Updated')
+				title: __('Version Updated_in_desk')
 			});
-			dialog.set_primary_action(__("Refresh"), function() {
+			dialog.set_primary_action(__("Refresh_in_desk"), function() {
 				location.reload(true);
 			});
 			dialog.get_close_btn().toggle(false);
@@ -138,7 +138,7 @@ frappe.Application = Class.extend({
 				frappe.call({
 					method: 'frappe.core.page.background_jobs.background_jobs.get_scheduler_status',
 					callback: function(r) {
-						if (r.message[0] == __("Inactive")) {
+						if (r.message[0] == __("Inactive_in_desk")) {
 							frappe.call('frappe.utils.scheduler.activate_scheduler');
 						}
 					}
@@ -176,7 +176,7 @@ frappe.Application = Class.extend({
 	email_password_prompt: function(email_account,user,i) {
 		var me = this;
 		var d = new frappe.ui.Dialog({
-			title: __('Email Account setup please enter your password for: '+email_account[i]["email_id"]),
+			title: __('Email Account setup please enter your password for_in_desk: '+email_account[i]["email_id"]),
 			fields: [
 				{	'fieldname': 'password',
 					'fieldtype': 'Password',
@@ -185,7 +185,7 @@ frappe.Application = Class.extend({
 				},
 				{
 					"fieldtype": "Button",
-					"label": __("Submit")
+					"label": __("Submit_in_desk")
 				}
 			]
 		});
@@ -193,7 +193,7 @@ frappe.Application = Class.extend({
 			//setup spinner
 			d.hide();
 			var s = new frappe.ui.Dialog({
-				title: __("Checking one moment"),
+				title: __("Checking one moment_in_desk"),
 				fields: [{
 					"fieldtype": "HTML",
 					"fieldname": "checking"
@@ -374,11 +374,11 @@ frappe.Application = Class.extend({
 	handle_session_expired: function() {
 		if(!frappe.app.session_expired_dialog) {
 			var dialog = new frappe.ui.Dialog({
-				title: __('Session Expired'),
+				title: __('Session Expired_in_desk'),
 				keep_open: true,
 				fields: [
 					{ fieldtype:'Password', fieldname:'password',
-						label: __('Please Enter Your Password to Continue') },
+						label: __('Please Enter Your Password to Continue_in_desk') },
 				],
 				onhide: () => {
 					if (!dialog.logged_in) {
@@ -386,8 +386,8 @@ frappe.Application = Class.extend({
 					}
 				}
 			});
-			dialog.set_primary_action(__('Login'), () => {
-				dialog.set_message(__('Authenticating...'));
+			dialog.set_primary_action(__('Login_in_desk'), () => {
+				dialog.set_message(__('Authenticating..._in_desk'));
 				frappe.call({
 					method: 'login',
 					args: {
@@ -481,7 +481,7 @@ frappe.Application = Class.extend({
 		// Iterate over changelog
 		var change_log_dialog = frappe.msgprint({
 			message: frappe.render_template("change_log", {"change_log": change_log}),
-			title: __("Updated To A New Version 🎉"),
+			title: __("Updated To A New Version_in_desk"),
 			wide: true,
 			scroll: true
 		});

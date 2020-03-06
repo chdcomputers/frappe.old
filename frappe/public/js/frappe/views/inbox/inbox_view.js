@@ -17,7 +17,7 @@ frappe.views.InboxView = class InboxView extends frappe.views.ListView {
 			frappe.set_route("List", "Communication", "Inbox", email_account);
 			return true;
 		} else if (!route[3] || (route[3] !== "All Accounts" && !is_valid(route[3]))) {
-			frappe.throw(__('No email account associated with the User. Please add an account under User > Email Inbox.'));
+			frappe.throw(__('No email account associated with the User. Please add an account under User > Email Inbox._in_vin_inbox_view'));
 		}
 		return false;
 
@@ -69,10 +69,10 @@ frappe.views.InboxView = class InboxView extends frappe.views.ListView {
 		return this.get_header_html_skeleton(`
 			<div class="list-row-col list-subject level">
 				<input class="level-item list-check-all hidden-xs" type="checkbox" title="Select All">
-				<span class="level-item">${__('Subject')}</span>
+				<span class="level-item">${__('Subject_in_vin_inbox_view')}</span>
 			</div>
 			<div class="list-row-col hidden-xs">
-				<span>${this.is_sent_emails ? __("To") : __("From")}</span>
+				<span>${this.is_sent_emails ? __("To_in_vin_inbox_view") : __("From_in_vin_inbox_view")}</span>
 			</div>
 		`);
 	}
@@ -100,12 +100,12 @@ frappe.views.InboxView = class InboxView extends frappe.views.ListView {
 
 	get_meta_html(email) {
 		const attachment = email.has_attachment ?
-			`<span class="fa fa-paperclip fa-large" title="${__('Has Attachments')}"></span>` : '';
+			`<span class="fa fa-paperclip fa-large" title="${__('Has Attachments_in_vin_inbox_view')}"></span>` : '';
 
 		const form_link = frappe.utils.get_form_link(email.reference_doctype, email.reference_name);
 		const link = email.reference_doctype && email.reference_doctype !== this.doctype ?
 			`<a class="text-muted grey" href="${form_link}"
-				title="${__('Linked with {0}', [email.reference_doctype])}">
+				title="${__('Linked with {0}_in_vin_inbox_view', [email.reference_doctype])}">
 				<i class="fa fa-link fa-large"></i>
 			</a>` : '';
 
@@ -163,15 +163,15 @@ frappe.views.InboxView = class InboxView extends frappe.views.ListView {
 			// email account is not configured
 			args = {
 				doctype: "Email Account",
-				msg: __("No Email Account"),
-				label: __("New Email Account"),
+				msg: __("No Email Account_in_vin_inbox_view"),
+				label: __("New Email Account_in_vin_inbox_view"),
 			};
 		} else {
 			// no sent mail
 			args = {
 				doctype: "Communication",
-				msg: __("No Emails"),
-				label: __("Compose Email")
+				msg: __("No Emails_in_vin_inbox_view"),
+				label: __("Compose Email_in_vin_inbox_view")
 			};
 		}
 
@@ -183,7 +183,7 @@ frappe.views.InboxView = class InboxView extends frappe.views.ListView {
 				</button>
 			</p>
 			` :
-			`<p>${ __("No Email Accounts Assigned") }</p>`;
+			`<p>${ __("No Email Accounts Assigned_in_vin_inbox_view") }</p>`;
 
 		return `
 			<div class="msg-box no-border">

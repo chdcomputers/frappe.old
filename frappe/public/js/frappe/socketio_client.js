@@ -47,7 +47,7 @@ frappe.socketio = {
 				if(data.percent==100) {
 					frappe.hide_progress();
 				} else {
-					frappe.show_progress(data.title || __("Progress"), data.percent, 100, data.description);
+					frappe.show_progress(data.title || __("Progress_in_socketio_client"), data.percent, 100, data.description);
 				}
 			}
 		});
@@ -268,7 +268,7 @@ frappe.socketio.SocketIOUploader = class SocketIOUploader {
 		frappe.socketio.socket.on('upload-error', (data) => {
 			this.disconnect(false);
 			frappe.msgprint({
-				title: __('Upload Failed'),
+				title: __('Upload Failed_in_socketio_client'),
 				message: data.error,
 				indicator: 'red'
 			});
@@ -283,7 +283,7 @@ frappe.socketio.SocketIOUploader = class SocketIOUploader {
 		chunk_size=24576, fallback=null} = {}) {
 
 		if (this.reader) {
-			frappe.throw(__('File Upload in Progress. Please try again in a few moments.'));
+			frappe.throw(__('File Upload in Progress. Please try again in a few moments._in_socketio_client'));
 		}
 
 		function fallback_required() {
@@ -291,7 +291,7 @@ frappe.socketio.SocketIOUploader = class SocketIOUploader {
 		}
 
 		if (fallback_required()) {
-			return fallback ? fallback() : frappe.throw(__('Socketio is not connected. Cannot upload'));
+			return fallback ? fallback() : frappe.throw(__('Socketio is not connected. Cannot upload_in_socketio_client'));
 		}
 
 		this.reader = new FileReader();
@@ -341,8 +341,8 @@ frappe.socketio.SocketIOUploader = class SocketIOUploader {
 			frappe.hide_progress();
 			if (with_message) {
 				frappe.msgprint({
-					title: __('File Upload'),
-					message: __('File Upload Disconnected. Please try again.'),
+					title: __('File Upload_in_socketio_client'),
+					message: __('File Upload Disconnected. Please try again._in_socketio_client'),
 					indicator: 'red'
 				});
 			}

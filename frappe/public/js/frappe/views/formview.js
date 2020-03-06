@@ -62,7 +62,7 @@ frappe.views.FormFactory = class FormFactory extends frappe.views.Factory {
 			if(!(locals[dt] && locals[dt][dn])) {
 				// doc not found, but starts with New,
 				// make a new doc and set it
-				var new_str = __("New") + " ";
+				var new_str = __("New_in_v_formview") + " ";
 				if(dn && dn.substr(0, new_str.length)==new_str) {
 					var new_name = frappe.model.make_new_doc_and_get_name(dt, true);
 					if(new_name===dn) {

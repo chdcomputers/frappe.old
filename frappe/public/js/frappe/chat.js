@@ -192,11 +192,11 @@ frappe.quick_edit      = (doctype, docname, fn) => {
 				})
 
 				const dialog   = new frappe.ui.Dialog({
-					 title: __(`Edit ${doctype} (${docname})`),
+					 title: __(`Edit_in_chat ${doctype} (${docname})`),
 					fields: required,
 					action: {
 						primary: {
-							   label: __("Save"),
+							   label: __("Save_in_chat"),
 							onsubmit: (values) => {
 								frappe.call('frappe.client.save',
 									{ doc: { doctype: doctype, docname: docname, ...doc, ...values } })
@@ -211,7 +211,7 @@ frappe.quick_edit      = (doctype, docname, fn) => {
 							}
 						},
 						secondary: {
-							label: __("Discard")
+							label: __("Discard_in_chat")
 						}
 					}
 				})
@@ -221,7 +221,7 @@ frappe.quick_edit      = (doctype, docname, fn) => {
 				$element.append(`
 					<div class="qe-fp" style="padding-top: '15px'; padding-bottom: '15px'; padding-left: '7px'">
 						<button class="btn btn-default btn-sm">
-							${__("Edit in Full Page")}
+							${__("Edit in Full Page_in_chat")}
 						</button>
 					</div>
 				`)
@@ -1595,19 +1595,19 @@ class extends Component {
 		const me               = this
 
 		const ActionBar        = h(frappe.Chat.Widget.ActionBar, {
-			placeholder: __("Search or Create a New Chat"),
+			placeholder: __("Search or Create a New Chat_in_chat"),
 				  class: "level",
 				 layout: props.layout,
 				actions:
 			frappe._.compact([
 				{
-					  label: __("New"),
+					  label: __("New_in_chat"),
 					onclick: function ( ) {
 						const dialog = new frappe.ui.Dialog({
-							  title: __("New Chat"),
+							  title: __("New Chat_in_chat"),
 							 fields: [
 								 {
-										 label: __("Chat Type"),
+										 label: __("Chat Type_in_chat"),
 									 fieldname: "type",
 									 fieldtype: "Select",
 									   options: ["Group", "Direct Chat"],
@@ -1621,21 +1621,21 @@ class extends Component {
 									  }
 								 },
 								 {
-										 label: __("Group Name"),
+										 label: __("Group Name_in_chat"),
 									 fieldname: "group_name",
 									 fieldtype: "Data",
 										  reqd: true,
 									depends_on: "eval:doc.type == 'Group'"
 								 },
 								 {
-										 label: __("Users"),
+										 label: __("Users_in_chat"),
 									 fieldname: "users",
 									 fieldtype: "MultiSelect",
 									   options: frappe.user.get_emails(),
 									depends_on: "eval:doc.type == 'Group'"
 								 },
 								 {
-										 label: __("User"),
+										 label: __("User_in_chat"),
 									 fieldname: "user",
 									 fieldtype: "Link",
 									   options: "User",
@@ -1644,7 +1644,7 @@ class extends Component {
 							 ],
 							action: {
 								primary: {
-									   label: __('Create'),
+									   label: __('Create_in_chat'),
 									onsubmit: (values) => {
 										if ( values.type === "Group" ) {
 											if ( !frappe._.is_empty(values.users) ) {
@@ -1700,7 +1700,7 @@ class extends Component {
 		const RoomList   = frappe._.is_empty(rooms) && !state.query ?
 			h("div", { class: "vcenter" },
 				h("div", { class: "text-center text-extra-muted" },
-					h("p","",__("You don't have any messages yet."))
+					h("p","",__("You don't have any messages yet._in_chat"))
 				)
 			)
 			:
@@ -2171,7 +2171,7 @@ class extends Component {
 							h("div", { class: "vcenter" },
 								h("div", { class: "text-center text-extra-muted" },
 									h(frappe.components.Octicon, { type: "comment-discussion", style: "font-size: 48px" }),
-									h("p","",__("Start a conversation."))
+									h("p","",__("Start a conversation._in_chat"))
 								)
 							)
 						)
@@ -2180,7 +2180,7 @@ class extends Component {
 						h("div", { class: "vcenter" },
 							h("div", { class: "text-center text-extra-muted" },
 								h(frappe.components.Octicon, { type: "comment-discussion", style: "font-size: 125px" }),
-								h("p","",__("Select a chat to start messaging."))
+								h("p","",__("Select a chat to start messaging._in_chat"))
 							)
 						)
 					),
@@ -2223,7 +2223,7 @@ class extends Component {
 				item.subtitle = `${users.join(", ")} typing...`
 			} else
 				item.subtitle = props.type === "Group" ?
-					__(`${props.users.length} ${frappe._.pluralize('member', props.users.length)}`)
+					__(`${props.users.length} ${frappe._.pluralize('member_in_chat', props.users.length)}`)
 					:
 					""
 		}

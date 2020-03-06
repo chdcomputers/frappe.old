@@ -34,7 +34,7 @@ frappe.views.FileView = class FileView extends frappe.views.ListView {
 
 		frappe.breadcrumbs.add({
 			type: 'Custom',
-			label: __('Home'),
+			label: __('Home_in_vf_file_view'),
 			route: '#List/File/Home'
 		});
 	}
@@ -42,7 +42,7 @@ frappe.views.FileView = class FileView extends frappe.views.ListView {
 	setup_defaults() {
 		return super.setup_defaults()
 			.then(() => {
-				this.page_title = __('File Manager');
+				this.page_title = __('File Manager_in_vf_file_view');
 
 				const route = frappe.get_route();
 				this.current_folder = route.slice(2).join('/');
@@ -56,31 +56,31 @@ frappe.views.FileView = class FileView extends frappe.views.ListView {
 	file_menu_items() {
 		const items = [
 			{
-				label: __('Home'),
+				label: __('Home_in_vf_file_view'),
 				action: () => {
 					frappe.set_route('List', 'File', 'Home');
 				},
 			},
 			{
-				label: __('Cut'),
+				label: __('Cut_in_vf_file_view'),
 				action: () => {
 					frappe.file_manager.cut(this.get_checked_items(), this.current_folder);
 				},
 				class: 'cut-menu-button hide'
 			},
 			{
-				label: __('Paste'),
+				label: __('Paste_in_vf_file_view'),
 				action: () => {
 					frappe.file_manager.paste(this.current_folder);
 				},
 				class: 'paste-menu-button hide'
 			},
 			{
-				label: __('New Folder'),
+				label: __('New Folder_in_vf_file_view'),
 				action: () => {
-					frappe.prompt(__('Name'), (values) => {
+					frappe.prompt(__('Name_in_vf_file_view'), (values) => {
 						if((values.value.indexOf("/") > -1)) {
-							frappe.throw(__("Folder name should not include '/' (slash)"));
+							frappe.throw(__("Folder name should not include '/' (slash)_in_vf_file_view"));
 						}
 						const data =  {
 							file_name: values.value,
@@ -90,7 +90,7 @@ frappe.views.FileView = class FileView extends frappe.views.ListView {
 							method: "frappe.core.doctype.file.file.create_new_folder",
 							args: data
 						});
-					}, __('Enter folder name'), __('Create'));
+					}, __('Enter folder name_in_vf_file_view'), __('Create_in_vf_file_view'));
 				}
 			},
 			{
@@ -101,7 +101,7 @@ frappe.views.FileView = class FileView extends frappe.views.ListView {
 				}
 			},
 			{
-				label: __('Import Zip'),
+				label: __('Import Zip_in_vf_file_view'),
 				action: () => {
 					new frappe.ui.FileUploader({
 						folder: this.current_folder,
@@ -109,11 +109,11 @@ frappe.views.FileView = class FileView extends frappe.views.ListView {
 							allowed_file_types: ['.zip']
 						},
 						on_success: file => {
-							frappe.show_alert(__('Unzipping files...'));
+							frappe.show_alert(__('Unzipping files..._in_vf_file_view'));
 							frappe.call('frappe.core.doctype.file.file.unzip_file', { name: file.name })
 								.then((r) => {
 									if (r.message) {
-										frappe.show_alert(__('Unzipped {0} files', [r.message]));
+										frappe.show_alert(__('Unzipped {0} files_in_vf_file_view', [r.message]));
 									}
 								});
 						}
@@ -239,14 +239,14 @@ frappe.views.FileView = class FileView extends frappe.views.ListView {
 
 		let subject_html = `
 			<div class="list-row-col list-subject level">
-				<input class="level-item list-check-all hidden-xs" type="checkbox" title="${__("Select All")}">
+				<input class="level-item list-check-all hidden-xs" type="checkbox" title="${__("Select All_in_vf_file_view")}">
 				<span class="level-item">${breadcrumbs_html}</span>
 			</div>
 			<div class="list-row-col ellipsis hidden-xs">
-				<span>${__('Size')}</span>
+				<span>${__('Size_in_vf_file_view')}</span>
 			</div>
 			<div class="list-row-col ellipsis hidden-xs">
-				<span>${__('Created')}</span>
+				<span>${__('Created_in_vf_file_view')}</span>
 			</div>
 		`;
 

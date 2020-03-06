@@ -20,13 +20,13 @@ frappe.ready(function() {
 
 	function show_login_prompt() {
 		const login_required = new frappe.ui.Dialog({
-			title: __("Not Permitted"),
-			primary_action_label: __("Login"),
+			title: __("Not Permitted_in_w_web_form_script"),
+			primary_action_label: __("Login_in_w_web_form_script"),
 			primary_action: () => {
 				window.location.replace('/login?redirect-to=' + window.location.pathname);
 			}
 		});
-		login_required.set_message(__("You are not permitted to access this page."));
+		login_required.set_message(__("You are not permitted to access this page._in_w_web_form_script"));
 		login_required.show();
 	}
 

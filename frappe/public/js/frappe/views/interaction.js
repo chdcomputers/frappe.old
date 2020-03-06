@@ -12,10 +12,10 @@ frappe.views.InteractionComposer = class InteractionComposer {
 	make() {
 		let me = this;
 		me.dialog = new frappe.ui.Dialog({
-			title: (me.title || me.subject || __("New Activity")),
+			title: (me.title || me.subject || __("New Activity_in_v_interaction")),
 			no_submit_on_enter: true,
 			fields: me.get_fields(),
-			primary_action_label: __('Create'),
+			primary_action_label: __('Create_in_v_interaction'),
 			primary_action: function() {
 				me.create_action();
 			}
@@ -50,7 +50,7 @@ frappe.views.InteractionComposer = class InteractionComposer {
 		let interaction_docs = Object.keys(get_doc_mappings());
 
 		let fields = [
-			{label:__("Reference"), fieldtype:"Select",
+			{label:__("Reference_in_v_interaction"), fieldtype:"Select",
 				fieldname:"interaction_type", options: interaction_docs,
 				reqd: 1,
 				onchange: () => {
@@ -65,22 +65,22 @@ frappe.views.InteractionComposer = class InteractionComposer {
 					me.get_event_categories();
 				}
 			},
-			{label:__("Category"), fieldtype:"Select",
+			{label:__("Category_in_v_interaction"), fieldtype:"Select",
 				fieldname:"category", options: "", hidden: 1},
-			{label:__("Public"), fieldtype:"Check",
+			{label:__("Public_in_v_interaction"), fieldtype:"Check",
 				fieldname:"public", default: "1"},
 			{fieldtype: "Column Break"},
-			{label:__("Date"), fieldtype:"Datetime",
+			{label:__("Date_in_v_interaction"), fieldtype:"Datetime",
 				fieldname:"due_date"},
-			{label:__("Assigned To"), fieldtype:"Link",
+			{label:__("Assigned To_in_v_interaction"), fieldtype:"Link",
 				fieldname:"assigned_to", options:"User"},
 			{fieldtype: "Section Break"},
-			{label:__("Summary"), fieldtype:"Data",
+			{label:__("Summary_in_v_interaction"), fieldtype:"Data",
 				fieldname:"summary"},
 			{fieldtype: "Section Break"},
 			{fieldtype:"Text Editor", fieldname:"description"},
 			{fieldtype: "Section Break"},
-			{label:__("Select Attachments"), fieldtype:"HTML",
+			{label:__("Select Attachments_in_v_interaction"), fieldtype:"HTML",
 				fieldname:"select_attachments"}
 		];
 
@@ -140,10 +140,10 @@ frappe.views.InteractionComposer = class InteractionComposer {
 		}
 
 		$("<h6 class='text-muted add-attachment' style='margin-top: 12px; cursor:pointer;'>"
-			+__("Select Attachments")+"</h6><div class='attach-list'></div>\
+			+__("Select Attachments_in_v_interaction")+"</h6><div class='attach-list'></div>\
 			<p class='add-more-attachments'>\
 			<a class='text-muted small'><i class='octicon octicon-plus' style='font-size: 12px'></i> "
-			+__("Add Attachment")+"</a></p>").appendTo(attach.empty());
+			+__("Add Attachment_in_v_interaction")+"</a></p>").appendTo(attach.empty());
 		attach
 			.find(".add-more-attachments a")
 			.on('click',() => new frappe.ui.FileUploader(args));
@@ -231,7 +231,7 @@ frappe.views.InteractionComposer = class InteractionComposer {
 			callback: function(r) {
 				if(!r.exc) {
 					frappe.show_alert({
-						message: __("{0} created successfully", [form_values.interaction_type]),
+						message: __("{0} created successfully_in_v_interaction", [form_values.interaction_type]),
 						indicator: 'green'
 					});
 					if ("assigned_to" in form_values) {
@@ -247,7 +247,7 @@ frappe.views.InteractionComposer = class InteractionComposer {
 						cur_frm.reload_doc();
 					}
 				} else {
-					frappe.msgprint(__("There were errors while creating the document. Please try again."));
+					frappe.msgprint(__("There were errors while creating the document. Please try again._in_v_interaction"));
 				}
 			}
 		});
@@ -266,13 +266,13 @@ frappe.views.InteractionComposer = class InteractionComposer {
 				callback:function(r) {
 					if(!r.exc) {
 						frappe.show_alert({
-							message: __("The document has been assigned to {0}", [assignee]),
+							message: __("The document has been assigned to {0}_in_v_interaction", [assignee]),
 							indicator: 'green'
 						});
 						return;
 					} else {
 						frappe.show_alert({
-							message: __("The document could not be correctly assigned"),
+							message: __("The document could not be correctly assigned_in_v_interaction"),
 							indicator: 'orange'
 						});
 						return;
@@ -296,7 +296,7 @@ frappe.views.InteractionComposer = class InteractionComposer {
 					return;
 				} else {
 					frappe.show_alert({
-						message: __("The attachments could not be correctly linked to the new document"),
+						message: __("The attachments could not be correctly linked to the new document_in_v_interaction"),
 						indicator: 'orange'
 					});
 					return;

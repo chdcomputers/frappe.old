@@ -58,8 +58,8 @@ frappe.provide("frappe.views");
 					fluxify.doAction('update_column', col, 'add');
 				} else {
 					frappe.msgprint({
-						title: __('Not permitted'),
-						message: __('You are not allowed to create columns'),
+						title: __('Not permitted_in_vk_kanban_boardjs'),
+						message: __('You are not allowed to create columns_in_vk_kanban_boardjs'),
 						indicator: 'red'
 					});
 				}
@@ -355,11 +355,11 @@ frappe.provide("frappe.views");
 					__(b.title) + "</span>" +
 					"<button style='float:right;' data-column='" + b.title +
 					"' class='btn btn-default btn-xs restore-column text-muted'>"
-					+ __('Restore') + "</button></a></li>";
+					+ __('Restore_in_vk_kanban_boardjs') + "</button></a></li>";
 			}, "");
 			var $dropdown = $("<div class='dropdown pull-right'>" +
 				"<a class='text-muted dropdown-toggle' data-toggle='dropdown'>" +
-				"<span class='dropdown-text'>" + __('Archived Columns') + "</span><i class='caret'></i></a>" +
+				"<span class='dropdown-text'>" + __('Archived Columns_in_vk_kanban_boardjs') + "</span><i class='caret'></i></a>" +
 				"<ul class='dropdown-menu'>" + options + "</ul>" +
 				"</div>");
 
@@ -721,7 +721,7 @@ frappe.provide("frappe.views");
 			},
 			callback: function() {
 				frappe.model.clear_doc(doc.doctype, doc.name);
-				frappe.show_alert({ message: __("Saved"), indicator: 'green' }, 1);
+				frappe.show_alert({ message: __("Saved_in_vk_kanban_boardjs"), indicator: 'green' }, 1);
 			}
 		});
 	}
